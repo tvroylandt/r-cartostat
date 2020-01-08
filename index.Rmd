@@ -1,0 +1,17 @@
+--- 
+title: "Cartographie avec R à l'usage des statisticiens"
+author: "Thomas Vroylandt"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+github-repo: tvroylandt/r-cartostat
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intro
+
+blabla
