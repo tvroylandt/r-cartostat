@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Préparation des données | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="2 Préparation des données | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Préparation des données | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="tvroylandt/r-cartostat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Préparation des données | Cartographie avec R à l’usage des statisticiens" />
+  
+  
+  
+
+<meta name="author" content="Thomas Vroylandt" />
+
+
+<meta name="date" content="2020-01-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="réaliser-les-cartes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i><b>1.1</b> Objectifs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#pré-requis"><i class="fa fa-check"></i><b>1.2</b> Pré-requis</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#informatiques"><i class="fa fa-check"></i><b>1.2.1</b> Informatiques</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#connaissances"><i class="fa fa-check"></i><b>1.2.2</b> Connaissances</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>2</b> Préparation des données</a><ul>
+<li class="chapter" data-level="2.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#packages"><i class="fa fa-check"></i><b>2.1</b> Packages</a></li>
+<li class="chapter" data-level="2.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#données-spatiales"><i class="fa fa-check"></i><b>2.2</b> Données spatiales</a></li>
+<li class="chapter" data-level="2.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#jeu-de-données"><i class="fa fa-check"></i><b>2.3</b> Jeu de données</a></li>
+<li class="chapter" data-level="2.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#jointure"><i class="fa fa-check"></i><b>2.4</b> Jointure</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>3</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="3.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#le-bloc-commun"><i class="fa fa-check"></i><b>3.1</b> Le bloc commun</a></li>
+<li class="chapter" data-level="3.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#carte-choroplèthe"><i class="fa fa-check"></i><b>3.2</b> Carte choroplèthe</a></li>
+<li class="chapter" data-level="3.3" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#carte-avec-cercles-proportionnels"><i class="fa fa-check"></i><b>3.3</b> Carte avec cercles proportionnels</a></li>
+<li class="chapter" data-level="3.4" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#ajouter-les-valeurs"><i class="fa fa-check"></i><b>3.4</b> Ajouter les valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>4</b> Aplats de couleurs</a></li>
+<li class="chapter" data-level="5" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>5</b> Cercles proportionnels</a></li>
+<li class="chapter" data-level="6" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>6</b> Personnaliser vos cartes</a></li>
+<li class="chapter" data-level="7" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>7</b> Exporter vos résultats</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cartographie avec R à l’usage des statisticiens</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="préparation-des-données" class="section level1">
+<h1><span class="header-section-number">2</span> Préparation des données</h1>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">2.1</span> Packages</h2>
+<p>On charge d’abord les packages qui vont nous être utiles.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse) <span class="co"># Package généraliste de traitement de données et de graphiques.</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(sf) <span class="co"># Package pour faire de l&#39;analyse spatiale.</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(here) <span class="co"># Package qui va nous servir à gérer les chemins</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co"># Si cela renvoie une erreur, il faut installer ces packages avec </span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co"># install.packages(c(&quot;sf&quot;, &quot;tidyverse&quot;))</span></a></code></pre></div>
+</div>
+<div id="données-spatiales" class="section level2">
+<h2><span class="header-section-number">2.2</span> Données spatiales</h2>
+<p>On importe ensuite les données spatiales (le “fond de carte”). Ici il s’agit des départements.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/DEP_2018.shp&quot;</span>)) <span class="co"># here renvoie au point où on démarre notre chemin</span></a></code></pre></div>
+<pre><code>## Reading layer `DEP_2018&#39; from data source `D:\r-cartostat\data\shp\DEP_2018.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 101 features and 2 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 99216.86 ymin: 5988964 xmax: 1242426 ymax: 7110480
+## epsg (SRID):    NA
+## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs</code></pre>
+<p>On peut en visualiser le contenu. On observe qu’on a un fichier avec une colonne <em>DEP</em>, qui contient le code du département, ainsi qu’une colonne <em>geometry</em> qui contient les spécifications spatiales.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">shp_dep</a></code></pre></div>
+<pre><code>## Simple feature collection with 101 features and 2 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 99216.86 ymin: 5988964 xmax: 1242426 ymax: 7110480
+## epsg (SRID):    NA
+## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs
+## First 10 features:
+##    DEP                     nom                       geometry
+## 1   01                     Ain MULTIPOLYGON (((858244 6525...
+## 2   02                   Aisne MULTIPOLYGON (((761608 6918...
+## 3   03                  Allier MULTIPOLYGON (((646325 6582...
+## 4   04 Alpes-de-Haute-Provence MULTIPOLYGON (((972562 6298...
+## 5   05            Hautes-Alpes MULTIPOLYGON (((957775 6377...
+## 6   06         Alpes-Maritimes MULTIPOLYGON (((1028846 627...
+## 7   07                 Ardèche MULTIPOLYGON (((816772 6361...
+## 8   08                Ardennes MULTIPOLYGON (((863817 6940...
+## 9   09                  Ariège MULTIPOLYGON (((576341 6173...
+## 10  10                    Aube MULTIPOLYGON (((751637 6784...</code></pre>
+</div>
+<div id="jeu-de-données" class="section level2">
+<h2><span class="header-section-number">2.3</span> Jeu de données</h2>
+<p>On importe ensuite les données qu’on souhaite visualiser et on en examine le contenu.</p>
+<p>On va ici analyser la répartition du nombre de projets dans l’enquête BMO 2019 et la difficulté de recrutement pour quelques métiers. Les données ici ont été préparées en amont pour simplifier.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">bmo_<span class="dv">2019</span> &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="kw">here</span>(<span class="st">&quot;data/dataset/bmo_2019.rds&quot;</span>)) <span class="co"># cette instruction charge un fichier au format rds</span></a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3">bmo_<span class="dv">2019</span></a></code></pre></div>
+<pre><code>## # A tibble: 26,737 x 8
+##    annee fap87 reg   dep   bassin_bmo nb_proj_tot nb_proj_diff nb_proj_sais
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+##  1  2019 A0Z   01    971   0101             232.          75.8         6.55
+##  2  2019 A0Z   01    971   0102             172.         128.        163.  
+##  3  2019 A0Z   01    971   0103              16.8         16.8        13.8 
+##  4  2019 A0Z   01    971   0105              60.8         26.5         0   
+##  5  2019 A0Z   02    972   0201              53.4         32.9         2   
+##  6  2019 A0Z   02    972   0202             116.          53.1        42.2 
+##  7  2019 A0Z   02    972   0203             104.          30.6        76.7 
+##  8  2019 A0Z   02    972   0204              33.6         18.6        10   
+##  9  2019 A0Z   03    973   0301              42.7         23.5        12.8 
+## 10  2019 A0Z   03    973   0302              30.1         21.1         0   
+## # ... with 26,727 more rows</code></pre>
+<p>On va alors calculer une donnée par département, par exemple le nombre de projets et la difficulté par département. On découpe la difficulté en 4 classes qu’on fixe à la main.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">bmo_<span class="dv">2019</span>_dep &lt;-<span class="st"> </span>bmo_<span class="dv">2019</span> <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># on regroupe ici par département</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
+<a class="sourceLine" id="cb8-4" title="4">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># avant de sommer les projets et les projets difficiles</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="co"># on calcule la part de difficiles</span></a>
+<a class="sourceLine" id="cb8-7" title="7">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
+<a class="sourceLine" id="cb8-8" title="8">      part_diff,</a>
+<a class="sourceLine" id="cb8-9" title="9">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb8-10" title="10">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb8-11" title="11">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>) <span class="co"># et on la discretise</span></a>
+<a class="sourceLine" id="cb8-12" title="12">    )</a>
+<a class="sourceLine" id="cb8-13" title="13">  )</a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15">bmo_<span class="dv">2019</span>_dep</a></code></pre></div>
+<pre><code>## # A tibble: 104 x 5
+##    dep   nb_proj_tot nb_proj_diff part_diff part_diff_classes
+##    &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;            
+##  1 01         18464.       10859.      58.8 50-60 %          
+##  2 02         18418.        9851.      53.5 50-60 %          
+##  3 03          9394.        4517.      48.1 40-50 %          
+##  4 04          9686.        4509.      46.6 40-50 %          
+##  5 05         12376.        5166.      41.7 40-50 %          
+##  6 06         54174.       25030.      46.2 40-50 %          
+##  7 07         15975.        7351.      46.0 40-50 %          
+##  8 08          6233.        3422.      54.9 50-60 %          
+##  9 09          6454.        2327.      36.1 Moins de 40 %    
+## 10 10         15068.        6773.      44.9 40-50 %          
+## # ... with 94 more rows</code></pre>
+</div>
+<div id="jointure" class="section level2">
+<h2><span class="header-section-number">2.4</span> Jointure</h2>
+<p>L’étape suivante consiste à jointer le fond de carte avec nos données. On part toujours du fond de carte pour la jointure.</p>
+<p>On s’aperçoit alors qu’on a, pour chaque zone géographique, les valeurs qu’on a construit plus haut.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">bmo_<span class="dv">2019</span>_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_<span class="dv">2019</span>_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>)) <span class="co"># on jointe les tables</span></a></code></pre></div>
+<pre><code>## Warning: Column `DEP`/`dep` joining factor and character vector, coercing into character vector</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">bmo_<span class="dv">2019</span>_dep_shp </a></code></pre></div>
+<pre><code>## Simple feature collection with 101 features and 6 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 99216.86 ymin: 5988964 xmax: 1242426 ymax: 7110480
+## epsg (SRID):    NA
+## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs
+## First 10 features:
+##    DEP                     nom nb_proj_tot nb_proj_diff part_diff part_diff_classes
+## 1   01                     Ain   18464.380    10858.960  58.81031           50-60 %
+## 2   02                   Aisne   18417.870     9850.694  53.48444           50-60 %
+## 3   03                  Allier    9394.243     4516.847  48.08101           40-50 %
+## 4   04 Alpes-de-Haute-Provence    9686.414     4509.349  46.55334           40-50 %
+## 5   05            Hautes-Alpes   12376.342     5166.157  41.74219           40-50 %
+## 6   06         Alpes-Maritimes   54174.287    25029.646  46.20208           40-50 %
+## 7   07                 Ardèche   15975.280     7350.657  46.01270           40-50 %
+## 8   08                Ardennes    6233.049     3421.614  54.89470           50-60 %
+## 9   09                  Ariège    6453.668     2326.595  36.05074     Moins de 40 %
+## 10  10                    Aube   15068.317     6772.623  44.94611           40-50 %
+##                          geometry
+## 1  MULTIPOLYGON (((858244 6525...
+## 2  MULTIPOLYGON (((761608 6918...
+## 3  MULTIPOLYGON (((646325 6582...
+## 4  MULTIPOLYGON (((972562 6298...
+## 5  MULTIPOLYGON (((957775 6377...
+## 6  MULTIPOLYGON (((1028846 627...
+## 7  MULTIPOLYGON (((816772 6361...
+## 8  MULTIPOLYGON (((863817 6940...
+## 9  MULTIPOLYGON (((576341 6173...
+## 10 MULTIPOLYGON (((751637 6784...</code></pre>
+<p>Pour n’avoir qu’une région, il suffit de filtrer en amont sur le fond de carte, exemple avec les Hauts-de-France.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_idf &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">filter</span>(DEP <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;60&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;62&quot;</span>)) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># on filtre sur une liste de départements</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(bmo_<span class="dv">2019</span>_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>)) <span class="co"># on jointe les tables</span></a></code></pre></div>
+<pre><code>## Warning: Column `DEP`/`dep` joining factor and character vector, coercing into character vector</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_idf</a></code></pre></div>
+<pre><code>## Simple feature collection with 5 features and 6 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 583917 ymin: 6859784 xmax: 790281 ymax: 7110480
+## epsg (SRID):    NA
+## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs
+##   DEP           nom nb_proj_tot nb_proj_diff part_diff part_diff_classes                       geometry
+## 1  02         Aisne    18417.87     9850.694  53.48444           50-60 % MULTIPOLYGON (((761608 6918...
+## 2  59          Nord    95021.95    45883.249  48.28700           40-50 % MULTIPOLYGON (((700268 7005...
+## 3  60          Oise    25263.16    12976.914  51.36694           50-60 % MULTIPOLYGON (((703241 6903...
+## 4  62 Pas-de-Calais    45804.86    22472.133  49.06058           40-50 % MULTIPOLYGON (((642827 7013...
+## 5  80         Somme    19338.17     8677.044  44.87004           40-50 % MULTIPOLYGON (((634135 6954...</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rÃ©aliser-les-cartes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

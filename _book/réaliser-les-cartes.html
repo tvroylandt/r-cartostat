@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Réaliser les cartes | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="3 Réaliser les cartes | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Réaliser les cartes | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="tvroylandt/r-cartostat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Réaliser les cartes | Cartographie avec R à l’usage des statisticiens" />
+  
+  
+  
+
+<meta name="author" content="Thomas Vroylandt" />
+
+
+<meta name="date" content="2020-01-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="préparer-vos-données.html"/>
+<link rel="next" href="aplats-de-couleurs.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i><b>1.1</b> Objectifs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#pré-requis"><i class="fa fa-check"></i><b>1.2</b> Pré-requis</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#informatiques"><i class="fa fa-check"></i><b>1.2.1</b> Informatiques</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#connaissances"><i class="fa fa-check"></i><b>1.2.2</b> Connaissances</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>2</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#packages"><i class="fa fa-check"></i><b>2.1</b> Packages</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#installer-les-packages"><i class="fa fa-check"></i><b>2.1.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#charger-les-packages"><i class="fa fa-check"></i><b>2.1.2</b> Charger les packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>2.2</b> Importer des données</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>2.2.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="2.2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#excel"><i class="fa fa-check"></i><b>2.2.2</b> Excel</a></li>
+<li class="chapter" data-level="2.2.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#csv"><i class="fa fa-check"></i><b>2.2.3</b> CSV</a></li>
+<li class="chapter" data-level="2.2.4" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#sas"><i class="fa fa-check"></i><b>2.2.4</b> SAS</a></li>
+<li class="chapter" data-level="2.2.5" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#rds"><i class="fa fa-check"></i><b>2.2.5</b> Rds</a></li>
+<li class="chapter" data-level="2.2.6" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>2.2.6</b> Afficher la table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#format-de-fichiers"><i class="fa fa-check"></i><b>2.3</b> Format de fichiers</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#modifier-des-colonnes"><i class="fa fa-check"></i><b>2.3.1</b> Modifier des colonnes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#filtrer-des-lignes"><i class="fa fa-check"></i><b>2.3.2</b> Filtrer des lignes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#regrouper-et-sommer-les-données"><i class="fa fa-check"></i><b>2.3.3</b> Regrouper et sommer les données</a></li>
+<li class="chapter" data-level="2.3.4" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#joindre-des-tables"><i class="fa fa-check"></i><b>2.3.4</b> Joindre des tables</a></li>
+<li class="chapter" data-level="2.3.5" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#discrétiser-des-valeurs"><i class="fa fa-check"></i><b>2.3.5</b> Discrétiser des valeurs</a></li>
+<li class="chapter" data-level="2.3.6" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#recoder-des-facteurs"><i class="fa fa-check"></i><b>2.3.6</b> Recoder des facteurs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#données-spatiales"><i class="fa fa-check"></i><b>2.4</b> Données spatiales</a></li>
+<li class="chapter" data-level="2.5" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#jointure"><i class="fa fa-check"></i><b>2.5</b> Jointure</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>3</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="3.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#le-bloc-commun"><i class="fa fa-check"></i><b>3.1</b> Le bloc commun</a></li>
+<li class="chapter" data-level="3.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#carte-choroplèthe"><i class="fa fa-check"></i><b>3.2</b> Carte choroplèthe</a></li>
+<li class="chapter" data-level="3.3" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#carte-avec-cercles-proportionnels"><i class="fa fa-check"></i><b>3.3</b> Carte avec cercles proportionnels</a></li>
+<li class="chapter" data-level="3.4" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#ajouter-les-valeurs"><i class="fa fa-check"></i><b>3.4</b> Ajouter les valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>4</b> Aplats de couleurs</a></li>
+<li class="chapter" data-level="5" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>5</b> Cercles proportionnels</a></li>
+<li class="chapter" data-level="6" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>6</b> Personnaliser vos cartes</a></li>
+<li class="chapter" data-level="7" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>7</b> Exporter vos résultats</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cartographie avec R à l’usage des statisticiens</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="réaliser-les-cartes" class="section level1">
+<h1><span class="header-section-number">3</span> Réaliser les cartes</h1>
+<div id="le-bloc-commun" class="section level2">
+<h2><span class="header-section-number">3.1</span> Le bloc commun</h2>
+<p>On utilise le package <em>ggplot2</em> (inclus dans le <em>tidyverse</em> chargé au début) qui nous permet de faire des graphiques par couches.</p>
+<p>Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="co"># l&#39;instruction geom_sf() permet d&#39;afficher un objet spatial</span></a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_ex_0-1.png" width="672" /></p>
+</div>
+<div id="carte-choroplèthe" class="section level2">
+<h2><span class="header-section-number">3.2</span> Carte choroplèthe</h2>
+<p>Le type de carte le plus simple à réaliser sont les cartes par aplats de couleur ou “choroplèthe”. Pour chaque zone, on va représenter la valeur par une couleur.</p>
+<p>On peut ensuite lui dire quelle valeur on souhaite afficher, par exemple la difficulté de recrutement en classes. C’est une variable catégorielle qui s’affiche donc comme telle.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp,  <span class="co"># on précise la donnée à prendre par data = </span></a>
+<a class="sourceLine" id="cb28-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="co"># les variables à utiliser sont toujours mises dans un bloc aes() (pour aesthetics)</span></a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_col_categ_1-1.png" width="672" /></p>
+<p>On va ensuite rajouter différentes couches. Tout d’abord pour gérer l’échelle.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp, </a>
+<a class="sourceLine" id="cb29-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="co"># chaque échelle commence par scale_*</span></a>
+<a class="sourceLine" id="cb29-5" title="5">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#ffb59a&quot;</span>, <span class="st">&quot;#ff7d4d&quot;</span>, <span class="st">&quot;#ff4500&quot;</span>, <span class="st">&quot;#cc3700&quot;</span>)) <span class="co"># elle s&#39;applique à un élément de aes, ici fill (remplissage),  avec un type, ici manual puisqu&#39;on définit manuellement</span></a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_col_categ_2-1.png" width="672" /></p>
+<p>On va ensuite ajouter des élements de titre et de légende par exemple, ainsi qu’un thème pour avoir un fond blanc.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp, </a>
+<a class="sourceLine" id="cb30-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb30-5" title="5">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#ffb59a&quot;</span>, <span class="st">&quot;#ff7d4d&quot;</span>, <span class="st">&quot;#ff4500&quot;</span>, <span class="st">&quot;#cc3700&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co"># on lui précise des couleurs avec leurs codes</span></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des recrutements difficiles en 2019 </span><span class="ch">\n</span><span class="st">par département&quot;</span>, <span class="co"># labs sert à préciser le titre, la légende, etc..</span></a>
+<a class="sourceLine" id="cb30-7" title="7">       <span class="dt">caption =</span> <span class="st">&quot;Source : Pôle emploi, enquête Besoins en main d&#39;oeuvre&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span><span class="st"> </span><span class="co"># on applique un thème blanc</span></a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>)) <span class="co"># on lui précise de mettre la légende à gauche</span></a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_col_categ_3-1.png" width="672" /></p>
+<p>On peut faire de même avec une variable numérique. L’échelle va alors être continue et il faut préciser les couleurs qu’on souhaite en bornes.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp, </a>
+<a class="sourceLine" id="cb31-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="co"># le scale ici est un gradient, donc une suite continue de valeurs</span></a>
+<a class="sourceLine" id="cb31-5" title="5">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co"># on va en préciser les bornes inférieures et supérieures</span></a>
+<a class="sourceLine" id="cb31-6" title="6"><span class="st">  </span><span class="kw">theme_void</span>() </a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_col_num_1-1.png" width="672" /></p>
+<p>On peut ensuite exporter cette carte en cliquant sur <em>Export</em>.</p>
+</div>
+<div id="carte-avec-cercles-proportionnels" class="section level2">
+<h2><span class="header-section-number">3.3</span> Carte avec cercles proportionnels</h2>
+<p>Un autre type de carte représente chaque valeur par un cercle proportionnel et éventuellement une couleur.</p>
+<p>Pour la réaliser, on va construire un jeu de données localisé au niveau du centroïde (barycentre) de chaque zone. On repart de la table jointée.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_centre &lt;-<span class="st"> </span>bmo_<span class="dv">2019</span>_dep_shp <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="co"># cette fonctionne transforme un polygone en son centroid (un point)</span></a></code></pre></div>
+<pre><code>## Warning in st_centroid.sf(.): st_centroid assumes attributes are constant over geometries of x</code></pre>
+<p>On va ensuite afficher la carte et au dessus les points, en tant que deuxième couche, en lui précisant qu’on souhaite que la taille soit proportionnelle au nombre de projets et la couleur à la difficulté.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="op">+</span><span class="st"> </span><span class="co"># on affiche une première fois les zones</span></a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp_centre, <span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, <span class="dt">color =</span> part_diff)) <span class="co"># puis les points, en précisant leur taille et couleur</span></a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_centre_1-1.png" width="672" /></p>
+<p>De la même façon que précédemment, on va régler les caractéristiques avec des échelles. En variant la forme (<em>shape</em>), on peut afficher des carrés, des triangles, etc.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp_centre, <span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
+<a class="sourceLine" id="cb35-4" title="4">                                              <span class="dt">fill =</span> part_diff), </a>
+<a class="sourceLine" id="cb35-5" title="5">          <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co"># on en précise la forme (un rond à remplir avec fill)</span></a>
+<a class="sourceLine" id="cb35-6" title="6"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-7" title="7"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Nombre de projets et </span><span class="ch">\n</span><span class="st">part des recrutements difficiles en 2019 </span><span class="ch">\n</span><span class="st">par département&quot;</span>,</a>
+<a class="sourceLine" id="cb35-9" title="9">       <span class="dt">caption =</span> <span class="st">&quot;Source : Pôle emploi, enquête Besoins en main d&#39;oeuvre </span><span class="ch">\n</span><span class="st">Les cercles sont proportionnels au nombre de projets. La couleur indique la difficulté&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-10" title="10"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">size =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span><span class="co"># guides sert à dire de masquer la légende de taille</span></a>
+<a class="sourceLine" id="cb35-11" title="11"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>))</a></code></pre></div>
+<p><img src="_main_files/figure-html/carte_centre_2-1.png" width="672" /></p>
+</div>
+<div id="ajouter-les-valeurs" class="section level2">
+<h2><span class="header-section-number">3.4</span> Ajouter les valeurs</h2>
+<p>Pour afficher les valeurs sur la carte, on repart des centroïdes. On en extrait les coordonnées pour avoir pour chaque point, localisé par un X et un Y, une valeur à afficher.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_centre_label &lt;-<span class="st"> </span>bmo_<span class="dv">2019</span>_dep_shp_centre <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">st_coordinates</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># on récupère les coordonnées des centroids</span></a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-4" title="4"><span class="st">  </span><span class="kw">bind_cols</span>(<span class="dt">part_diff =</span> bmo_<span class="dv">2019</span>_dep_shp_centre<span class="op">$</span>part_diff) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># on ajoute la colonne à afficher</span></a>
+<a class="sourceLine" id="cb36-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">part_diff =</span> <span class="kw">paste0</span>(<span class="kw">round</span>(part_diff, <span class="dv">0</span>), <span class="st">&quot;%&quot;</span>)) <span class="co"># on l&#39;arrondi à 0 en ajoutant un % derrière</span></a>
+<a class="sourceLine" id="cb36-6" title="6"></a>
+<a class="sourceLine" id="cb36-7" title="7">bmo_<span class="dv">2019</span>_dep_shp_centre_label</a></code></pre></div>
+<pre><code>## # A tibble: 101 x 3
+##           X        Y part_diff
+##       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+##  1  881439. 6558221. 59%      
+##  2  740400. 6940204. 53%      
+##  3  714465. 6588216. 48%      
+##  4  959608. 6339443. 47%      
+##  5  958609. 6401410. 42%      
+##  6 1030352. 6324028. 46%      
+##  7  812754. 6406862. 46%      
+##  8  818627. 6947523. 55%      
+##  9  577731. 6203547. 36%      
+## 10  786154. 6801093. 45%      
+## # ... with 91 more rows</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prÃ©parer-vos-donnÃ©es.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aplats-de-couleurs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

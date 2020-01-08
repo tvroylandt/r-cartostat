@@ -12,6 +12,40 @@ github-repo: tvroylandt/r-cartostat
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Intro
+# Introduction
 
-blabla
+Ce support a été rédigé par Thomas Vroylandt, statisticien au sein de la Direction des Statistiques, des Etudes et de l'Evaluation de Pôle emploi.
+
+## Objectifs
+
+Ce guide vise à :
+
++ introduire quelques notions sur les données spatiales ;
++ permettre de représenter des valeurs sous forme de cartes par aplats de couleurs ;
++ permettre de représenter des valeurs sous forme de cartes à ronds proportionnels ;
++ personnaliser ces cartes ;
++ exporter les résultats pour publication.
+
+## Pré-requis
+
+### Informatiques
+
++ R (au moins, 3.5.0) doit être installé sur votre poste ;
++ RStudio aussi.
+
+### Connaissances
+
+ Vous devez avoir des notions basiques en R :
+
++ écrire et exécuter un programme ;
++ utiliser un package ;
++ savoir ce qu'est un projet RStudio.
+
+On se placera ici uniquement dans le cadre d'un projet RStudio. --> récap de ce que c'est et de comment faire.
+
+Le reste sera guidé.
+
++ la référence : [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/) (en anglais) ;
++ une bonne introduction : [https://juba.github.io/tidyverse/](https://juba.github.io/tidyverse/) (en français).
+
+
