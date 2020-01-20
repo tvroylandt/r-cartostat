@@ -1,0 +1,36 @@
+
+# Format de fichiers
+
+Pour réaliser une carte, il faut avoir une table de données à visualiser, qui comprend :
+
++ un identifiant spatial : code commune, bassin, département, région, etc. ;
++ une valeur : cela peut être une donnée continue (valeur numérique) ou discrète (classe d'une classification par exemple, discrétisation d'une valeur continue).
+
+Cette table directement importée sous ce format.
+
+Elle peut être aussi calculée avec R. Quelques opérations peuvent alors être utiles. Elles sont détaillées en annexes --> LIEN ANNEXE.
+
+A PASSER EN ANNEXE
+
+
+Traduction de https://r-graphics.org/chapter-dataprep
+
+Fork et traduire le truc
+
+### Modifier des colonnes
+
+
+### Filtrer des lignes
+
+
+### Regrouper et sommer les données
+
+
+### Joindre des tables
+
+
+### Discrétiser des valeurs
+
+
+### Recoder des facteurs
+

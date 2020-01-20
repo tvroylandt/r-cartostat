@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cartographie avec R à l’usage des statisticiens</title>
-  <meta name="description" content="Cartographie avec R à l’usage des statisticiens" />
+  <title>8 Format de fichiers | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="8 Format de fichiers | Cartographie avec R à l’usage des statisticiens" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:title" content="8 Format de fichiers | Cartographie avec R à l’usage des statisticiens" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tvroylandt/r-cartostat" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cartographie avec R à l’usage des statisticiens" />
+  <meta name="twitter:title" content="8 Format de fichiers | Cartographie avec R à l’usage des statisticiens" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="exporter-vos-résultats.html"/>
 
-<link rel="next" href="préliminaires.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -208,30 +208,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Cartographie avec R à l’usage des statisticiens</h1>
-<p class="author"><em>Thomas Vroylandt</em></p>
-<p class="date"><em>2020-01-20</em></p>
+<div id="format-de-fichiers" class="section level1">
+<h1><span class="header-section-number">8</span> Format de fichiers</h1>
+<p>Pour réaliser une carte, il faut avoir une table de données à visualiser, qui comprend :</p>
+<ul>
+<li>un identifiant spatial : code commune, bassin, département, région, etc. ;</li>
+<li>une valeur : cela peut être une donnée continue (valeur numérique) ou discrète (classe d’une classification par exemple, discrétisation d’une valeur continue).</li>
+</ul>
+<p>Cette table directement importée sous ce format.</p>
+<p>Elle peut être aussi calculée avec R. Quelques opérations peuvent alors être utiles. Elles sont détaillées en annexes –&gt; LIEN ANNEXE.</p>
+<p>A PASSER EN ANNEXE</p>
+<p>Traduction de <a href="https://r-graphics.org/chapter-dataprep" class="uri">https://r-graphics.org/chapter-dataprep</a></p>
+<p>Fork et traduire le truc</p>
+<div id="modifier-des-colonnes" class="section level3">
+<h3><span class="header-section-number">8.0.1</span> Modifier des colonnes</h3>
 </div>
-<div id="introduction" class="section level1 unnumbered">
-<h1>Introduction</h1>
-<p>Ce support a été rédigé par Thomas Vroylandt, statisticien au sein de la Direction des Statistiques, des Etudes et de l’Evaluation de Pôle emploi.</p>
-<p>Il est en grande partie inspiré du support de cours réalisé par Maël Theulière : <a href="https://maeltheuliere.github.io/rspatial/" class="uri">https://maeltheuliere.github.io/rspatial/</a></p>
-<div id="objectifs" class="section level2 unnumbered">
-<h2>Objectifs</h2>
-<p>Ce guide vise à :</p>
-<ul>
-<li>introduire quelques notions sur les données spatiales ;</li>
-<li>permettre de représenter des valeurs sous forme de cartes par aplats de couleurs ;</li>
-<li>permettre de représenter des valeurs sous forme de cartes à ronds proportionnels ;</li>
-<li>personnaliser ces cartes ;</li>
-<li>exporter les résultats pour publication.</li>
-</ul>
-<p>FEUILLE DE STYLE ICI : <a href="https://github.com/juba/tidyverse/blob/master/css/tidyverse.css" class="uri">https://github.com/juba/tidyverse/blob/master/css/tidyverse.css</a></p>
-<ul>
-<li>la référence : <a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a> (en anglais) ;</li>
-<li>une bonne introduction : <a href="https://juba.github.io/tidyverse/">https://juba.github.io/tidyverse/</a> (en français).</li>
-</ul>
+<div id="filtrer-des-lignes" class="section level3">
+<h3><span class="header-section-number">8.0.2</span> Filtrer des lignes</h3>
+</div>
+<div id="regrouper-et-sommer-les-données" class="section level3">
+<h3><span class="header-section-number">8.0.3</span> Regrouper et sommer les données</h3>
+</div>
+<div id="joindre-des-tables" class="section level3">
+<h3><span class="header-section-number">8.0.4</span> Joindre des tables</h3>
+</div>
+<div id="discrétiser-des-valeurs" class="section level3">
+<h3><span class="header-section-number">8.0.5</span> Discrétiser des valeurs</h3>
+</div>
+<div id="recoder-des-facteurs" class="section level3">
+<h3><span class="header-section-number">8.0.6</span> Recoder des facteurs</h3>
 
 </div>
 </div>
@@ -240,8 +245,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="exporter-vos-rÃ©sultats.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="prÃ©liminaires.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

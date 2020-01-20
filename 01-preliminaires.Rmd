@@ -1,0 +1,127 @@
+
+# Préliminaires
+
+## Installer R et Rstudio
+
+### R
+
+Du fait des blocages sur les postes de Pôle emploi, pour télécharger R, on doit utiliser l'installeur mis à disposition par la DSI, puis mettre à jour manuellement le logiciel.
+
+On dézippe l'installateur dans le `D://`. Puis on ouvre R et on tape les instructions suivantes :
+
+```{r, eval=FALSE}
+install.packages("installr")
+
+installr::updateR()
+
+```
+
+Cela met à jour R et va créer un nouveau dossier avec la nouvelle version dans le `D://`.
+
+Il est plus simple de mettre à jour R avant d'installer RStudio.
+
+### Rstudio
+
+On téléchargera le logiciel au format .zip ici : https://download1.rstudio.org/desktop/windows/RStudio-1.2.5033.zip
+
+Il faut ensuite dézipper l'archive dans votre `D://`
+
+On ouvre ensuite le programme `Rstudio.exe` situé dans le dossier `bin` de votre dossier `Rstudio`.
+Pensez à créer un raccourci vers ce programme dans votre barre d'accès rapide par exemple.
+
+On s'assure qu'il trouve bien le programme `R`. Sinon il faut lui indiquer l'emplacement du dossier `R 3.5.XXX` dans le `D://`.
+
+> **Assurez-vous d'avoir réalisé ces étapes avant la formation.**
+
+## Fonctionner en projet
+
+### Les projets dans RStudio
+
+Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?
+
++ Pour la **portabilité** : le répertoire de travail par défaut d'un projet est le répertoire où est ce projet. Si vous transmettez celui-ci à un collègue, le fait de lancer un programme ne dépend pas de l'arborescence de votre machine : **Fini les `setwd("chemin/qui/marche/uniquement/sur/mon/poste")` !** 
+
++ Pour **l'organisation** : un projet permet de structurer son analyse de façon plus simple et de diviser le travail entre différents sujets.
+
++ Pour **aller plus loin** : les packages, le *versioning* avec Git, les applications Shiny, tout cela fonctionne dans des projets. Les utiliser maintenant vous facilitera la tâche plus tard.
+
+
+**Pour créer un projet : **
+
++ Cliquez sur *Project* en haut à droite puis *New Project*.
+
+![](pic/creerprojet1.png){#id .class width=500}
+
++ Cliquez sur *New Directory*.
+
+![](pic/creerprojet2.png){#id .class width=500}
+
+### Désactiver les options de sauvegarde automatique de RStudio
+
+Votre code doit être reproductible depuis vos données en entrée vers votre résultat. Pour cela, il est fortement déconseillé de sauvegarder quoique ce soit dans le fichier `.RData` de sauvegarde par défaut. 
+Pour cela, aller dans *Tools->Global Options...* et ensuite conformez vous à ceci
+
+![](pic/RData.png)
+
+### Organiser votre travail
+
+Organisez votre projet en créant plusieurs répertoires à l'intérieur de celui-ci (les noms sont des exemples) :
+
+- `data` pour vos données ;
+- `R` ou `src` pour vos scripts ;
+- `figures` ou `output` pour vos sorties.
+
+En suivant une telle architecture pour tous vos projets, cela vous permettra d'aller plus vite.
+
+## Utiliser un package
+
+R fonctionne selon une logique de modules, appelés "packages". Ils apportent de nouvelles fonctionnalités à la version de base.
+
+### Installer les packages
+
+La première étape est donc d'installer les packages qui nous sont utiles pour réaliser des cartes. Cette opération se réalise une fois et il n'est pas nécessaire de la répéter (cela mettra à jour le package).
+
+Pour cela, on peut soit :
+
++ Utiliser RStudio qui nous propose un outil d'installation dans *Tools > Install Packages ...*. Tapez le nom des packages qui vous intéressent, séparés par un espace et appuyez sur *Install*.
++ Installer les packages en ligne de commande comme ce qui suit `install.packages(c("sf", "tidyverse"))` (pour installer les packages `sf` et `tidyverse`).
+
+**Pour faire des cartes**, on va se servir de plusieurs packages :
+
++ `sf` qui est dédié à l'analyse spatiale ;
++ `tidyverse` qui installe et charge d'un seul coup [plusieurs packages utiles](https://www.tidyverse.org/packages/), dont :
+
+  + `dplyr` pour la manipulation de données ;
+  + `forcats` pour le recodage des facteurs ;
+  + `readr` pour l'import de données ;
+  + `ggplot2` pour faire des graphiques.
+  
+Et en fonction du format d'import des données :
+
++ `readxl` pour importer des fichiers Excel (.xls ou .xlsx) ;
++ `haven` pour importer des tables SAS.
+
+> **Merci d'installer ces packages avant la formation, par exemple avec la commande `install.packages(c("sf", "tidyverse", "readxl", "haven"))`**
+
+### Charger les packages
+
+On les charge dans R à l'aide de l'instruction `library(nom_du_package)` comme dans le code suivant :
+
+```{r packages}
+library(tidyverse)
+library(sf)
+library(readxl)
+library(haven)
+```
+
+Cela peut renvoyer une erreur, par exemple :
+
+```{r packages_error, error=TRUE}
+library(tidyverses)
+```
+
+Dans ce cas, vérifiez l'orthographe du package. Si l'erreur persiste, vous avez peut-être oublié de l'installer.
+
+Quand on utilise une fonction d'un package, on doit préalablement le déclarer avec `library()` sinon cela renvoiera une erreur.
+
+

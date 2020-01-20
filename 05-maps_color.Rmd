@@ -1,0 +1,35 @@
+
+# Aplats de couleurs
+
+
+
+#### Variable à représenter
+
+Ensuite on peut lui spécifier la variable à afficher.
+
+Celle-ci peut être continue, auxquels cas une échelle continue va s'afficher :
+
+```{r carte_col_continue}
+ggplot() +
+  geom_sf(data = bmo_2019_dep_shp,
+          aes(fill = part_diff))
+```
+
+Ou discrète où on aura une échelle discrète :
+
+```{r carte_col_categ_1}
+ggplot(data = bmo_2019_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(fill = part_diff_classes, size = part_diff),
+                      color = "black",
+                      shape = 21)
+
+```
+
+#### Et après ?
+
+En trois lignes, on parvient à afficher une donnée.
+
+Il reste à lui préciser l'échelle et à personnaliser la carte.
+
+--> SECTION ASPECT

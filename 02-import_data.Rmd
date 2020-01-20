@@ -1,0 +1,85 @@
+
+# Préparer vos données
+
+## Importer des données
+
+### Structure d'import
+
+On va d'abord importer une donnée dans R, de la façon suivante :
+
+```{r eval=FALSE}
+nom_du_fichier <- read_extension("chemin_du_fichier.extension")
+```
+
+Cette instruction comprend 4 éléments :
+
++ Le nom de la table cible : `nom_du_fichier`. Son choix est libre mais ne doit pas comprendre d'espaces ou d'accents ;
++ Le pointeur : `<-`, qui permet de remplir la table cible ;
++ Une fonction de lecture : `read_extension()` qui diffère selon le type de fichier ;
++ Le chemin du fichier, entre guillemets : `"chemin_du_fichier.extension"`. Comme on se situe dans un projet RStudio, celui-ci part de la racine du projet.
+
+VOtre console peut vous renvoyer certaines informations sur la façon dont R encode les colonnes (en numérique, en caractère, etc.).
+
+### Exemples
+
+Le package `readxl` nous permet d'importer des fichiers Excel. Par exemple ici pour le fichier `bmo_2019_idf.xlsx` qui se situe dans le dossier `data` :
+
+```{r}
+bmo_secteur <- read_xlsx("data/dataset/bmo_2019_secteur.xlsx")
+```
+
+Si le fichier avait été :
+
++ en .xls, l'instruction aurait été `read_xls` ;
++ en .csv, `read_csv2()`du package `readr` ;
++ en SAS (en .sas7bdat), `read_sas` du package `haven` ;
++ dans d'autres formats, il existe des fonctions spécifiques.
+
+### Afficher la table
+
+On peut ensuite afficher la table de données importée de deux façons :
+
++ La première consiste à l'afficher dans la console en exécutant le nom de la table. Cela affiche des informations sur le type des colonnes et le nombre de lignes et de colonnes.
+
+```{r}
+bmo_secteur
+```
+
++ La seconde consiste à visualiser la table avec l'instruction `View(nom_de_la_table)`. Cela va afficher un onglet à part. A éviter dans le cas de grosses tables.
+
+![](pic/viewdata.png){#id .class width=500}
+
+## Pour la cartographie
+
+Pour réaliser une carte, il faut avoir une table de données à visualiser, qui comprend :
+
++ un identifiant spatial : code commune, bassin, département, région, etc. ;
++ une valeur : cela peut être une donnée continue (valeur numérique) ou discrète (classe d'une classification par exemple, discrétisation d'une valeur continue).
+
+Cette table directement importée sous ce format.
+
+Elle peut être aussi calculée avec R. Les opérations utiles sont détaillées en annexe. --> LIEN ANNEXE.
+
+Pour notre table, on somme par département puis on calcule la part de projets difficiles et on découpe en classes cette part.
+
+```{r manip_dataset}
+bmo_dep <- bmo_secteur %>%
+  group_by(dep) %>%
+  summarise(nb_proj_tot = sum(nb_proj_tot),
+            nb_proj_diff = sum(nb_proj_diff)) %>%
+  mutate(
+    part_diff = nb_proj_diff / nb_proj_tot * 100,
+    part_diff_classes = cut(
+      part_diff,
+      include.lowest = TRUE,
+      breaks = c(0, 40, 50, 60, 100),
+      labels = c("Moins de 40 %", "40-50 %", "50-60 %", "60% et plus")
+    )
+  )
+```
+
+La table aura alors la forme suivante :
+
+```{r}
+bmo_dep
+```

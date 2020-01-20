@@ -1,0 +1,57 @@
+
+# Personnaliser vos cartes
+
+
+## Ajouter des labels
+`geom_sf_text()` ou `geom_sf_label`
+
+## Scale
+
+
+## Theme
+
+
+
+## Carte choroplèthe
+
+Le type de carte le plus simple à réaliser sont les cartes par aplats de couleur ou "choroplèthe". Pour chaque zone, on va représenter la valeur par une couleur.
+
+On peut ensuite lui dire quelle valeur on souhaite afficher, par exemple la difficulté de recrutement en classes. C'est une variable catégorielle qui s'affiche donc comme telle.
+
+On va ensuite rajouter différentes couches. Tout d'abord pour gérer l'échelle.
+
+```{r carte_col_categ_2}
+ggplot() +
+  geom_sf(data = bmo_2019_dep_shp, 
+          aes(fill = part_diff_classes)) +
+  scale_fill_manual(name = "", # chaque échelle commence par scale_*
+                    values = c("#ffb59a", "#ff7d4d", "#ff4500", "#cc3700")) # elle s'applique à un élément de aes, ici fill (remplissage),  avec un type, ici manual puisqu'on définit manuellement
+
+```
+
+On va ensuite ajouter des élements de titre et de légende par exemple, ainsi qu'un thème pour avoir un fond blanc.
+
+```{r carte_col_categ_3}
+ggplot() +
+  geom_sf(data = bmo_2019_dep_shp, 
+          aes(fill = part_diff_classes)) +
+  scale_fill_manual(name = "",
+                    values = c("#ffb59a", "#ff7d4d", "#ff4500", "#cc3700")) + # on lui précise des couleurs avec leurs codes
+  labs(title = "Part des recrutements difficiles en 2019 \npar département", # labs sert à préciser le titre, la légende, etc..
+       caption = "Source : Pôle emploi, enquête Besoins en main d'oeuvre") +
+  theme_void() + # on applique un thème blanc
+  theme(plot.caption = element_text(hjust = 0)) # on lui précise de mettre la légende à gauche
+```
+
+On peut faire de même avec une variable numérique. L'échelle va alors être continue et il faut préciser les couleurs qu'on souhaite en bornes.
+
+```{r carte_col_num_1}
+ggplot() +
+  geom_sf(data = bmo_2019_dep_shp, 
+          aes(fill = part_diff)) +
+  scale_fill_gradient(name = "", # le scale ici est un gradient, donc une suite continue de valeurs
+                      low = "white", high = "purple") + # on va en préciser les bornes inférieures et supérieures
+  theme_void() 
+```
+
+On peut ensuite exporter cette carte en cliquant sur *Export*.

@@ -1,0 +1,27 @@
+
+# Réaliser les cartes
+
+## Fonctionnement de `ggplot2`
+
+Cette partie est un copier-coller de : https://mtes-mct.github.io/parcours-r/m5/package-ggplot2.html 
+
+Fork du repertoire.
+
+
+## Et pour la cartographie
+
+On utilise la fonction `geom_sf()` qui permet d'afficher des objets spatiaux.
+
+#### Données à utiliser
+
+Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide.
+
+```{r carte_ex_0}
+ggplot() +
+  geom_sf(data = bmo_2019_dep_shp)
+```
+
+#### Plusieurs couches avec la transparence (reg/dep, etc.)
+
+#### Filtrer les objets
+
