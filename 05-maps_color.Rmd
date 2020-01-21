@@ -1,35 +1,50 @@
 
 # Aplats de couleurs
 
+Les étapes pour réaliser des cartes dites "chroplèthes" ou "par aplats de couleurs" sont détaillées ici.
 
+Ces cartes sont notamment intéressantes quand on veut représenter une proportion ou l'appartenance à une classe.
 
-#### Variable à représenter
+## Spécifier la variable à représenter
 
-Ensuite on peut lui spécifier la variable à afficher.
+On va dire quelle variable on souhaite représenter dans l'instruction `aes()`. Cette variable doit remplir les aires des polygones, on spécifie donc `aes(fill = <VARIABLE>)`.
 
-Celle-ci peut être continue, auxquels cas une échelle continue va s'afficher :
+Cette variable doit exister dans la table de donnée.
 
-```{r carte_col_continue}
+### Continue
+
+Elle peut être continue, auquel cas on aura une échelle continue.
+
+```{r}
 ggplot() +
-  geom_sf(data = bmo_2019_dep_shp,
+  geom_sf(data = bmo_dep_shp,
           aes(fill = part_diff))
 ```
 
+### Discrète
+
 Ou discrète où on aura une échelle discrète :
 
-```{r carte_col_categ_1}
-ggplot(data = bmo_2019_dep_shp) +
-  geom_sf() +
-  stat_sf_coordinates(aes(fill = part_diff_classes, size = part_diff),
-                      color = "black",
-                      shape = 21)
+```{r}
+ggplot() +
+  geom_sf(data = bmo_dep_shp, 
+          aes(fill = part_diff_classes))
 
 ```
 
-#### Et après ?
+## Afficher les valeurs
 
-En trois lignes, on parvient à afficher une donnée.
+Souvent, on souhaite afficher, au niveau de la zone géographique, la valeur qui s'affiche, ou le nom de la zone.
 
-Il reste à lui préciser l'échelle et à personnaliser la carte.
+Cette opération peut se réaliser par l'ajout d'une couche supplémentaire : `geom_sf_label()` ou `geom_sf_text()`. Les deux font la même chose, l'aspect est légèrement différent.
 
---> SECTION ASPECT
+Pour que cela fonctionne, il faut lui préciser une valeur à afficher dans `aes(label = )`, par exemple, la part de projets difficiles (qu'on arrondi au dixième). Comme cette valeur doit se référer à une table de donnée, on a placé celle-ci directement dans le `ggplot()`.
+
+On peut passer des paramètres, comme la taille par exemple.
+
+```{r}
+ggplot(data = bmo_dep_shp) +
+  geom_sf(aes(fill = part_diff_classes)) +
+  geom_sf_text(aes(label = round(part_diff, 1)),
+               size = 2.5)
+```

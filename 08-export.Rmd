@@ -1,2 +1,43 @@
 
 # Exporter vos résultats
+
+## Avec l'outil d'export
+
+RStudio propose un outil d'export lorsqu'on affiche un graphique. Il suffit de cliquer dessus pour faire apparaître une console.
+
+![](pic/export1.png)
+
+On spécifie alors le dossier, le nom du fichier et les dimensions et exporte le résultat.
+
+![](pic/export2.png)
+
+Cet outil a comme avantage d'être simple.
+
+Ses inconvénients majeurs sont :
+
++ clique-bouton : on ne peut pas l'automatiser ;
++ la taille par défaut de l'export dépend de la taille de l'affichage dans votre zone de graphique.
+
+## Avec `ggsave`
+
+On peut utiliser la fonction `ggsave` qui nous permet de configurer l'export.
+
+On utilise les options :
+
++ `filename` pour le nom du fichier ;
++ `height` et `width` pour la hauteur et la largueur ;
++ `units` pour l'unité de hauteur et de largueur ;
++ `dpi` pour la résolution, par défaut 300.
+
+Par défaut, le graphique sauvegardé est le dernier réalisé.
+
+```{r, eval=FALSE}
+ggsave(
+  filename = "chemin/nom_du_fichier.png",
+  width = 297,
+  height = 210,
+  units = "mm",
+  dpi = 400
+)
+```
+

@@ -99,9 +99,10 @@ Pour cela, on peut soit :
 Et en fonction du format d'import des données :
 
 + `readxl` pour importer des fichiers Excel (.xls ou .xlsx) ;
-+ `haven` pour importer des tables SAS.
++ `haven` pour importer des tables SAS ;
++ `here` pour gérer les chemins.
 
-> **Merci d'installer ces packages avant la formation, par exemple avec la commande `install.packages(c("sf", "tidyverse", "readxl", "haven"))`**
+> **Merci d'installer ces packages avant la formation, par exemple avec la commande `install.packages(c("sf", "tidyverse", "readxl", "haven", "here"))`**
 
 ### Charger les packages
 
@@ -112,6 +113,7 @@ library(tidyverse)
 library(sf)
 library(readxl)
 library(haven)
+library(here)
 ```
 
 Cela peut renvoyer une erreur, par exemple :

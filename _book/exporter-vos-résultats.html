@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens</title>
-  <meta name="description" content="7 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
+  <title>9 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="9 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:title" content="9 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tvroylandt/r-cartostat" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="twitter:title" content="9 Exporter vos résultats | Cartographie avec R à l’usage des statisticiens" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Thomas Vroylandt" />
 
 
-<meta name="date" content="2020-01-20" />
+<meta name="date" content="2020-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="personnaliser-vos-cartes.html"/>
-<link rel="next" href="format-de-fichiers.html"/>
+<link rel="next" href="recoder-vos-données.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,67 +130,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>1</b> Préliminaires</a><ul>
-<li class="chapter" data-level="1.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installer R et Rstudio</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
-<li class="chapter" data-level="1.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Rstudio</a></li>
+<li class="chapter" data-level="1" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i><b>1</b> TL;DR</a></li>
+<li class="chapter" data-level="2" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>2</b> Préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installer R et Rstudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Rstudio</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>1.2</b> Fonctionner en projet</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Les projets dans RStudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
-<li class="chapter" data-level="1.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>1.2.3</b> Organiser votre travail</a></li>
+<li class="chapter" data-level="2.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>2.2</b> Fonctionner en projet</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Les projets dans RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>2.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>2.2.3</b> Organiser votre travail</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>1.3</b> Utiliser un package</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>1.3.1</b> Installer les packages</a></li>
-<li class="chapter" data-level="1.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>1.3.2</b> Charger les packages</a></li>
+<li class="chapter" data-level="2.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>2.3</b> Utiliser un package</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>2.3.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>2.3.2</b> Charger les packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>2</b> Préparer vos données</a><ul>
-<li class="chapter" data-level="2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>2.1</b> Importer des données</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>2.1.1</b> Structure d’import</a></li>
-<li class="chapter" data-level="2.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>2.1.2</b> Exemples</a></li>
-<li class="chapter" data-level="2.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>2.1.3</b> Afficher la table</a></li>
+<li class="chapter" data-level="3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>3</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>3.1</b> Importer des données</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>3.1.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="3.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>3.1.2</b> Exemples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>3.1.3</b> Afficher la table</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
+<li class="chapter" data-level="3.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>3.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>3</b> Données spatiales</a><ul>
-<li class="chapter" data-level="3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>3.1</b> Les données vectorielles</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>3.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
-<li class="chapter" data-level="3.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>3.1.2</b> Le format <em>shapefile</em></a></li>
-<li class="chapter" data-level="3.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>3.1.3</b> A Pôle emploi</a></li>
+<li class="chapter" data-level="4" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
+<li class="chapter" data-level="4.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>4.1.2</b> Le format <em>shapefile</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>4.1.3</b> A Pôle emploi</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>3.2</b> Importer des données spatiales</a></li>
-<li class="chapter" data-level="3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>3.3</b> Opérations sur données spatiales</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>3.3.1</b> Filtre</a></li>
-<li class="chapter" data-level="3.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>3.3.2</b> Modification de colonnes</a></li>
-<li class="chapter" data-level="3.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>3.3.3</b> Regroupement</a></li>
-<li class="chapter" data-level="3.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>3.3.4</b> Enlever la colonne <code>geometry</code></a></li>
+<li class="chapter" data-level="4.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>4.2</b> Importer des données spatiales</a></li>
+<li class="chapter" data-level="4.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>4.3</b> Opérations sur données spatiales</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>4.3.1</b> Filtre</a></li>
+<li class="chapter" data-level="4.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>4.3.2</b> Modification de colonnes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>4.3.3</b> Regroupement</a></li>
+<li class="chapter" data-level="4.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>4.3.4</b> Enlever la colonne <code>geometry</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>3.4</b> Ajouter de l’information statistique</a></li>
+<li class="chapter" data-level="4.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>4.4</b> Ajouter de l’information statistique</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>4</b> Réaliser les cartes</a><ul>
-<li class="chapter" data-level="4.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Fonctionnement de <code>ggplot2</code></a></li>
-<li class="chapter" data-level="4.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#et-pour-la-cartographie"><i class="fa fa-check"></i><b>4.2</b> Et pour la cartographie</a></li>
+<li class="chapter" data-level="5" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>5</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="5.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Fonctionnement de <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#pour-la-cartographie-1"><i class="fa fa-check"></i><b>5.2</b> Pour la cartographie</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#spécifier-la-table-de-données"><i class="fa fa-check"></i><b>5.2.1</b> Spécifier la table de données</a></li>
+<li class="chapter" data-level="5.2.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#afficher-plusieurs-couches-de-données"><i class="fa fa-check"></i><b>5.2.2</b> Afficher plusieurs couches de données</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>5</b> Aplats de couleurs</a><ul>
-<li class="chapter" data-level="5.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#carte-avec-cercles-proportionnels"><i class="fa fa-check"></i><b>5.1</b> Carte avec cercles proportionnels</a></li>
-<li class="chapter" data-level="5.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#ajouter-les-valeurs"><i class="fa fa-check"></i><b>5.2</b> Ajouter les valeurs</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>6</b> Personnaliser vos cartes</a><ul>
-<li class="chapter" data-level="6.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#ajouter-des-labels"><i class="fa fa-check"></i><b>6.1</b> Ajouter des labels</a></li>
-<li class="chapter" data-level="6.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#scale"><i class="fa fa-check"></i><b>6.2</b> Scale</a></li>
-<li class="chapter" data-level="6.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#theme"><i class="fa fa-check"></i><b>6.3</b> Theme</a></li>
-<li class="chapter" data-level="6.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#carte-choroplèthe"><i class="fa fa-check"></i><b>6.4</b> Carte choroplèthe</a></li>
+<li class="chapter" data-level="6" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>6</b> Aplats de couleurs</a><ul>
+<li class="chapter" data-level="6.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#spécifier-la-variable-à-représenter"><i class="fa fa-check"></i><b>6.1</b> Spécifier la variable à représenter</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#continue"><i class="fa fa-check"></i><b>6.1.1</b> Continue</a></li>
+<li class="chapter" data-level="6.1.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#discrète"><i class="fa fa-check"></i><b>6.1.2</b> Discrète</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>7</b> Exporter vos résultats</a></li>
-<li class="chapter" data-level="8" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html"><i class="fa fa-check"></i><b>8</b> Format de fichiers</a><ul>
-<li class="chapter" data-level="8.0.1" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#modifier-des-colonnes"><i class="fa fa-check"></i><b>8.0.1</b> Modifier des colonnes</a></li>
-<li class="chapter" data-level="8.0.2" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#filtrer-des-lignes"><i class="fa fa-check"></i><b>8.0.2</b> Filtrer des lignes</a></li>
-<li class="chapter" data-level="8.0.3" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#regrouper-et-sommer-les-données"><i class="fa fa-check"></i><b>8.0.3</b> Regrouper et sommer les données</a></li>
-<li class="chapter" data-level="8.0.4" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#joindre-des-tables"><i class="fa fa-check"></i><b>8.0.4</b> Joindre des tables</a></li>
-<li class="chapter" data-level="8.0.5" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#discrétiser-des-valeurs"><i class="fa fa-check"></i><b>8.0.5</b> Discrétiser des valeurs</a></li>
-<li class="chapter" data-level="8.0.6" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#recoder-des-facteurs"><i class="fa fa-check"></i><b>8.0.6</b> Recoder des facteurs</a></li>
+<li class="chapter" data-level="6.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#afficher-les-valeurs"><i class="fa fa-check"></i><b>6.2</b> Afficher les valeurs</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>7</b> Cercles proportionnels</a><ul>
+<li class="chapter" data-level="7.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#principe"><i class="fa fa-check"></i><b>7.1</b> Principe</a></li>
+<li class="chapter" data-level="7.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#personnalisation"><i class="fa fa-check"></i><b>7.2</b> Personnalisation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-triangles"><i class="fa fa-check"></i><b>7.2.1</b> Des triangles</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-carrés"><i class="fa fa-check"></i><b>7.2.2</b> Des carrés</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>8</b> Personnaliser vos cartes</a><ul>
+<li class="chapter" data-level="8.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#les-échelles"><i class="fa fa-check"></i><b>8.1</b> Les échelles</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-continues"><i class="fa fa-check"></i><b>8.1.1</b> Echelles de couleur continues</a></li>
+<li class="chapter" data-level="8.1.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-manuelles"><i class="fa fa-check"></i><b>8.1.2</b> Echelles de couleur manuelles</a></li>
+<li class="chapter" data-level="8.1.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-existantes"><i class="fa fa-check"></i><b>8.1.3</b> Echelles de couleur existantes</a></li>
+<li class="chapter" data-level="8.1.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#autres-échelles"><i class="fa fa-check"></i><b>8.1.4</b> Autres échelles</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#titre-et-légende"><i class="fa fa-check"></i><b>8.2</b> Titre et légende</a></li>
+<li class="chapter" data-level="8.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#le-thème"><i class="fa fa-check"></i><b>8.3</b> Le thème</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>9</b> Exporter vos résultats</a><ul>
+<li class="chapter" data-level="9.1" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-loutil-dexport"><i class="fa fa-check"></i><b>9.1</b> Avec l’outil d’export</a></li>
+<li class="chapter" data-level="9.2" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-ggsave"><i class="fa fa-check"></i><b>9.2</b> Avec <code>ggsave</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="recoder-vos-données.html"><a href="recoder-vos-données.html"><i class="fa fa-check"></i>Recoder vos données</a></li>
 </ul>
 
       </nav>
@@ -209,8 +223,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="exporter-vos-résultats" class="section level1">
-<h1><span class="header-section-number">7</span> Exporter vos résultats</h1>
+<h1><span class="header-section-number">9</span> Exporter vos résultats</h1>
+<div id="avec-loutil-dexport" class="section level2">
+<h2><span class="header-section-number">9.1</span> Avec l’outil d’export</h2>
+<p>RStudio propose un outil d’export lorsqu’on affiche un graphique. Il suffit de cliquer dessus pour faire apparaître une console.</p>
+<p><img src="pic/export1.PNG" /></p>
+<p>On spécifie alors le dossier, le nom du fichier et les dimensions et exporte le résultat.</p>
+<p><img src="pic/export2.PNG" /></p>
+<p>Cet outil a comme avantage d’être simple.</p>
+<p>Ses inconvénients majeurs sont :</p>
+<ul>
+<li>clique-bouton : on ne peut pas l’automatiser ;</li>
+<li>la taille par défaut de l’export dépend de la taille de l’affichage dans votre zone de graphique.</li>
+</ul>
+</div>
+<div id="avec-ggsave" class="section level2">
+<h2><span class="header-section-number">9.2</span> Avec <code>ggsave</code></h2>
+<p>On peut utiliser la fonction <code>ggsave</code> qui nous permet de configurer l’export.</p>
+<p>On utilise les options :</p>
+<ul>
+<li><code>filename</code> pour le nom du fichier ;</li>
+<li><code>height</code> et <code>width</code> pour la hauteur et la largueur ;</li>
+<li><code>units</code> pour l’unité de hauteur et de largueur ;</li>
+<li><code>dpi</code> pour la résolution, par défaut 300.</li>
+</ul>
+<p>Par défaut, le graphique sauvegardé est le dernier réalisé.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ggsave</span>(</a>
+<a class="sourceLine" id="cb57-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
+<a class="sourceLine" id="cb57-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
+<a class="sourceLine" id="cb57-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
+<a class="sourceLine" id="cb57-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
+<a class="sourceLine" id="cb57-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
+<a class="sourceLine" id="cb57-7" title="7">)</a></code></pre></div>
 
+</div>
 </div>
             </section>
 
@@ -218,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="personnaliser-vos-cartes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="format-de-fichiers.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="recoder-vos-donnÃ©es.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 TL;DR | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="1 TL;DR | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 TL;DR | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="tvroylandt/r-cartostat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 TL;DR | Cartographie avec R à l’usage des statisticiens" />
+  
+  
+  
+
+<meta name="author" content="Thomas Vroylandt" />
+
+
+<meta name="date" content="2020-01-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="préliminaires.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i><b>1</b> TL;DR</a></li>
+<li class="chapter" data-level="2" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>2</b> Préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installer R et Rstudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>2.2</b> Fonctionner en projet</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Les projets dans RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>2.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>2.2.3</b> Organiser votre travail</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>2.3</b> Utiliser un package</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>2.3.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>2.3.2</b> Charger les packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>3</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>3.1</b> Importer des données</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>3.1.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="3.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>3.1.2</b> Exemples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>3.1.3</b> Afficher la table</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>3.2</b> Pour la cartographie</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
+<li class="chapter" data-level="4.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>4.1.2</b> Le format <em>shapefile</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>4.1.3</b> A Pôle emploi</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>4.2</b> Importer des données spatiales</a></li>
+<li class="chapter" data-level="4.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>4.3</b> Opérations sur données spatiales</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>4.3.1</b> Filtre</a></li>
+<li class="chapter" data-level="4.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>4.3.2</b> Modification de colonnes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>4.3.3</b> Regroupement</a></li>
+<li class="chapter" data-level="4.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>4.3.4</b> Enlever la colonne <code>geometry</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>4.4</b> Ajouter de l’information statistique</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>5</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="5.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Fonctionnement de <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#pour-la-cartographie-1"><i class="fa fa-check"></i><b>5.2</b> Pour la cartographie</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#spécifier-la-table-de-données"><i class="fa fa-check"></i><b>5.2.1</b> Spécifier la table de données</a></li>
+<li class="chapter" data-level="5.2.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#afficher-plusieurs-couches-de-données"><i class="fa fa-check"></i><b>5.2.2</b> Afficher plusieurs couches de données</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>6</b> Aplats de couleurs</a><ul>
+<li class="chapter" data-level="6.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#spécifier-la-variable-à-représenter"><i class="fa fa-check"></i><b>6.1</b> Spécifier la variable à représenter</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#continue"><i class="fa fa-check"></i><b>6.1.1</b> Continue</a></li>
+<li class="chapter" data-level="6.1.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#discrète"><i class="fa fa-check"></i><b>6.1.2</b> Discrète</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#afficher-les-valeurs"><i class="fa fa-check"></i><b>6.2</b> Afficher les valeurs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>7</b> Cercles proportionnels</a><ul>
+<li class="chapter" data-level="7.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#principe"><i class="fa fa-check"></i><b>7.1</b> Principe</a></li>
+<li class="chapter" data-level="7.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#personnalisation"><i class="fa fa-check"></i><b>7.2</b> Personnalisation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-triangles"><i class="fa fa-check"></i><b>7.2.1</b> Des triangles</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-carrés"><i class="fa fa-check"></i><b>7.2.2</b> Des carrés</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>8</b> Personnaliser vos cartes</a><ul>
+<li class="chapter" data-level="8.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#les-échelles"><i class="fa fa-check"></i><b>8.1</b> Les échelles</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-continues"><i class="fa fa-check"></i><b>8.1.1</b> Echelles de couleur continues</a></li>
+<li class="chapter" data-level="8.1.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-manuelles"><i class="fa fa-check"></i><b>8.1.2</b> Echelles de couleur manuelles</a></li>
+<li class="chapter" data-level="8.1.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-existantes"><i class="fa fa-check"></i><b>8.1.3</b> Echelles de couleur existantes</a></li>
+<li class="chapter" data-level="8.1.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#autres-échelles"><i class="fa fa-check"></i><b>8.1.4</b> Autres échelles</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#titre-et-légende"><i class="fa fa-check"></i><b>8.2</b> Titre et légende</a></li>
+<li class="chapter" data-level="8.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#le-thème"><i class="fa fa-check"></i><b>8.3</b> Le thème</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>9</b> Exporter vos résultats</a><ul>
+<li class="chapter" data-level="9.1" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-loutil-dexport"><i class="fa fa-check"></i><b>9.1</b> Avec l’outil d’export</a></li>
+<li class="chapter" data-level="9.2" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-ggsave"><i class="fa fa-check"></i><b>9.2</b> Avec <code>ggsave</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="recoder-vos-données.html"><a href="recoder-vos-données.html"><i class="fa fa-check"></i>Recoder vos données</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cartographie avec R à l’usage des statisticiens</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tldr" class="section level1">
+<h1><span class="header-section-number">1</span> TL;DR</h1>
+<p>Ce chapître résume d’un bloc comment on peut réaliser une carte avec R.</p>
+<p>On charge les packages.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<p>On charge les données et on les recode si besoin.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">bmo_secteur &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/dataset/bmo_2019_secteur.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">bmo_dep &lt;-<span class="st"> </span>bmo_secteur <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
+<a class="sourceLine" id="cb2-6" title="6">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
+<a class="sourceLine" id="cb2-10" title="10">      part_diff,</a>
+<a class="sourceLine" id="cb2-11" title="11">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb2-12" title="12">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb2-13" title="13">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>)</a>
+<a class="sourceLine" id="cb2-14" title="14">    )</a>
+<a class="sourceLine" id="cb2-15" title="15">  )</a></code></pre></div>
+<p>On importe le fond de carte.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/DEP_2018.shp&quot;</span>))</a></code></pre></div>
+<pre><code>## Reading layer `DEP_2018&#39; from data source `D:\r-cartostat\data\shp\DEP_2018.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 101 features and 2 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 99216.86 ymin: 5988964 xmax: 1242426 ymax: 7110480
+## epsg (SRID):    NA
+## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs</code></pre>
+<p>On les fusionne.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: Column `DEP`/`dep` joining factor and character vector, coercing into character vector</code></pre>
+<p>On réalise la carte, par exemple par aplat de couleur. Avec les élements d’échelles et de thème.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb7-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb7-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
+<a class="sourceLine" id="cb7-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
+<a class="sourceLine" id="cb7-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Ou par cercles proportionnels.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
+<a class="sourceLine" id="cb8-4" title="4">                          <span class="dt">color =</span> part_diff)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="st">  </span><span class="kw">scale_color_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>,</a>
+<a class="sourceLine" id="cb8-6" title="6">                        <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="dt">name =</span> <span class="st">&quot;Nombre de projets&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>On exporte.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">ggsave</span>(</a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
+<a class="sourceLine" id="cb9-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
+<a class="sourceLine" id="cb9-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
+<a class="sourceLine" id="cb9-7" title="7">)</a></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prÃ©liminaires.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

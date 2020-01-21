@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens</title>
-  <meta name="description" content="5 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
+  <title>6 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="6 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:title" content="6 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tvroylandt/r-cartostat" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="twitter:title" content="6 Aplats de couleurs | Cartographie avec R à l’usage des statisticiens" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Thomas Vroylandt" />
 
 
-<meta name="date" content="2020-01-20" />
+<meta name="date" content="2020-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="réaliser-les-cartes.html"/>
-<link rel="next" href="personnaliser-vos-cartes.html"/>
+<link rel="next" href="cercles-proportionnels.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,67 +130,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>1</b> Préliminaires</a><ul>
-<li class="chapter" data-level="1.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installer R et Rstudio</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
-<li class="chapter" data-level="1.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Rstudio</a></li>
+<li class="chapter" data-level="1" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i><b>1</b> TL;DR</a></li>
+<li class="chapter" data-level="2" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>2</b> Préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installer R et Rstudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Rstudio</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>1.2</b> Fonctionner en projet</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Les projets dans RStudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
-<li class="chapter" data-level="1.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>1.2.3</b> Organiser votre travail</a></li>
+<li class="chapter" data-level="2.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>2.2</b> Fonctionner en projet</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Les projets dans RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>2.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>2.2.3</b> Organiser votre travail</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>1.3</b> Utiliser un package</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>1.3.1</b> Installer les packages</a></li>
-<li class="chapter" data-level="1.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>1.3.2</b> Charger les packages</a></li>
+<li class="chapter" data-level="2.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>2.3</b> Utiliser un package</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>2.3.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>2.3.2</b> Charger les packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>2</b> Préparer vos données</a><ul>
-<li class="chapter" data-level="2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>2.1</b> Importer des données</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>2.1.1</b> Structure d’import</a></li>
-<li class="chapter" data-level="2.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>2.1.2</b> Exemples</a></li>
-<li class="chapter" data-level="2.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>2.1.3</b> Afficher la table</a></li>
+<li class="chapter" data-level="3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>3</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>3.1</b> Importer des données</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>3.1.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="3.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>3.1.2</b> Exemples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>3.1.3</b> Afficher la table</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
+<li class="chapter" data-level="3.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>3.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>3</b> Données spatiales</a><ul>
-<li class="chapter" data-level="3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>3.1</b> Les données vectorielles</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>3.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
-<li class="chapter" data-level="3.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>3.1.2</b> Le format <em>shapefile</em></a></li>
-<li class="chapter" data-level="3.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>3.1.3</b> A Pôle emploi</a></li>
+<li class="chapter" data-level="4" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
+<li class="chapter" data-level="4.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>4.1.2</b> Le format <em>shapefile</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>4.1.3</b> A Pôle emploi</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>3.2</b> Importer des données spatiales</a></li>
-<li class="chapter" data-level="3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>3.3</b> Opérations sur données spatiales</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>3.3.1</b> Filtre</a></li>
-<li class="chapter" data-level="3.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>3.3.2</b> Modification de colonnes</a></li>
-<li class="chapter" data-level="3.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>3.3.3</b> Regroupement</a></li>
-<li class="chapter" data-level="3.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>3.3.4</b> Enlever la colonne <code>geometry</code></a></li>
+<li class="chapter" data-level="4.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>4.2</b> Importer des données spatiales</a></li>
+<li class="chapter" data-level="4.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>4.3</b> Opérations sur données spatiales</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>4.3.1</b> Filtre</a></li>
+<li class="chapter" data-level="4.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>4.3.2</b> Modification de colonnes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>4.3.3</b> Regroupement</a></li>
+<li class="chapter" data-level="4.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>4.3.4</b> Enlever la colonne <code>geometry</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>3.4</b> Ajouter de l’information statistique</a></li>
+<li class="chapter" data-level="4.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>4.4</b> Ajouter de l’information statistique</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>4</b> Réaliser les cartes</a><ul>
-<li class="chapter" data-level="4.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Fonctionnement de <code>ggplot2</code></a></li>
-<li class="chapter" data-level="4.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#et-pour-la-cartographie"><i class="fa fa-check"></i><b>4.2</b> Et pour la cartographie</a></li>
+<li class="chapter" data-level="5" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>5</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="5.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Fonctionnement de <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#pour-la-cartographie-1"><i class="fa fa-check"></i><b>5.2</b> Pour la cartographie</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#spécifier-la-table-de-données"><i class="fa fa-check"></i><b>5.2.1</b> Spécifier la table de données</a></li>
+<li class="chapter" data-level="5.2.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#afficher-plusieurs-couches-de-données"><i class="fa fa-check"></i><b>5.2.2</b> Afficher plusieurs couches de données</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>5</b> Aplats de couleurs</a><ul>
-<li class="chapter" data-level="5.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#carte-avec-cercles-proportionnels"><i class="fa fa-check"></i><b>5.1</b> Carte avec cercles proportionnels</a></li>
-<li class="chapter" data-level="5.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#ajouter-les-valeurs"><i class="fa fa-check"></i><b>5.2</b> Ajouter les valeurs</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>6</b> Personnaliser vos cartes</a><ul>
-<li class="chapter" data-level="6.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#ajouter-des-labels"><i class="fa fa-check"></i><b>6.1</b> Ajouter des labels</a></li>
-<li class="chapter" data-level="6.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#scale"><i class="fa fa-check"></i><b>6.2</b> Scale</a></li>
-<li class="chapter" data-level="6.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#theme"><i class="fa fa-check"></i><b>6.3</b> Theme</a></li>
-<li class="chapter" data-level="6.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#carte-choroplèthe"><i class="fa fa-check"></i><b>6.4</b> Carte choroplèthe</a></li>
+<li class="chapter" data-level="6" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>6</b> Aplats de couleurs</a><ul>
+<li class="chapter" data-level="6.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#spécifier-la-variable-à-représenter"><i class="fa fa-check"></i><b>6.1</b> Spécifier la variable à représenter</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#continue"><i class="fa fa-check"></i><b>6.1.1</b> Continue</a></li>
+<li class="chapter" data-level="6.1.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#discrète"><i class="fa fa-check"></i><b>6.1.2</b> Discrète</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>7</b> Exporter vos résultats</a></li>
-<li class="chapter" data-level="8" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html"><i class="fa fa-check"></i><b>8</b> Format de fichiers</a><ul>
-<li class="chapter" data-level="8.0.1" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#modifier-des-colonnes"><i class="fa fa-check"></i><b>8.0.1</b> Modifier des colonnes</a></li>
-<li class="chapter" data-level="8.0.2" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#filtrer-des-lignes"><i class="fa fa-check"></i><b>8.0.2</b> Filtrer des lignes</a></li>
-<li class="chapter" data-level="8.0.3" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#regrouper-et-sommer-les-données"><i class="fa fa-check"></i><b>8.0.3</b> Regrouper et sommer les données</a></li>
-<li class="chapter" data-level="8.0.4" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#joindre-des-tables"><i class="fa fa-check"></i><b>8.0.4</b> Joindre des tables</a></li>
-<li class="chapter" data-level="8.0.5" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#discrétiser-des-valeurs"><i class="fa fa-check"></i><b>8.0.5</b> Discrétiser des valeurs</a></li>
-<li class="chapter" data-level="8.0.6" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#recoder-des-facteurs"><i class="fa fa-check"></i><b>8.0.6</b> Recoder des facteurs</a></li>
+<li class="chapter" data-level="6.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#afficher-les-valeurs"><i class="fa fa-check"></i><b>6.2</b> Afficher les valeurs</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>7</b> Cercles proportionnels</a><ul>
+<li class="chapter" data-level="7.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#principe"><i class="fa fa-check"></i><b>7.1</b> Principe</a></li>
+<li class="chapter" data-level="7.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#personnalisation"><i class="fa fa-check"></i><b>7.2</b> Personnalisation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-triangles"><i class="fa fa-check"></i><b>7.2.1</b> Des triangles</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-carrés"><i class="fa fa-check"></i><b>7.2.2</b> Des carrés</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>8</b> Personnaliser vos cartes</a><ul>
+<li class="chapter" data-level="8.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#les-échelles"><i class="fa fa-check"></i><b>8.1</b> Les échelles</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-continues"><i class="fa fa-check"></i><b>8.1.1</b> Echelles de couleur continues</a></li>
+<li class="chapter" data-level="8.1.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-manuelles"><i class="fa fa-check"></i><b>8.1.2</b> Echelles de couleur manuelles</a></li>
+<li class="chapter" data-level="8.1.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-existantes"><i class="fa fa-check"></i><b>8.1.3</b> Echelles de couleur existantes</a></li>
+<li class="chapter" data-level="8.1.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#autres-échelles"><i class="fa fa-check"></i><b>8.1.4</b> Autres échelles</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#titre-et-légende"><i class="fa fa-check"></i><b>8.2</b> Titre et légende</a></li>
+<li class="chapter" data-level="8.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#le-thème"><i class="fa fa-check"></i><b>8.3</b> Le thème</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>9</b> Exporter vos résultats</a><ul>
+<li class="chapter" data-level="9.1" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-loutil-dexport"><i class="fa fa-check"></i><b>9.1</b> Avec l’outil d’export</a></li>
+<li class="chapter" data-level="9.2" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-ggsave"><i class="fa fa-check"></i><b>9.2</b> Avec <code>ggsave</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="recoder-vos-données.html"><a href="recoder-vos-données.html"><i class="fa fa-check"></i>Recoder vos données</a></li>
 </ul>
 
       </nav>
@@ -209,83 +223,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="aplats-de-couleurs" class="section level1">
-<h1><span class="header-section-number">5</span> Aplats de couleurs</h1>
-<div id="variable-à-représenter" class="section level4">
-<h4><span class="header-section-number">5.0.0.1</span> Variable à représenter</h4>
-<p>Ensuite on peut lui spécifier la variable à afficher.</p>
-<p>Celle-ci peut être continue, auxquels cas une échelle continue va s’afficher :</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp,</a>
-<a class="sourceLine" id="cb31-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff))</a></code></pre></div>
-<p><img src="_main_files/figure-html/carte_col_continue-1.png" width="672" /></p>
+<h1><span class="header-section-number">6</span> Aplats de couleurs</h1>
+<p>Les étapes pour réaliser des cartes dites “chroplèthes” ou “par aplats de couleurs” sont détaillées ici.</p>
+<p>Ces cartes sont notamment intéressantes quand on veut représenter une proportion ou l’appartenance à une classe.</p>
+<div id="spécifier-la-variable-à-représenter" class="section level2">
+<h2><span class="header-section-number">6.1</span> Spécifier la variable à représenter</h2>
+<p>On va dire quelle variable on souhaite représenter dans l’instruction <code>aes()</code>. Cette variable doit remplir les aires des polygones, on spécifie donc <code>aes(fill = &lt;VARIABLE&gt;)</code>.</p>
+<p>Cette variable doit exister dans la table de donnée.</p>
+<div id="continue" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Continue</h3>
+<p>Elle peut être continue, auquel cas on aura une échelle continue.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb43-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff))</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="discrète" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Discrète</h3>
 <p>Ou discrète où on aura une échelle discrète :</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes, <span class="dt">size =</span> part_diff),</a>
-<a class="sourceLine" id="cb32-4" title="4">                      <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,</a>
-<a class="sourceLine" id="cb32-5" title="5">                      <span class="dt">shape =</span> <span class="dv">21</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/carte_col_categ_1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
+<a class="sourceLine" id="cb44-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes))</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 </div>
-<div id="et-après" class="section level4">
-<h4><span class="header-section-number">5.0.0.2</span> Et après ?</h4>
-<p>En trois lignes, on parvient à afficher une donnée.</p>
-<p>Il reste à lui préciser l’échelle et à personnaliser la carte.</p>
-<p>–&gt; SECTION ASPECT</p>
-
 </div>
-<div id="carte-avec-cercles-proportionnels" class="section level2">
-<h2><span class="header-section-number">5.1</span> Carte avec cercles proportionnels</h2>
-<p>Un autre type de carte représente chaque valeur par un cercle proportionnel et éventuellement une couleur.</p>
-<p>Pour la réaliser, on va construire un jeu de données localisé au niveau du centroïde (barycentre) de chaque zone. On repart de la table jointée.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_centre &lt;-<span class="st"> </span>bmo_<span class="dv">2019</span>_dep_shp <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-2" title="2"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="co"># cette fonctionne transforme un polygone en son centroid (un point)</span></a></code></pre></div>
-<pre><code>## Warning in st_centroid.sf(.): st_centroid assumes attributes are constant over geometries of x</code></pre>
-<p>On va ensuite afficher la carte et au dessus les points, en tant que deuxième couche, en lui précisant qu’on souhaite que la taille soit proportionnelle au nombre de projets et la couleur à la difficulté.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="op">+</span><span class="st"> </span><span class="co"># on affiche une première fois les zones</span></a>
-<a class="sourceLine" id="cb35-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp_centre, <span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, <span class="dt">color =</span> part_diff)) <span class="co"># puis les points, en précisant leur taille et couleur</span></a></code></pre></div>
-<p><img src="_main_files/figure-html/carte_centre_1-1.png" width="672" /></p>
-<p>De la même façon que précédemment, on va régler les caractéristiques avec des échelles. En variant la forme (<em>shape</em>), on peut afficher des carrés, des triangles, etc.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_<span class="dv">2019</span>_dep_shp_centre, <span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
-<a class="sourceLine" id="cb36-4" title="4">                                              <span class="dt">fill =</span> part_diff), </a>
-<a class="sourceLine" id="cb36-5" title="5">          <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co"># on en précise la forme (un rond à remplir avec fill)</span></a>
-<a class="sourceLine" id="cb36-6" title="6"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-7" title="7"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">12</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Nombre de projets et </span><span class="ch">\n</span><span class="st">part des recrutements difficiles en 2019 </span><span class="ch">\n</span><span class="st">par département&quot;</span>,</a>
-<a class="sourceLine" id="cb36-9" title="9">       <span class="dt">caption =</span> <span class="st">&quot;Source : Pôle emploi, enquête Besoins en main d&#39;oeuvre </span><span class="ch">\n</span><span class="st">Les cercles sont proportionnels au nombre de projets. La couleur indique la difficulté&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-10" title="10"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">size =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span><span class="co"># guides sert à dire de masquer la légende de taille</span></a>
-<a class="sourceLine" id="cb36-11" title="11"><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb36-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>))</a></code></pre></div>
-<p><img src="_main_files/figure-html/carte_centre_2-1.png" width="672" /></p>
-</div>
-<div id="ajouter-les-valeurs" class="section level2">
-<h2><span class="header-section-number">5.2</span> Ajouter les valeurs</h2>
-<p>Pour afficher les valeurs sur la carte, on repart des centroïdes. On en extrait les coordonnées pour avoir pour chaque point, localisé par un X et un Y, une valeur à afficher.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">bmo_<span class="dv">2019</span>_dep_shp_centre_label &lt;-<span class="st"> </span>bmo_<span class="dv">2019</span>_dep_shp_centre <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-2" title="2"><span class="st">  </span><span class="kw">st_coordinates</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># on récupère les coordonnées des centroids</span></a>
-<a class="sourceLine" id="cb37-3" title="3"><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-4" title="4"><span class="st">  </span><span class="kw">bind_cols</span>(<span class="dt">part_diff =</span> bmo_<span class="dv">2019</span>_dep_shp_centre<span class="op">$</span>part_diff) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># on ajoute la colonne à afficher</span></a>
-<a class="sourceLine" id="cb37-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">part_diff =</span> <span class="kw">paste0</span>(<span class="kw">round</span>(part_diff, <span class="dv">0</span>), <span class="st">&quot;%&quot;</span>)) <span class="co"># on l&#39;arrondi à 0 en ajoutant un % derrière</span></a>
-<a class="sourceLine" id="cb37-6" title="6"></a>
-<a class="sourceLine" id="cb37-7" title="7">bmo_<span class="dv">2019</span>_dep_shp_centre_label</a></code></pre></div>
-<pre><code>## # A tibble: 101 x 3
-##           X        Y part_diff
-##       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
-##  1  881439. 6558221. 59%      
-##  2  740400. 6940204. 53%      
-##  3  714465. 6588216. 48%      
-##  4  959608. 6339443. 47%      
-##  5  958609. 6401410. 42%      
-##  6 1030352. 6324028. 46%      
-##  7  812754. 6406862. 46%      
-##  8  818627. 6947523. 55%      
-##  9  577731. 6203547. 36%      
-## 10  786154. 6801093. 45%      
-## # ... with 91 more rows</code></pre>
-<p>Doc geom point : <a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="uri">https://ggplot2.tidyverse.org/reference/geom_point.html</a></p>
-<p>Shape : <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></p>
+<div id="afficher-les-valeurs" class="section level2">
+<h2><span class="header-section-number">6.2</span> Afficher les valeurs</h2>
+<p>Souvent, on souhaite afficher, au niveau de la zone géographique, la valeur qui s’affiche, ou le nom de la zone.</p>
+<p>Cette opération peut se réaliser par l’ajout d’une couche supplémentaire : <code>geom_sf_label()</code> ou <code>geom_sf_text()</code>. Les deux font la même chose, l’aspect est légèrement différent.</p>
+<p>Pour que cela fonctionne, il faut lui préciser une valeur à afficher dans <code>aes(label = )</code>, par exemple, la part de projets difficiles (qu’on arrondi au dixième). Comme cette valeur doit se référer à une table de donnée, on a placé celle-ci directement dans le <code>ggplot()</code>.</p>
+<p>On peut passer des paramètres, comme la taille par exemple.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(part_diff, <span class="dv">1</span>)),</a>
+<a class="sourceLine" id="cb45-4" title="4">               <span class="dt">size =</span> <span class="fl">2.5</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -295,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="rÃ©aliser-les-cartes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="personnaliser-vos-cartes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cercles-proportionnels.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

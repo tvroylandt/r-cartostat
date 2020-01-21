@@ -1,54 +1,51 @@
 
-## Carte avec cercles proportionnels
+# Cercles proportionnels
 
 Un autre type de carte représente chaque valeur par un cercle proportionnel et éventuellement une couleur.
 
-Pour la réaliser, on va construire un jeu de données localisé au niveau du centroïde (barycentre) de chaque zone. On repart de la table jointée.
+Ces cartes permettent de mettre en valeur les volumes.
 
-```{r centroid}
-bmo_2019_dep_shp_centre <- bmo_2019_dep_shp %>% 
-  st_centroid() # cette fonctionne transforme un polygone en son centroid (un point)
+## Principe
+
+On les réalise à l'aide de la fonction `stat_sf_coordinates()`.
+
+On procède en plusieurs étapes :
+
++ on affiche d'abord le fond de carte à vide ;
++ on lui spécifie les valeurs à afficher, ici sur le nombre de projets : `nb_proj_tot` ;
++ on personnalise ensuite les paramètres des points à afficher, par exemple en ajoutant une couleur, la part de projets difficiles, en classes.
+
+```{r}
+ggplot(data = bmo_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_proj_tot, 
+                          color = part_diff_classes))
 ```
 
-On va ensuite afficher la carte et au dessus les points, en tant que deuxième couche, en lui précisant qu'on souhaite que la taille soit proportionnelle au nombre de projets et la couleur à la difficulté.
+## Personnalisation
 
-```{r carte_centre_1}
-ggplot() +
-  geom_sf(data = bmo_2019_dep_shp) + # on affiche une première fois les zones
-  geom_sf(data = bmo_2019_dep_shp_centre, aes(size = nb_proj_tot, color = part_diff)) # puis les points, en précisant leur taille et couleur
+On peut jouer sur les paramètres pour afficher d'autres formes. Pour en savoir plus, on peut se reporter aux spécifications du paramètre `shape` : https://ggplot2.tidyverse.org/articles/ggplot2-specs.html
+
+Cela peut supposer de modifier la façon de passer les variables (avec `fill` plutôt que `color` par exemple).
+
+### Des triangles
+
+```{r}
+ggplot(data = bmo_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_proj_tot, 
+                          fill = part_diff_classes),
+                      shape = 24,
+                      color = "black")
 ```
 
-De la même façon que précédemment, on va régler les caractéristiques avec des échelles. En variant la forme (*shape*), on peut afficher des carrés, des triangles, etc.
+### Des carrés
 
-```{r carte_centre_2}
-ggplot() +
-  geom_sf(data = bmo_2019_dep_shp) +
-  geom_sf(data = bmo_2019_dep_shp_centre, aes(size = nb_proj_tot, 
-                                              fill = part_diff), 
-          shape = 21, color = "black") + # on en précise la forme (un rond à remplir avec fill)
-  scale_fill_gradient(name = "", low = "white", high = "red") +
-  scale_size_continuous(range = c(0.5, 12)) +
-  labs(title = "Nombre de projets et \npart des recrutements difficiles en 2019 \npar département",
-       caption = "Source : Pôle emploi, enquête Besoins en main d'oeuvre \nLes cercles sont proportionnels au nombre de projets. La couleur indique la difficulté") +
-  guides(size = FALSE) + # guides sert à dire de masquer la légende de taille
-  theme_void() +
-  theme(plot.caption = element_text(hjust = 0))
+```{r}
+ggplot(data = bmo_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_proj_tot, 
+                          fill = part_diff_classes),
+                      shape = 22,
+                      color = "black")
 ```
-
-## Ajouter les valeurs
-
-Pour afficher les valeurs sur la carte, on repart des centroïdes. On en extrait les coordonnées pour avoir pour chaque point, localisé par un X et un Y, une valeur à afficher.
-
-```{r centroid_text}
-bmo_2019_dep_shp_centre_label <- bmo_2019_dep_shp_centre %>% 
-  st_coordinates() %>% # on récupère les coordonnées des centroids
-  as_tibble() %>% 
-  bind_cols(part_diff = bmo_2019_dep_shp_centre$part_diff) %>% # on ajoute la colonne à afficher
-  mutate(part_diff = paste0(round(part_diff, 0), "%")) # on l'arrondi à 0 en ajoutant un % derrière
-
-bmo_2019_dep_shp_centre_label
-```
-
-Doc geom point : https://ggplot2.tidyverse.org/reference/geom_point.html
-
-Shape : https://ggplot2.tidyverse.org/articles/ggplot2-specs.html

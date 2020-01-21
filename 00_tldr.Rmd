@@ -1,0 +1,98 @@
+
+# TL;DR
+
+Ce chapître résume d'un bloc comment on peut réaliser une carte avec R.
+
+## Version sur-mesure
+
+On charge les packages.
+
+```{r tldr_packages}
+library(tidyverse)
+library(readxl)
+```
+
+On charge les données et on les recode si besoin.
+
+```{r tldr_data}
+bmo_secteur <- read_xlsx("data/dataset/bmo_2019_secteur.xlsx")
+
+bmo_dep <- bmo_secteur %>%
+  group_by(dep) %>%
+  summarise(nb_proj_tot = sum(nb_proj_tot),
+            nb_proj_diff = sum(nb_proj_diff)) %>%
+  mutate(
+    part_diff = nb_proj_diff / nb_proj_tot * 100,
+    part_diff_classes = cut(
+      part_diff,
+      include.lowest = TRUE,
+      breaks = c(0, 40, 50, 60, 100),
+      labels = c("Moins de 40 %", "40-50 %", "50-60 %", "60% et plus")
+    )
+  )
+```
+
+On importe le fond de carte.
+
+```{r tldr_sf}
+shp_dep <- st_read(here("data/shp/DEP_2018.shp"))
+```
+
+On les fusionne.
+
+```{r tldr_join}
+bmo_dep_shp <- shp_dep %>%
+  left_join(bmo_dep, by = c("DEP" = "dep"))
+```
+
+On réalise la carte, par exemple par aplat de couleur. Avec les élements d'échelles et de thème.
+
+```{r tldr_map_col}
+ggplot() +
+  geom_sf(data = bmo_dep_shp,
+          aes(fill = part_diff_classes)) +
+  scale_fill_viridis_d(name = "",
+                       option = "inferno",
+                       direction = -1) +
+  labs(title = "Part des projets difficiles",
+       caption = "Source : BMO 2019") +
+  theme_void()
+```
+
+Ou par cercles proportionnels.
+
+```{r tldr_map_circle}
+ggplot(data = bmo_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_proj_tot,
+                          color = part_diff)) +
+  scale_color_viridis_c(name = "Part des projets difficiles", 
+                        option = "plasma",
+                        direction = -1) +
+  scale_size_continuous(range = c(1, 10), name = "Nombre de projets") +
+  labs(caption = "Source : BMO 2019") +
+  theme_void()
+```
+
+On exporte.
+
+```{r tldr_save, eval = FALSE}
+ggsave(
+  filename = "chemin/nom_du_fichier.png",
+  width = 297,
+  height = 210,
+  units = "mm",
+  dpi = 400
+)
+```
+
+## Version facile
+
+Une fonction est mise à disposition pour réaliser vos cartes.
+Les paramètres ne sont pas modifiables au-delà de ce qui est déjà inclus, mais la réalisation de carte est clé-en-main et s'en retrouve facilitée.
+
+Il suffit de suivre la checklist suivante :
+
++ import de vos données avec une ligne = une unité géographique avec son identifiant et une valeur à afficher ;
++ rentrer les paramètres et exécuter la fonction.
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Données spatiales | Cartographie avec R à l’usage des statisticiens</title>
-  <meta name="description" content="3 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
+  <title>4 Données spatiales | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="4 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:title" content="4 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tvroylandt/r-cartostat" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="twitter:title" content="4 Données spatiales | Cartographie avec R à l’usage des statisticiens" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Thomas Vroylandt" />
 
 
-<meta name="date" content="2020-01-20" />
+<meta name="date" content="2020-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -130,67 +130,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>1</b> Préliminaires</a><ul>
-<li class="chapter" data-level="1.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installer R et Rstudio</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
-<li class="chapter" data-level="1.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Rstudio</a></li>
+<li class="chapter" data-level="1" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i><b>1</b> TL;DR</a></li>
+<li class="chapter" data-level="2" data-path="préliminaires.html"><a href="préliminaires.html"><i class="fa fa-check"></i><b>2</b> Préliminaires</a><ul>
+<li class="chapter" data-level="2.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installer R et Rstudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préliminaires.html"><a href="préliminaires.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préliminaires.html"><a href="préliminaires.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Rstudio</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>1.2</b> Fonctionner en projet</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Les projets dans RStudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
-<li class="chapter" data-level="1.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>1.2.3</b> Organiser votre travail</a></li>
+<li class="chapter" data-level="2.2" data-path="préliminaires.html"><a href="préliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>2.2</b> Fonctionner en projet</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="préliminaires.html"><a href="préliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>2.2.1</b> Les projets dans RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="préliminaires.html"><a href="préliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>2.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="préliminaires.html"><a href="préliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>2.2.3</b> Organiser votre travail</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>1.3</b> Utiliser un package</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>1.3.1</b> Installer les packages</a></li>
-<li class="chapter" data-level="1.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>1.3.2</b> Charger les packages</a></li>
+<li class="chapter" data-level="2.3" data-path="préliminaires.html"><a href="préliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>2.3</b> Utiliser un package</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="préliminaires.html"><a href="préliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>2.3.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="préliminaires.html"><a href="préliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>2.3.2</b> Charger les packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>2</b> Préparer vos données</a><ul>
-<li class="chapter" data-level="2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>2.1</b> Importer des données</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>2.1.1</b> Structure d’import</a></li>
-<li class="chapter" data-level="2.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>2.1.2</b> Exemples</a></li>
-<li class="chapter" data-level="2.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>2.1.3</b> Afficher la table</a></li>
+<li class="chapter" data-level="3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>3</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>3.1</b> Importer des données</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>3.1.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="3.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>3.1.2</b> Exemples</a></li>
+<li class="chapter" data-level="3.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>3.1.3</b> Afficher la table</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
+<li class="chapter" data-level="3.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>3.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>3</b> Données spatiales</a><ul>
-<li class="chapter" data-level="3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>3.1</b> Les données vectorielles</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>3.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
-<li class="chapter" data-level="3.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>3.1.2</b> Le format <em>shapefile</em></a></li>
-<li class="chapter" data-level="3.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>3.1.3</b> A Pôle emploi</a></li>
+<li class="chapter" data-level="4" data-path="données-spatiales.html"><a href="données-spatiales.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
+<li class="chapter" data-level="4.1" data-path="données-spatiales.html"><a href="données-spatiales.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="données-spatiales.html"><a href="données-spatiales.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="données-spatiales.html"><a href="données-spatiales.html#le-format-shapefile"><i class="fa fa-check"></i><b>4.1.2</b> Le format <em>shapefile</em></a></li>
+<li class="chapter" data-level="4.1.3" data-path="données-spatiales.html"><a href="données-spatiales.html#a-pôle-emploi"><i class="fa fa-check"></i><b>4.1.3</b> A Pôle emploi</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>3.2</b> Importer des données spatiales</a></li>
-<li class="chapter" data-level="3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>3.3</b> Opérations sur données spatiales</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>3.3.1</b> Filtre</a></li>
-<li class="chapter" data-level="3.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>3.3.2</b> Modification de colonnes</a></li>
-<li class="chapter" data-level="3.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>3.3.3</b> Regroupement</a></li>
-<li class="chapter" data-level="3.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>3.3.4</b> Enlever la colonne <code>geometry</code></a></li>
+<li class="chapter" data-level="4.2" data-path="données-spatiales.html"><a href="données-spatiales.html#importer-des-données-spatiales"><i class="fa fa-check"></i><b>4.2</b> Importer des données spatiales</a></li>
+<li class="chapter" data-level="4.3" data-path="données-spatiales.html"><a href="données-spatiales.html#opérations-sur-données-spatiales"><i class="fa fa-check"></i><b>4.3</b> Opérations sur données spatiales</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="données-spatiales.html"><a href="données-spatiales.html#filtre"><i class="fa fa-check"></i><b>4.3.1</b> Filtre</a></li>
+<li class="chapter" data-level="4.3.2" data-path="données-spatiales.html"><a href="données-spatiales.html#modification-de-colonnes"><i class="fa fa-check"></i><b>4.3.2</b> Modification de colonnes</a></li>
+<li class="chapter" data-level="4.3.3" data-path="données-spatiales.html"><a href="données-spatiales.html#regroupement"><i class="fa fa-check"></i><b>4.3.3</b> Regroupement</a></li>
+<li class="chapter" data-level="4.3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#enlever-la-colonne-geometry"><i class="fa fa-check"></i><b>4.3.4</b> Enlever la colonne <code>geometry</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>3.4</b> Ajouter de l’information statistique</a></li>
+<li class="chapter" data-level="4.4" data-path="données-spatiales.html"><a href="données-spatiales.html#ajouter-de-linformation-statistique"><i class="fa fa-check"></i><b>4.4</b> Ajouter de l’information statistique</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>4</b> Réaliser les cartes</a><ul>
-<li class="chapter" data-level="4.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Fonctionnement de <code>ggplot2</code></a></li>
-<li class="chapter" data-level="4.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#et-pour-la-cartographie"><i class="fa fa-check"></i><b>4.2</b> Et pour la cartographie</a></li>
+<li class="chapter" data-level="5" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html"><i class="fa fa-check"></i><b>5</b> Réaliser les cartes</a><ul>
+<li class="chapter" data-level="5.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#fonctionnement-de-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Fonctionnement de <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#pour-la-cartographie-1"><i class="fa fa-check"></i><b>5.2</b> Pour la cartographie</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#spécifier-la-table-de-données"><i class="fa fa-check"></i><b>5.2.1</b> Spécifier la table de données</a></li>
+<li class="chapter" data-level="5.2.2" data-path="réaliser-les-cartes.html"><a href="réaliser-les-cartes.html#afficher-plusieurs-couches-de-données"><i class="fa fa-check"></i><b>5.2.2</b> Afficher plusieurs couches de données</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>5</b> Aplats de couleurs</a><ul>
-<li class="chapter" data-level="5.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#carte-avec-cercles-proportionnels"><i class="fa fa-check"></i><b>5.1</b> Carte avec cercles proportionnels</a></li>
-<li class="chapter" data-level="5.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#ajouter-les-valeurs"><i class="fa fa-check"></i><b>5.2</b> Ajouter les valeurs</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>6</b> Personnaliser vos cartes</a><ul>
-<li class="chapter" data-level="6.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#ajouter-des-labels"><i class="fa fa-check"></i><b>6.1</b> Ajouter des labels</a></li>
-<li class="chapter" data-level="6.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#scale"><i class="fa fa-check"></i><b>6.2</b> Scale</a></li>
-<li class="chapter" data-level="6.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#theme"><i class="fa fa-check"></i><b>6.3</b> Theme</a></li>
-<li class="chapter" data-level="6.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#carte-choroplèthe"><i class="fa fa-check"></i><b>6.4</b> Carte choroplèthe</a></li>
+<li class="chapter" data-level="6" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html"><i class="fa fa-check"></i><b>6</b> Aplats de couleurs</a><ul>
+<li class="chapter" data-level="6.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#spécifier-la-variable-à-représenter"><i class="fa fa-check"></i><b>6.1</b> Spécifier la variable à représenter</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#continue"><i class="fa fa-check"></i><b>6.1.1</b> Continue</a></li>
+<li class="chapter" data-level="6.1.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#discrète"><i class="fa fa-check"></i><b>6.1.2</b> Discrète</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>7</b> Exporter vos résultats</a></li>
-<li class="chapter" data-level="8" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html"><i class="fa fa-check"></i><b>8</b> Format de fichiers</a><ul>
-<li class="chapter" data-level="8.0.1" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#modifier-des-colonnes"><i class="fa fa-check"></i><b>8.0.1</b> Modifier des colonnes</a></li>
-<li class="chapter" data-level="8.0.2" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#filtrer-des-lignes"><i class="fa fa-check"></i><b>8.0.2</b> Filtrer des lignes</a></li>
-<li class="chapter" data-level="8.0.3" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#regrouper-et-sommer-les-données"><i class="fa fa-check"></i><b>8.0.3</b> Regrouper et sommer les données</a></li>
-<li class="chapter" data-level="8.0.4" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#joindre-des-tables"><i class="fa fa-check"></i><b>8.0.4</b> Joindre des tables</a></li>
-<li class="chapter" data-level="8.0.5" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#discrétiser-des-valeurs"><i class="fa fa-check"></i><b>8.0.5</b> Discrétiser des valeurs</a></li>
-<li class="chapter" data-level="8.0.6" data-path="format-de-fichiers.html"><a href="format-de-fichiers.html#recoder-des-facteurs"><i class="fa fa-check"></i><b>8.0.6</b> Recoder des facteurs</a></li>
+<li class="chapter" data-level="6.2" data-path="aplats-de-couleurs.html"><a href="aplats-de-couleurs.html#afficher-les-valeurs"><i class="fa fa-check"></i><b>6.2</b> Afficher les valeurs</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html"><i class="fa fa-check"></i><b>7</b> Cercles proportionnels</a><ul>
+<li class="chapter" data-level="7.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#principe"><i class="fa fa-check"></i><b>7.1</b> Principe</a></li>
+<li class="chapter" data-level="7.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#personnalisation"><i class="fa fa-check"></i><b>7.2</b> Personnalisation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-triangles"><i class="fa fa-check"></i><b>7.2.1</b> Des triangles</a></li>
+<li class="chapter" data-level="7.2.2" data-path="cercles-proportionnels.html"><a href="cercles-proportionnels.html#des-carrés"><i class="fa fa-check"></i><b>7.2.2</b> Des carrés</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html"><i class="fa fa-check"></i><b>8</b> Personnaliser vos cartes</a><ul>
+<li class="chapter" data-level="8.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#les-échelles"><i class="fa fa-check"></i><b>8.1</b> Les échelles</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-continues"><i class="fa fa-check"></i><b>8.1.1</b> Echelles de couleur continues</a></li>
+<li class="chapter" data-level="8.1.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-manuelles"><i class="fa fa-check"></i><b>8.1.2</b> Echelles de couleur manuelles</a></li>
+<li class="chapter" data-level="8.1.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#echelles-de-couleur-existantes"><i class="fa fa-check"></i><b>8.1.3</b> Echelles de couleur existantes</a></li>
+<li class="chapter" data-level="8.1.4" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#autres-échelles"><i class="fa fa-check"></i><b>8.1.4</b> Autres échelles</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#titre-et-légende"><i class="fa fa-check"></i><b>8.2</b> Titre et légende</a></li>
+<li class="chapter" data-level="8.3" data-path="personnaliser-vos-cartes.html"><a href="personnaliser-vos-cartes.html#le-thème"><i class="fa fa-check"></i><b>8.3</b> Le thème</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html"><i class="fa fa-check"></i><b>9</b> Exporter vos résultats</a><ul>
+<li class="chapter" data-level="9.1" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-loutil-dexport"><i class="fa fa-check"></i><b>9.1</b> Avec l’outil d’export</a></li>
+<li class="chapter" data-level="9.2" data-path="exporter-vos-résultats.html"><a href="exporter-vos-résultats.html#avec-ggsave"><i class="fa fa-check"></i><b>9.2</b> Avec <code>ggsave</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="recoder-vos-données.html"><a href="recoder-vos-données.html"><i class="fa fa-check"></i>Recoder vos données</a></li>
 </ul>
 
       </nav>
@@ -209,11 +223,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="données-spatiales" class="section level1">
-<h1><span class="header-section-number">3</span> Données spatiales</h1>
+<h1><span class="header-section-number">4</span> Données spatiales</h1>
 <div id="les-données-vectorielles" class="section level2">
-<h2><span class="header-section-number">3.1</span> Les données vectorielles</h2>
+<h2><span class="header-section-number">4.1</span> Les données vectorielles</h2>
 <div id="quest-ce-quune-donnée-vectorielle" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Qu’est-ce qu’une donnée vectorielle ?</h3>
+<h3><span class="header-section-number">4.1.1</span> Qu’est-ce qu’une donnée vectorielle ?</h3>
 <p>Pour pouvoir représenter une carte, il faut importer un “fond de carte” sur lequel on va appliquer nos valeurs. Il est composé de données dites “vectorielles”, qui correspondent à une géométrie :</p>
 <ul>
 <li>des polygones, par exemple une zone admistrative : région, département, bassin d’emploi, etc. ;</li>
@@ -222,12 +236,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="le-format-shapefile" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Le format <em>shapefile</em></h3>
+<h3><span class="header-section-number">4.1.2</span> Le format <em>shapefile</em></h3>
 <p>La donnée vectorielle est stockée dans un ensemble de fichier qu’on appelle des <em>shapefiles</em> (ou “fichier de forme”).</p>
 <p>Il comprend plusieurs fichiers, avec un nom identique et des formats différents, par exemple <code>.shp</code>, <code>.dbf</code>, <code>.prj</code>, etc. Ces fichiers fonctionnent ensemble et on a besoin de l’ensemble pour utiliser la donnée vectorielle. Il est donc important de ne pas les séparer.</p>
 </div>
 <div id="a-pôle-emploi" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> A Pôle emploi</h3>
+<h3><span class="header-section-number">4.1.3</span> A Pôle emploi</h3>
 <p>On a construit ou récupéré les principaux fonds de carte utilisés à Pôle emploi qui sont disponibles ici :</p>
 <p>LIEN DU DOSSIER (GITHUB ?)</p>
 <p>Ces cartes ne sont pas géographiquement exactes puisqu’elles incluent les DOMs rapprochés de la France métropolitaine ainsi qu’un zoom sur l’Île-de-France. Les cartes sont les suivantes :</p>
@@ -243,11 +257,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="importer-des-données-spatiales" class="section level2">
-<h2><span class="header-section-number">3.2</span> Importer des données spatiales</h2>
+<h2><span class="header-section-number">4.2</span> Importer des données spatiales</h2>
 <p>La fonction <code>st_read()</code>, du package <code>sf</code>, va nous permettre de lire ces fichiers.
 Il faut lui spécifier le chemin vers le fichier .shp.</p>
 <p>Exemple ici avec l’import des départements.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/DEP_2018.shp&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/DEP_2018.shp&quot;</span>))</a></code></pre></div>
 <pre><code>## Reading layer `DEP_2018&#39; from data source `D:\r-cartostat\data\shp\DEP_2018.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 101 features and 2 fields
 ## geometry type:  MULTIPOLYGON
@@ -256,7 +270,7 @@ Il faut lui spécifier le chemin vers le fichier .shp.</p>
 ## epsg (SRID):    NA
 ## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs</code></pre>
 <p>On peut en visualiser le contenu. On observe qu’on a un fichier avec une colonne <code>DEP</code>, qui contient le code du département, ainsi qu’une colonne <code>geometry</code> qui contient les spécifications spatiales.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">shp_dep</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">shp_dep</a></code></pre></div>
 <pre><code>## Simple feature collection with 101 features and 2 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -277,14 +291,14 @@ Il faut lui spécifier le chemin vers le fichier .shp.</p>
 ## 10  10                    Aube MULTIPOLYGON (((751637 6784...</code></pre>
 </div>
 <div id="opérations-sur-données-spatiales" class="section level2">
-<h2><span class="header-section-number">3.3</span> Opérations sur données spatiales</h2>
+<h2><span class="header-section-number">4.3</span> Opérations sur données spatiales</h2>
 <p>De la même façon que pour une table normale, on peut faire des opérations sur un fichier spatial.</p>
 <div id="filtre" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Filtre</h3>
+<h3><span class="header-section-number">4.3.1</span> Filtre</h3>
 <p>On peut filtrer sur une zone en utilisant <code>filter()</code>.
 Par exemple si je ne souhaite que l’Oise.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="st">  </span><span class="kw">filter</span>(DEP <span class="op">==</span><span class="st"> &quot;60&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="st">  </span><span class="kw">filter</span>(DEP <span class="op">==</span><span class="st"> &quot;60&quot;</span>)</a></code></pre></div>
 <pre><code>## Simple feature collection with 1 feature and 2 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -295,17 +309,17 @@ Par exemple si je ne souhaite que l’Oise.</p>
 ## 1  60 Oise MULTIPOLYGON (((703241 6903...</code></pre>
 </div>
 <div id="modification-de-colonnes" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Modification de colonnes</h3>
+<h3><span class="header-section-number">4.3.2</span> Modification de colonnes</h3>
 <p>Je peux créer des colonnes, par exemple en regroupant les départements en régions.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">shp_dep_recode &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">REG =</span> <span class="kw">fct_collapse</span>(</a>
-<a class="sourceLine" id="cb18-3" title="3">    DEP,</a>
-<a class="sourceLine" id="cb18-4" title="4">    <span class="st">&quot;Hauts-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;62&quot;</span>, <span class="st">&quot;80&quot;</span>),</a>
-<a class="sourceLine" id="cb18-5" title="5">    <span class="st">&quot;Ile-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>)</a>
-<a class="sourceLine" id="cb18-6" title="6">  )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="st">  </span><span class="kw">filter</span>(REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hauts-de-France&quot;</span>, <span class="st">&quot;Ile-de-France&quot;</span>))</a>
-<a class="sourceLine" id="cb18-8" title="8"></a>
-<a class="sourceLine" id="cb18-9" title="9">shp_dep_recode</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">shp_dep_recode &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">REG =</span> <span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb27-3" title="3">    DEP,</a>
+<a class="sourceLine" id="cb27-4" title="4">    <span class="st">&quot;Hauts-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;62&quot;</span>, <span class="st">&quot;80&quot;</span>),</a>
+<a class="sourceLine" id="cb27-5" title="5">    <span class="st">&quot;Ile-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>)</a>
+<a class="sourceLine" id="cb27-6" title="6">  )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-7" title="7"><span class="st">  </span><span class="kw">filter</span>(REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hauts-de-France&quot;</span>, <span class="st">&quot;Ile-de-France&quot;</span>))</a>
+<a class="sourceLine" id="cb27-8" title="8"></a>
+<a class="sourceLine" id="cb27-9" title="9">shp_dep_recode</a></code></pre></div>
 <pre><code>## Simple feature collection with 13 features and 3 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -326,13 +340,13 @@ Par exemple si je ne souhaite que l’Oise.</p>
 ## 10  92 Hauts-de-Seine MULTIPOLYGON (((650056 6850...   Ile-de-France</code></pre>
 </div>
 <div id="regroupement" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Regroupement</h3>
+<h3><span class="header-section-number">4.3.3</span> Regroupement</h3>
 <p>Je peux regrouper des données pour donner des ensembles plus grands.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">shp_reg_hdf_idf &lt;-<span class="st"> </span>shp_dep_recode <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(REG) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="st">  </span><span class="kw">summarise</span>()</a>
-<a class="sourceLine" id="cb20-4" title="4"></a>
-<a class="sourceLine" id="cb20-5" title="5">shp_reg_hdf_idf</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">shp_reg_hdf_idf &lt;-<span class="st"> </span>shp_dep_recode <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(REG) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">summarise</span>()</a>
+<a class="sourceLine" id="cb29-4" title="4"></a>
+<a class="sourceLine" id="cb29-5" title="5">shp_reg_hdf_idf</a></code></pre></div>
 <pre><code>## Simple feature collection with 2 features and 1 field
 ## geometry type:  POLYGON
 ## dimension:      XY
@@ -347,21 +361,21 @@ Par exemple si je ne souhaite que l’Oise.</p>
 <p>De fait, avec un fichier communal et des tables de passages, on peut recréer l’ensemble des niveaux. C’est d’ailleurs ainsi que l’on a procédé pour créer les fonds de carte. –&gt; LIEN VERS LE CODE</p>
 </div>
 <div id="enlever-la-colonne-geometry" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Enlever la colonne <code>geometry</code></h3>
+<h3><span class="header-section-number">4.3.4</span> Enlever la colonne <code>geometry</code></h3>
 <p>Pour enlever la couche de données spatiales, on utilisera <code>st_drop_geometry()</code>.</p>
 </div>
 </div>
 <div id="ajouter-de-linformation-statistique" class="section level2">
-<h2><span class="header-section-number">3.4</span> Ajouter de l’information statistique</h2>
+<h2><span class="header-section-number">4.4</span> Ajouter de l’information statistique</h2>
 <p>On va ensuite ajouter l’information spatiale au fond de carte, en réalisant une jointure.</p>
 <blockquote>
 <p><strong>On part toujours du fond de carte pour la jointure.</strong></p>
 </blockquote>
 <p>On s’aperçoit alors qu’on a, pour chaque zone géographique, la difficulté de recrutement, en %.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
 <pre><code>## Warning: Column `DEP`/`dep` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">bmo_dep_shp </a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">bmo_dep_shp </a></code></pre></div>
 <pre><code>## Simple feature collection with 101 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -392,11 +406,11 @@ Par exemple si je ne souhaite que l’Oise.</p>
 ## 9  MULTIPOLYGON (((576341 6173...
 ## 10 MULTIPOLYGON (((751637 6784...</code></pre>
 <p>Pour n’avoir qu’une région, il suffit de filtrer en amont sur le fond de carte, exemple avec les Hauts-de-France.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">bmo_dep_shp_hdf &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">filter</span>(DEP <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;60&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;62&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">bmo_dep_shp_hdf &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">filter</span>(DEP <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;60&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;62&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;DEP&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
 <pre><code>## Warning: Column `DEP`/`dep` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">bmo_dep_shp_hdf</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">bmo_dep_shp_hdf</a></code></pre></div>
 <pre><code>## Simple feature collection with 5 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY

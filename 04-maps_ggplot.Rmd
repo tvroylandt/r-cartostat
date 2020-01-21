@@ -1,27 +1,73 @@
 
 # Réaliser les cartes
 
+--> FAIRE UNE VERSION SIMPLIFIEE DANS UNE FONCTION
+AVEC JUSTE CHOIX DU FOND DE CARTE, JEU DE DONNEES, VARIABLE A AFFICHER, CARTE COULEUR OU ROND, DOSSIER DE L'EXPORT
+
 ## Fonctionnement de `ggplot2`
 
-Cette partie est un copier-coller de : https://mtes-mct.github.io/parcours-r/m5/package-ggplot2.html 
+Pour construire des cartes, on utilise le package `ggplot2`. 
+Celui-ci nécessite un certain nombre d'éléments :
 
-Fork du repertoire.
++ la **donnée** : on va lui rentrer en entrée une table ;
++ les **variables à représenter**, à inclure dans l'instruction `aes()`;
++ les **paramètres** supplémentaires ;
++ les **formes**, qui comment par `geom_XXX()` : quelle représentation s'appliquera aux variables et aux paramètres ;
++ des **fonctions** qui spécifient l'échelle, le thème, etc.
 
+`ggplot2` a un fonctionnement par **couches**, c'est-à-dire qu'on additionne les éléments au fur et à mesure.
 
-## Et pour la cartographie
+On lui déclare qu'on veut utiliser le package par l'instruction `ggplot()` et on ajoute ensuite les couches les unes après les autres avec le `+`.
 
-On utilise la fonction `geom_sf()` qui permet d'afficher des objets spatiaux.
-
-#### Données à utiliser
-
-Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide.
-
-```{r carte_ex_0}
-ggplot() +
-  geom_sf(data = bmo_2019_dep_shp)
+```{r, eval = FALSE}
+ggplot() + 
+  <FORME>(data = <DATA>, aes(<VARIABLES>), ...= <PARAMS>) +
+  <FONCTION1>
 ```
 
-#### Plusieurs couches avec la transparence (reg/dep, etc.)
+La donnée peut se spécifier au niveau du `ggplot(data = <DATA>)`, elle s'appliquera alors à l'ensemble des formes et fonctions, ou au niveau de chaque forme, où elle s'appliquera uniquement à la forme.
 
-#### Filtrer les objets
+## Pour la cartographie
+
+Il existe une forme spécifique pour afficher des données spatiales : `geom_sf()`.
+
+### Spécifier la table de données
+
+Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide, avec les limites pour chaque unité.
+
+```{r}
+ggplot() +
+  geom_sf(data = bmo_dep_shp)
+```
+
+On peut jouer sur les paramètres pour élargir ou changer la couleur des frontières.
+
+```{r}
+ggplot() +
+  geom_sf(data = bmo_dep_shp,
+          color = "red",
+          size = 1.1)
+```
+
+### Afficher plusieurs couches de données
+
+On peut vouloir afficher plusieurs couches de données, par exemple quand on affiche les départements et qu'on veut représenter les limites régionales.
+
+On ajoute alors la couche régionale au dessus de la couche départementale. Les limites des régions vont alors se superposer aux limites des départements. On utilise le paramètre `alpha = 0` pour lui préciser qu'on souhaite que l'intérieur des zones soit transparente.
+
+```{r, include=FALSE}
+reg_shp <- st_read(here("data/shp/REG_2018_FR_ENT.shp"))
+```
+
+
+```{r}
+ggplot() +
+  geom_sf(data = bmo_dep_shp,
+          color = "red",
+          size = 0.9) +
+  geom_sf(data = reg_shp,
+          color = "blue",
+          size = 1.1,
+          alpha = 0) 
+```
 
