@@ -1,0 +1,56 @@
+# Annexe - Problèmes courants
+
+Cet annexe traite de problèmes que l'on peut éventuellement rencontrer.
+
+## Des "trous" dans les fichiers
+
+Il se peut que vous ayez des trous dans les fichiers ou sur le fond de carte une fois la jointure effectuée.
+
+Cela est principalement du à une mauvaise jointure car il y a des codes communes / territoires du fond de carte qui n'existent pas dans votre fichier. Deux causes principales :
+
++ Paris, Lyon et Marseille sont codés d'un côté au niveau de la ville et de l'autre au niveau des arrondissements ;
++ Votre géographie comprend des zones périmées ou fusionnées. Par exemple :
+
+  + dans la STMT subsistent des vieux codes communes. ;
+  + ou alors vous voulez visualiser des résultats en bassin 2018 avec un fond de carte 2019.
+
+Deux options :
+
++ la page du Code Officiel Géographique, avec des tables de passage : https://www.insee.fr/fr/information/2560452. Une version synthétique, depuis 2003, a été produite par le DMT et est disponible avec ce document ;
++ Le package `COGugaison` (https://antuki.github.io/COGugaison/) peut vous aider à gérer ces problèmes.
+
+## Problèmes de projection
+
+Il se peut que vos territoires apparaissent déformés, ou que quand vous tentiez de supperposer vos territoires, cela ne fonctionne pas ou donne des choses étranges. Par exemple :
+
+```{r pb_crs, echo=FALSE}
+shp_reg_crs_faux <- st_sf(geometry = st_geometry(shp_reg_simpl) * 1.05, crs = st_crs(shp_dep_simpl))
+
+ggplot() +
+  geom_sf(data = shp_dep_simpl, fill = "lightblue", color = "blue") +
+  geom_sf(data = shp_reg_crs_faux, alpha = 0, color = "red", size = 1.1) +
+  theme_void()
+```
+
+Il s'agit d'un problème de projection (autrement appelé de CRS - *coordinate reference system*). Si vous voyez ce mot apparaître dans la console, voici quelques suggestions :
+
++ essayer d'ajouter `st_transform(crs = 4326)` après votre shapefile ;
++ vérifiez que vous ne modifiez pas les shapefiles.
+
+
+## Géocoder des adresses
+
+Pour géocoder des adresses, vous pouvez utiliser le package `banR`, qui fait appel à l'API de la Base Adresses Nationale.
+
+Plus de détails : https://cran.r-project.org/web/packages/banR/vignettes/geocode.html
+
+## Tout autre problème
+
+Pour tout autre problème, vous pouvez vous reporter :
+
++ à l'aide de R en faisant `?nom_de_la_fonction` ;
++ à Internet ;
++ à la documentation disponible en bibliographie.
+
+R est un langage très utilisé et votre problème a probablement déjà été rencontré par quelqu'un d'autre.
+Il est possible que vous ayez à traduire en anglais votre questionnement.

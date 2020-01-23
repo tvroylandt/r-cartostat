@@ -1,0 +1,9 @@
+
+# Recoder vos données
+
+Vos tables de données ne seront pas forcément propres ou au bon format lorsque vous les importerez.
+Il importe donc de les recoder.
+
+Pour ces opérations, vous pouvez vous reporter au manuel de Julien Barnier, *Introduction à R et au tidyverse* qui offre de façon pédagogique et rapide un bon aperçu de ces méthodes de recodage : https://juba.github.io/tidyverse/
+
+On pourra particulièrement se concentrer sur les chapitres 9 (Recoder des variables) et 10 (Manipuler des données avec `dplyr`), qui permettront de balayer la majeure partie des besoins pour la cartographie.
