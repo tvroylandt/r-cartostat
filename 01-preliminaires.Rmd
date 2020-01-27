@@ -1,5 +1,5 @@
 
-# Préliminaires
+# Préliminaires {#preliminaires}
 
 ## Installer R et Rstudio
 
@@ -9,7 +9,7 @@ Du fait des blocages sur les postes de Pôle emploi, pour télécharger R, on do
 
 On dézippe l'installateur dans le `D://`. Puis on ouvre R et on tape les instructions suivantes :
 
-```{r, eval=FALSE}
+```{r installr, eval=FALSE}
 install.packages("installr")
 
 installr::updateR()

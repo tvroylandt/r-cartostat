@@ -1,7 +1,7 @@
 --- 
 title: "Cartographie avec R à l'usage des statisticiens"
 author: "Thomas Vroylandt"
-date: "`r Sys.Date()`"
+date: "7 février 2020"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -16,8 +16,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Ce support a été rédigé par Thomas Vroylandt, statisticien au sein de la Direction des Statistiques, des Etudes et de l'Evaluation de Pôle emploi.
 
-Il est en grande partie inspiré du support de cours réalisé par Maël Theulière : https://maeltheuliere.github.io/rspatial/
-
 ## Objectifs {-}
 
 Ce guide vise à :
@@ -28,10 +26,15 @@ Ce guide vise à :
 + personnaliser ces cartes ;
 + exporter les résultats pour publication.
 
+## Ressources {-}
 
+Ces ressources ont servis à construire ce support :
 
-FEUILLE DE STYLE ICI : https://github.com/juba/tidyverse/blob/master/css/tidyverse.css
++ Le support de cours réalisé par Maël Theulière a été une grande référence. La partie sur les projets dans R est en tirée : https://maeltheuliere.github.io/rspatial/ ;
++ Tout savoir sur le spatial avec R : https://geocompr.robinlovelace.net/ ;
++ La ressource sur les recodages et le maniement des données : [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/) (en anglais) ;
++ Une bonne introduction, qui a notamment servie pour la partie recodages : [https://juba.github.io/tidyverse/](https://juba.github.io/tidyverse/) (en français).
 
+## Licence {-}
 
-+ la référence : [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/) (en anglais) ;
-+ une bonne introduction : [https://juba.github.io/tidyverse/](https://juba.github.io/tidyverse/) (en français).
+Ce document est sous licence Creative Commons BY-NC-SA : http://creativecommons.org/licenses/by-nc-sa/4.0/

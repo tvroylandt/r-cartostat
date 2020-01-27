@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Préliminaires {preliminaires} | Cartographie avec R à l’usage des statisticiens</title>
+  <meta name="description" content="1 Préliminaires {preliminaires} | Cartographie avec R à l’usage des statisticiens" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Préliminaires {preliminaires} | Cartographie avec R à l’usage des statisticiens" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="tvroylandt/r-cartostat" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Préliminaires {preliminaires} | Cartographie avec R à l’usage des statisticiens" />
+  
+  
+  
+
+<meta name="author" content="Thomas Vroylandt" />
+
+
+<meta name="date" content="2020-01-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tldr.html"/>
+<link rel="next" href="préparer-vos-données.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="1" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html"><i class="fa fa-check"></i><b>1</b> Préliminaires {preliminaires}</a><ul>
+<li class="chapter" data-level="1.1" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installer R et Rstudio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#fonctionner-en-projet"><i class="fa fa-check"></i><b>1.2</b> Fonctionner en projet</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#les-projets-dans-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Les projets dans RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#désactiver-les-options-de-sauvegarde-automatique-de-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Désactiver les options de sauvegarde automatique de RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#organiser-votre-travail"><i class="fa fa-check"></i><b>1.2.3</b> Organiser votre travail</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#utiliser-un-package"><i class="fa fa-check"></i><b>1.3</b> Utiliser un package</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#installer-les-packages"><i class="fa fa-check"></i><b>1.3.1</b> Installer les packages</a></li>
+<li class="chapter" data-level="1.3.2" data-path="préliminaires-preliminaires.html"><a href="préliminaires-preliminaires.html#charger-les-packages"><i class="fa fa-check"></i><b>1.3.2</b> Charger les packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html"><i class="fa fa-check"></i><b>2</b> Préparer vos données</a><ul>
+<li class="chapter" data-level="2.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#importer-des-données"><i class="fa fa-check"></i><b>2.1</b> Importer des données</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#structure-dimport"><i class="fa fa-check"></i><b>2.1.1</b> Structure d’import</a></li>
+<li class="chapter" data-level="2.1.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#exemples"><i class="fa fa-check"></i><b>2.1.2</b> Exemples</a></li>
+<li class="chapter" data-level="2.1.3" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#afficher-la-table"><i class="fa fa-check"></i><b>2.1.3</b> Afficher la table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="préparer-vos-données.html"><a href="préparer-vos-données.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cartographie avec R à l’usage des statisticiens</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="préliminaires-preliminaires" class="section level1">
+<h1><span class="header-section-number">1</span> Préliminaires {preliminaires}</h1>
+<div id="installer-r-et-rstudio" class="section level2">
+<h2><span class="header-section-number">1.1</span> Installer R et Rstudio</h2>
+<div id="r" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> R</h3>
+<p>Du fait des blocages sur les postes de Pôle emploi, pour télécharger R, on doit utiliser l’installeur mis à disposition par la DSI, puis mettre à jour manuellement le logiciel.</p>
+<p>On dézippe l’installateur dans le <code>D://</code>. Puis on ouvre R et on tape les instructions suivantes :</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;installr&quot;</span>)</a>
+<a class="sourceLine" id="cb17-2" title="2"></a>
+<a class="sourceLine" id="cb17-3" title="3">installr<span class="op">::</span><span class="kw">updateR</span>()</a></code></pre></div>
+<p>Cela met à jour R et va créer un nouveau dossier avec la nouvelle version dans le <code>D://</code>.</p>
+<p>Il est plus simple de mettre à jour R avant d’installer RStudio.</p>
+</div>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Rstudio</h3>
+<p>On téléchargera le logiciel au format .zip ici : <a href="https://download1.rstudio.org/desktop/windows/RStudio-1.2.5033.zip" class="uri">https://download1.rstudio.org/desktop/windows/RStudio-1.2.5033.zip</a></p>
+<p>Il faut ensuite dézipper l’archive dans votre <code>D://</code></p>
+<p>On ouvre ensuite le programme <code>Rstudio.exe</code> situé dans le dossier <code>bin</code> de votre dossier <code>Rstudio</code>.
+Pensez à créer un raccourci vers ce programme dans votre barre d’accès rapide par exemple.</p>
+<p>On s’assure qu’il trouve bien le programme <code>R</code>. Sinon il faut lui indiquer l’emplacement du dossier <code>R 3.5.XXX</code> dans le <code>D://</code>.</p>
+<blockquote>
+<p><strong>Assurez-vous d’avoir réalisé ces étapes avant la formation.</strong></p>
+</blockquote>
+</div>
+</div>
+<div id="fonctionner-en-projet" class="section level2">
+<h2><span class="header-section-number">1.2</span> Fonctionner en projet</h2>
+<div id="les-projets-dans-rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Les projets dans RStudio</h3>
+<p>Pourquoi travailler avec les projets Rstudio plutôt que les scripts R ?</p>
+<ul>
+<li><p>Pour la <strong>portabilité</strong> : le répertoire de travail par défaut d’un projet est le répertoire où est ce projet. Si vous transmettez celui-ci à un collègue, le fait de lancer un programme ne dépend pas de l’arborescence de votre machine : <strong>Fini les <code>setwd("chemin/qui/marche/uniquement/sur/mon/poste")</code> !</strong></p></li>
+<li><p>Pour <strong>l’organisation</strong> : un projet permet de structurer son analyse de façon plus simple et de diviser le travail entre différents sujets.</p></li>
+<li><p>Pour <strong>aller plus loin</strong> : les packages, le <em>versioning</em> avec Git, les applications Shiny, tout cela fonctionne dans des projets. Les utiliser maintenant vous facilitera la tâche plus tard.</p></li>
+</ul>
+<p><strong>Pour créer un projet : </strong></p>
+<ul>
+<li>Cliquez sur <em>Project</em> en haut à droite puis <em>New Project</em>.</li>
+</ul>
+<p><img src="pic/creerprojet1.png" id="id" class="class" width="500" /></p>
+<ul>
+<li>Cliquez sur <em>New Directory</em>.</li>
+</ul>
+<p><img src="pic/creerprojet2.png" id="id" class="class" width="500" /></p>
+</div>
+<div id="désactiver-les-options-de-sauvegarde-automatique-de-rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Désactiver les options de sauvegarde automatique de RStudio</h3>
+<p>Votre code doit être reproductible depuis vos données en entrée vers votre résultat. Pour cela, il est fortement déconseillé de sauvegarder quoique ce soit dans le fichier <code>.RData</code> de sauvegarde par défaut.
+Pour cela, aller dans <em>Tools-&gt;Global Options…</em> et ensuite conformez vous à ceci</p>
+<p><img src="pic/RData.png" /></p>
+</div>
+<div id="organiser-votre-travail" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Organiser votre travail</h3>
+<p>Organisez votre projet en créant plusieurs répertoires à l’intérieur de celui-ci (les noms sont des exemples) :</p>
+<ul>
+<li><code>data</code> pour vos données ;</li>
+<li><code>R</code> ou <code>src</code> pour vos scripts ;</li>
+<li><code>figures</code> ou <code>output</code> pour vos sorties.</li>
+</ul>
+<p>En suivant une telle architecture pour tous vos projets, cela vous permettra d’aller plus vite.</p>
+</div>
+</div>
+<div id="utiliser-un-package" class="section level2">
+<h2><span class="header-section-number">1.3</span> Utiliser un package</h2>
+<p>R fonctionne selon une logique de modules, appelés “packages”. Ils apportent de nouvelles fonctionnalités à la version de base.</p>
+<div id="installer-les-packages" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Installer les packages</h3>
+<p>La première étape est donc d’installer les packages qui nous sont utiles pour réaliser des cartes. Cette opération se réalise une fois et il n’est pas nécessaire de la répéter (cela mettra à jour le package).</p>
+<p>Pour cela, on peut soit :</p>
+<ul>
+<li>Utiliser RStudio qui nous propose un outil d’installation dans <em>Tools &gt; Install Packages …</em>. Tapez le nom des packages qui vous intéressent, séparés par un espace et appuyez sur <em>Install</em>.</li>
+<li>Installer les packages en ligne de commande comme ce qui suit <code>install.packages(c("sf", "tidyverse"))</code> (pour installer les packages <code>sf</code> et <code>tidyverse</code>).</li>
+</ul>
+<p><strong>Pour faire des cartes</strong>, on va se servir de plusieurs packages :</p>
+<ul>
+<li><p><code>sf</code> qui est dédié à l’analyse spatiale ;</p></li>
+<li><p><code>tidyverse</code> qui installe et charge d’un seul coup <a href="https://www.tidyverse.org/packages/">plusieurs packages utiles</a>, dont :</p>
+<ul>
+<li><code>dplyr</code> pour la manipulation de données ;</li>
+<li><code>forcats</code> pour le recodage des facteurs ;</li>
+<li><code>readr</code> pour l’import de données ;</li>
+<li><code>ggplot2</code> pour faire des graphiques.</li>
+</ul></li>
+</ul>
+<p>Et en fonction du format d’import des données :</p>
+<ul>
+<li><code>readxl</code> pour importer des fichiers Excel (.xls ou .xlsx) ;</li>
+<li><code>haven</code> pour importer des tables SAS ;</li>
+<li><code>here</code> pour gérer les chemins.</li>
+</ul>
+<blockquote>
+<p><strong>Merci d’installer ces packages avant la formation, par exemple avec la commande <code>install.packages(c("sf", "tidyverse", "readxl", "haven", "here"))</code></strong></p>
+</blockquote>
+</div>
+<div id="charger-les-packages" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Charger les packages</h3>
+<p>On les charge dans R à l’aide de l’instruction <code>library(nom_du_package)</code> comme dans le code suivant :</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="kw">library</span>(haven)</a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="kw">library</span>(here)</a></code></pre></div>
+<p>Cela peut renvoyer une erreur, par exemple :</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">library</span>(tidyverses)</a></code></pre></div>
+<pre><code>## Error in library(tidyverses): there is no package called &#39;tidyverses&#39;</code></pre>
+<p>Dans ce cas, vérifiez l’orthographe du package. Si l’erreur persiste, vous avez peut-être oublié de l’installer.</p>
+<p>Quand on utilise une fonction d’un package, on doit préalablement le déclarer avec <code>library()</code> sinon cela renvoiera une erreur.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tldr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prÃ©parer-vos-donnÃ©es.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 
-# Exporter vos résultats
+# Exporter vos résultats {#export}
 
 ## Avec l'outil d'export
 
@@ -31,7 +31,7 @@ On utilise les options :
 
 Par défaut, le graphique sauvegardé est le dernier réalisé.
 
-```{r, eval=FALSE}
+```{r export, eval=FALSE}
 ggsave(
   filename = "chemin/nom_du_fichier.png",
   width = 297,

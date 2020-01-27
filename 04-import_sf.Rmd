@@ -1,5 +1,5 @@
 
-# Données spatiales
+# Données spatiales {#import_sf}
 
 ## Les données vectorielles
 
@@ -22,7 +22,7 @@ Il comprend plusieurs fichiers, avec un nom identique et des formats différents
 
 On a construit ou récupéré les principaux fonds de carte utilisés à Pôle emploi qui sont disponibles ici :
 
-LIEN DU DOSSIER (GITHUB ?)
+https://github.com/tvroylandt/r-cartostat/tree/master/data/shp
 
 Ces cartes ne sont pas géographiquement exactes puisqu'elles incluent les DOMs rapprochés de la France métropolitaine ainsi qu'un zoom sur l'Île-de-France. Les cartes sont les suivantes :
 
@@ -32,9 +32,7 @@ Ces cartes ne sont pas géographiquement exactes puisqu'elles incluent les DOMs 
 - département ;
 - région.
 
-METTRE UNE IMAGE DES CARTES - DEPARTEMENT
-
-Le détail de leur construction est disponible en annexe --> LIEN ANNEXE
+Le détail de leur construction est disponible en annexe \@ref(annexe_fond_carte)
 
 ## Importer des données spatiales
 
@@ -44,7 +42,7 @@ Il faut lui spécifier le chemin vers le fichier .shp.
 Exemple ici avec l'import des départements.
 
 ```{r import_shp}
-shp_dep <- st_read(here("data/shp/DEP_2018.shp"))
+shp_dep <- st_read(here("data/shp/FR_DEP_DOM_IDF.shp"))
 ```
 
 On peut en visualiser le contenu. On observe qu'on a un fichier avec une colonne `DEP`, qui contient le code du département, ainsi qu'une colonne `geometry` qui contient les spécifications spatiales.
@@ -64,7 +62,7 @@ Par exemple si je ne souhaite que l'Oise.
 
 ```{r shp_filter_oise}
 shp_dep %>% 
-  filter(DEP == "60")
+  filter(code_dep == "60")
 ```
 
 ### Modification de colonnes
@@ -74,11 +72,11 @@ Je peux créer des colonnes, par exemple en regroupant les départements en rég
 ```{r shp_mutate}
 shp_dep_recode <- shp_dep %>%
   mutate(REG = fct_collapse(
-    DEP,
+    code_dep,
     "Hauts-de-France" = c("02", "59", "60", "62", "80"),
     "Ile-de-France" = c("75", "77", "78", "91", "92", "93", "94", "95")
   )) %>%
-  filter(REG %in% c("Hauts-de-France", "Ile-de-France"))
+  filter(REG %in% c("Hauts-de-France", "Ile-de-France") & zoom_idf == "0")
 
 shp_dep_recode
 ```
@@ -99,7 +97,7 @@ shp_reg_hdf_idf <- shp_dep_recode %>%
 shp_reg_hdf_idf
 ```
 
-```{r include=FALSE}
+```{r plot_hdf_idf, include=FALSE}
 plot(st_geometry(shp_reg_hdf_idf))
 ```
 
@@ -119,7 +117,7 @@ On s'aperçoit alors qu'on a, pour chaque zone géographique, la difficulté de 
 
 ```{r jointure}
 bmo_dep_shp <- shp_dep %>%
-  left_join(bmo_dep, by = c("DEP" = "dep"))
+  left_join(bmo_dep, by = c("code_dep" = "dep"))
 
 bmo_dep_shp 
 ```
@@ -128,8 +126,8 @@ Pour n'avoir qu'une région, il suffit de filtrer en amont sur le fond de carte,
 
 ```{r jointure_filtre}
 bmo_dep_shp_hdf <- shp_dep %>%
-  filter(DEP %in% c("60", "02", "80", "59", "62")) %>%
-  left_join(bmo_dep, by = c("DEP" = "dep"))
+  filter(code_dep %in% c("60", "02", "80", "59", "62")) %>%
+  left_join(bmo_dep, by = c("code_dep" = "dep"))
 
 bmo_dep_shp_hdf
 ```

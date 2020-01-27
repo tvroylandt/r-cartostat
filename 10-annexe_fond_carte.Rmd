@@ -1,6 +1,6 @@
 # (APPENDIX) Annexes {-}
 
-# Annexe - fonds de carte
+# Annexe - Fonds de carte {#annexe_fond_carte}
 
 Cet annexe détaille la construction des fonds de carte mis à disposition.
 
@@ -165,13 +165,13 @@ On va donc chercher à les simplifier davantage à l'aide du package `smoothr` e
 ```{r smooth_map}
 library(smoothr)
 
-smooth_fr <- function(data, tol = 2200, sm = 0.9){
+smooth_fr <- function(data, tol = 1800, sm = 0.8){
   data %>%
-  st_simplify(dTolerance = tol) %>%
+  st_simplify(dTolerance = tol, preserveTopology = TRUE) %>%
   smooth(method = "ksmooth", smoothness = sm)
 }
 
-shp_bassin_bmo_simpl <- smooth_fr(shp_bassin_bmo, sm = 0.8, tol = 2000)
+shp_bassin_bmo_simpl <- smooth_fr(shp_bassin_bmo)
 
 shp_ze_simpl <- smooth_fr(shp_ze)
 

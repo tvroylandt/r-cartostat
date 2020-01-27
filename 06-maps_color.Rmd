@@ -1,5 +1,5 @@
 
-# Aplats de couleurs
+# Aplats de couleurs {#maps_color}
 
 Les étapes pour réaliser des cartes dites "chroplèthes" ou "par aplats de couleurs" sont détaillées ici.
 
@@ -15,7 +15,7 @@ Cette variable doit exister dans la table de donnée.
 
 Elle peut être continue, auquel cas on aura une échelle continue.
 
-```{r}
+```{r ggplot_fill_aes}
 ggplot() +
   geom_sf(data = bmo_dep_shp,
           aes(fill = part_diff))
@@ -25,7 +25,7 @@ ggplot() +
 
 Ou discrète où on aura une échelle discrète :
 
-```{r}
+```{r ggplot_fill_aes_d}
 ggplot() +
   geom_sf(data = bmo_dep_shp, 
           aes(fill = part_diff_classes))
@@ -42,7 +42,7 @@ Pour que cela fonctionne, il faut lui préciser une valeur à afficher dans `aes
 
 On peut passer des paramètres, comme la taille par exemple.
 
-```{r}
+```{r ggplot_text}
 ggplot(data = bmo_dep_shp) +
   geom_sf(aes(fill = part_diff_classes)) +
   geom_sf_text(aes(label = round(part_diff, 1)),

@@ -1,5 +1,5 @@
 
-# Préparer vos données
+# Préparer vos données {#import_data}
 
 ## Importer des données
 
@@ -7,7 +7,7 @@
 
 On va d'abord importer une donnée dans R, de la façon suivante :
 
-```{r eval=FALSE}
+```
 nom_du_fichier <- read_extension("chemin_du_fichier.extension")
 ```
 
@@ -24,7 +24,7 @@ VOtre console peut vous renvoyer certaines informations sur la façon dont R enc
 
 Le package `readxl` nous permet d'importer des fichiers Excel. Par exemple ici pour le fichier `bmo_2019_idf.xlsx` qui se situe dans le dossier `data` :
 
-```{r}
+```{r import_bmo}
 bmo_secteur <- read_xlsx("data/dataset/bmo_2019_secteur.xlsx")
 ```
 
@@ -41,7 +41,7 @@ On peut ensuite afficher la table de données importée de deux façons :
 
 + La première consiste à l'afficher dans la console en exécutant le nom de la table. Cela affiche des informations sur le type des colonnes et le nombre de lignes et de colonnes.
 
-```{r}
+```{r show_bmo}
 bmo_secteur
 ```
 
@@ -58,7 +58,7 @@ Pour réaliser une carte, il faut avoir une table de données à visualiser, qui
 
 Cette table directement importée sous ce format.
 
-Elle peut être aussi calculée avec R. Les opérations utiles sont détaillées en annexe. --> LIEN ANNEXE.
+Elle peut être aussi calculée avec R.
 
 Pour notre table, on somme par département puis on calcule la part de projets difficiles et on découpe en classes cette part.
 
@@ -80,6 +80,6 @@ bmo_dep <- bmo_secteur %>%
 
 La table aura alors la forme suivante :
 
-```{r}
+```{r show_bmo_dep}
 bmo_dep
 ```

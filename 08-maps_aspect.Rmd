@@ -1,5 +1,5 @@
 
-# Personnaliser vos cartes
+# Personnaliser vos cartes {#maps_aspect}
 
 ## Les échelles
 
@@ -16,7 +16,7 @@ On peut déclarer le nom de la légende avec `name = `. D'autres paramètres s'a
 
 Pour les variables continues, on privilégiera `scale_xxx_gradient()`, qui affiche un gradient de couleur où on lui donne la couleur basse et haute.
 
-```{r}
+```{r scale_gradient}
 ggplot() +
   geom_sf(data = bmo_dep_shp, 
           aes(fill = part_diff)) +
@@ -35,7 +35,7 @@ On utilise alors `scale_xxx_manual()`.
 
 Par exemple ici sur le remplissage des zones :
 
-```{r}
+```{r scale_manual}
 ggplot() +
   geom_sf(data = bmo_dep_shp, 
           aes(fill = part_diff_classes)) +
@@ -45,7 +45,7 @@ ggplot() +
 
 Ou pour la couleur de points : 
 
-```{r}
+```{r scale_color}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot,
@@ -64,14 +64,14 @@ On s'y réfère par `scale_xxx_viridis_d()` pour les palettes discrètes et `sca
 
 On peut aussi régler le sens de la palette avec `direction`.
 
-```{r}
+```{r scale_fill_viridis}
 ggplot() +
   geom_sf(data = bmo_dep_shp, 
           aes(fill = part_diff_classes)) +
   scale_fill_viridis_d(direction = -1)
 ```
 
-```{r}
+```{r scale_color_viridis}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot,
@@ -83,7 +83,7 @@ ggplot(data = bmo_dep_shp) +
 
 On utilisera aussi `scale` pour régler les autres paramètres, par exemple la taille des points, ici en précisant une rangée de valeurs (`range = `), ce qui augmente l'écart entre la taille des points.
 
-```{r}
+```{r scale_size}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot), 
@@ -99,7 +99,7 @@ Le même principe peut s'appliquer aux autres paramètres passés dans `aes()`.
 
 La fonction `labs()` permet d'ajouter un titre et une légende.
 
-```{r}
+```{r labs}
 ggplot() +
   geom_sf(data = bmo_dep_shp,
           aes(fill = part_diff_classes)) +
@@ -116,7 +116,7 @@ La thème (`theme()`) contient tous les éléments de personnalisation de votre 
 
 On se contentera ici d'appliquer un thème prédéfini : `theme_void()`, qui retire le fond gris et les axes.
 
-```{r}
+```{r theme}
 ggplot() +
   geom_sf(data = bmo_dep_shp,
           aes(fill = part_diff_classes)) +

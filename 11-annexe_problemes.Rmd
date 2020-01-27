@@ -1,4 +1,4 @@
-# Annexe - Problèmes courants
+# Annexe - Problèmes courants {#annexe_probleme}
 
 Cet annexe traite de problèmes que l'on peut éventuellement rencontrer.
 

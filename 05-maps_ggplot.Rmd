@@ -1,8 +1,5 @@
 
-# Réaliser les cartes
-
---> FAIRE UNE VERSION SIMPLIFIEE DANS UNE FONCTION
-AVEC JUSTE CHOIX DU FOND DE CARTE, JEU DE DONNEES, VARIABLE A AFFICHER, CARTE COULEUR OU ROND, DOSSIER DE L'EXPORT
+# Réaliser les cartes {#maps_ggplot}
 
 ## Fonctionnement de `ggplot2`
 
@@ -19,7 +16,7 @@ Celui-ci nécessite un certain nombre d'éléments :
 
 On lui déclare qu'on veut utiliser le package par l'instruction `ggplot()` et on ajoute ensuite les couches les unes après les autres avec le `+`.
 
-```{r, eval = FALSE}
+```{r ggplot_format, eval = FALSE}
 ggplot() + 
   <FORME>(data = <DATA>, aes(<VARIABLES>), ...= <PARAMS>) +
   <FONCTION1>
@@ -35,14 +32,14 @@ Il existe une forme spécifique pour afficher des données spatiales : `geom_sf(
 
 Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide, avec les limites pour chaque unité.
 
-```{r}
+```{r ggplot_sf}
 ggplot() +
   geom_sf(data = bmo_dep_shp)
 ```
 
 On peut jouer sur les paramètres pour élargir ou changer la couleur des frontières.
 
-```{r}
+```{r ggplot_sf_fill}
 ggplot() +
   geom_sf(data = bmo_dep_shp,
           color = "red",
@@ -55,12 +52,12 @@ On peut vouloir afficher plusieurs couches de données, par exemple quand on aff
 
 On ajoute alors la couche régionale au dessus de la couche départementale. Les limites des régions vont alors se superposer aux limites des départements. On utilise le paramètre `alpha = 0` pour lui préciser qu'on souhaite que l'intérieur des zones soit transparente.
 
-```{r, include=FALSE}
-reg_shp <- st_read(here("data/shp/REG_2018_FR_ENT.shp"))
+```{r import_sf_reg, include=FALSE}
+reg_shp <- st_read(here("data/shp/FR_REG_DOM.shp"))
 ```
 
 
-```{r}
+```{r ggplot_multicouche}
 ggplot() +
   geom_sf(data = bmo_dep_shp,
           color = "red",

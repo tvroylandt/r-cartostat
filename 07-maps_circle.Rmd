@@ -1,5 +1,5 @@
 
-# Cercles proportionnels
+# Cercles proportionnels {#maps_circle}
 
 Un autre type de carte représente chaque valeur par un cercle proportionnel et éventuellement une couleur.
 
@@ -15,7 +15,7 @@ On procède en plusieurs étapes :
 + on lui spécifie les valeurs à afficher, ici sur le nombre de projets : `nb_proj_tot` ;
 + on personnalise ensuite les paramètres des points à afficher, par exemple en ajoutant une couleur, la part de projets difficiles, en classes.
 
-```{r}
+```{r circle_coord}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot, 
@@ -30,7 +30,7 @@ Cela peut supposer de modifier la façon de passer les variables (avec `fill` pl
 
 ### Des triangles
 
-```{r}
+```{r circle_triangle}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot, 
@@ -41,7 +41,7 @@ ggplot(data = bmo_dep_shp) +
 
 ### Des carrés
 
-```{r}
+```{r circle_square}
 ggplot(data = bmo_dep_shp) +
   geom_sf() +
   stat_sf_coordinates(aes(size = nb_proj_tot, 

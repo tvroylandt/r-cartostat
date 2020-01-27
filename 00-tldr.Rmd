@@ -1,5 +1,5 @@
 
-# TL;DR {-}
+# TL;DR {- #tldr}
 
 Ce chapître résume d'un bloc comment on peut réaliser une carte avec R.
 
@@ -35,14 +35,14 @@ bmo_dep <- bmo_secteur %>%
 On importe le fond de carte.
 
 ```{r tldr_sf}
-shp_dep <- st_read(here("data/shp/DEP_2018.shp"))
+shp_dep <- st_read(here("data/shp/FR_DEP_DOM_IDF.shp"))
 ```
 
 On les fusionne.
 
 ```{r tldr_join}
 bmo_dep_shp <- shp_dep %>%
-  left_join(bmo_dep, by = c("DEP" = "dep"))
+  left_join(bmo_dep, by = c("code_dep" = "dep"))
 ```
 
 On réalise la carte, par exemple par aplat de couleur. Avec les élements d'échelles et de thème.
