@@ -1,0 +1,98 @@
+---
+title: "Feuille d'exercice"
+author: "Thomas Vroylandt"
+date: "7 février 2020"
+output: html_document
+params:
+  correction: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+# Contexte
+
+On va s'intéresser aux données sur les accidents corporels de circulation mises à disposition par le ministère de l'Intérieur, ici en version 2018 : https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/
+
+Les objectifs vont être d'importer ses données, de les jointer avec des données sur la population, par département et commune, et de calculer à différents niveaux des indicateurs d'accidentalité.
+
+On représentera ensuite ces indicateurs sur une ou plusieurs cartes qui seront exportées.
+
+# Packages
+
++ On charge les packages qui vont nous être utiles.
+
+```{r packages, include=params$correction}
+library(tidyverse)
+library(here)
+library(sf)
+library(readxl)
+```
+
+# Import des données
+
+Les données sont disponibles dans le dossier `data/dataset/exo`.
+
+Elles se composent :
+
++ D'un fichier sur les accidents en 2018 : `accidents18_exo.csv` ;
++ D'un fichier sur la population par département en 2017 : `pop_dep17.csv` ;
++ D'un fichier sur la population par commune en 2017 : `pop_com17.xlsx`
+
+## Données accidents
+
++ Importer le fichier sur les accidents dans un objet appelé `df_accidents18`.
++ Combien de colonnes comporte-t-il ?
++ Combien de lignes ?
++ Assurez vous que le type des colonnes est cohérent avec leur contenu. 
++ Sinon, recodez les colonnes qui sont mal importées.
++ Visualisez le jeu de données.
+
+```{r import_accidents, include=params$correction}
+# import
+df_accidents18 <-
+  read_csv2(
+    here("data/dataset/exo/accidents18_exo.csv"),
+    col_types = cols(
+      id_accident = col_character(),
+      mois = col_character(),
+      code_dep = col_character(),
+      code_com = col_character(),
+      luminosite = col_character(),
+      agglo = col_character(),
+      nb_indemnes = col_double(),
+      nb_blesses_hospi = col_double(),
+      nb_blesses_legers = col_double(),
+      nb_tues = col_double(),
+      nb_impliques = col_double()
+    )
+  )
+
+# dimension
+dim(df_accidents18)
+
+# jeu de données
+df_accidents18
+```
+
+## Données population
+
+# Recodage
+
+# Regroupement en bassins d'emploi
+
+# Calcul des indicateurs territoriaux
+
+# Recoupement avec les données spatiales
+
+# Représentation cartographique
+
+# Effet de la saisonnalité
+
+# Export
+
