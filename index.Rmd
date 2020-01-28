@@ -35,6 +35,14 @@ Ces ressources ont servis à construire ce support :
 + La ressource sur les recodages et le maniement des données : [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/) (en anglais) ;
 + Une bonne introduction, qui a notamment servie pour la partie recodages : [https://juba.github.io/tidyverse/](https://juba.github.io/tidyverse/) (en français).
 
+## Exercices {-}
+
+Les données sont disponibles dans le dossier Github https://github.com/tvroylandt/r-cartostat.
+
+La feuille d'exercice est ici : https://tvroylandt.github.io/r-cartostat/feuille_exos.html
+
+La feuille corrigée ici : https://tvroylandt.github.io/r-cartostat/feuille_exos_correction.html
+
 ## Licence {-}
 
 Ce document est sous licence Creative Commons BY-NC-SA : http://creativecommons.org/licenses/by-nc-sa/4.0/

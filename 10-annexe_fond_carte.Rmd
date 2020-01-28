@@ -165,7 +165,7 @@ On va donc chercher à les simplifier davantage à l'aide du package `smoothr` e
 ```{r smooth_map}
 library(smoothr)
 
-smooth_fr <- function(data, tol = 1800, sm = 0.8){
+smooth_fr <- function(data, tol = 1000, sm = 0.8){
   data %>%
   st_simplify(dTolerance = tol, preserveTopology = TRUE) %>%
   smooth(method = "ksmooth", smoothness = sm)

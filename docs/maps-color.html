@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -257,17 +258,17 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="continue" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Continue</h3>
 <p>Elle peut être continue, auquel cas on aura une échelle continue.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb43-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb38-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff))</a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_fill_aes-1.png" width="672" /></p>
 </div>
 <div id="discrète" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Discrète</h3>
 <p>Ou discrète où on aura une échelle discrète :</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
-<a class="sourceLine" id="cb44-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes))</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
+<a class="sourceLine" id="cb39-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes))</a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_fill_aes_d-1.png" width="672" /></p>
 </div>
 </div>
@@ -277,10 +278,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Cette opération peut se réaliser par l’ajout d’une couche supplémentaire : <code>geom_sf_label()</code> ou <code>geom_sf_text()</code>. Les deux font la même chose, l’aspect est légèrement différent.</p>
 <p>Pour que cela fonctionne, il faut lui préciser une valeur à afficher dans <code>aes(label = )</code>, par exemple, la part de projets difficiles (qu’on arrondi au dixième). Comme cette valeur doit se référer à une table de donnée, on a placé celle-ci directement dans le <code>ggplot()</code>.</p>
 <p>On peut passer des paramètres, comme la taille par exemple.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(part_diff, <span class="dv">1</span>)),</a>
-<a class="sourceLine" id="cb45-4" title="4">               <span class="dt">size =</span> <span class="fl">2.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="st">  </span><span class="kw">geom_sf_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(part_diff, <span class="dv">1</span>)),</a>
+<a class="sourceLine" id="cb40-4" title="4">               <span class="dt">size =</span> <span class="fl">2.5</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_text-1.png" width="672" /></p>
 
 </div>

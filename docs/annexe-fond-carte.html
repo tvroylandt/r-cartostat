@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -256,9 +257,9 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="chargement" class="section level3">
 <h3><span class="header-section-number">A.1.1</span> Chargement</h3>
 <p>Il est directement disponible dans le package <code>CARTElette</code> et on le charge ainsi.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">library</span>(CARTElette)</a>
-<a class="sourceLine" id="cb58-2" title="2"></a>
-<a class="sourceLine" id="cb58-3" title="3">shp_commune &lt;-<span class="st"> </span><span class="kw">charger_carte</span>(<span class="dt">COG =</span> <span class="dv">2019</span>, <span class="dt">nivsupra =</span> <span class="st">&quot;COM&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">library</span>(CARTElette)</a>
+<a class="sourceLine" id="cb53-2" title="2"></a>
+<a class="sourceLine" id="cb53-3" title="3">shp_commune &lt;-<span class="st"> </span><span class="kw">charger_carte</span>(<span class="dt">COG =</span> <span class="dv">2019</span>, <span class="dt">nivsupra =</span> <span class="st">&quot;COM&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `FR_COM_2019&#39; from data source `D:\r-cartostat\data\shp\init\FR_COM_2019.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 34970 features and 11 fields
 ## geometry type:  MULTIPOLYGON
@@ -277,34 +278,34 @@ code span.wa { color: #bf0303; } /* Warning */
 <h3><span class="header-section-number">A.1.3</span> Gestion de l’Île-de-France</h3>
 <p>On s’inspire de la façon dont sont déplacées les DOMs pour réaliser une copie zoomée de l’Île-de-France, qu’on placera en haut à droite.</p>
 <p>Cette copie est associée à une variable <code>zoom_idf</code> qui vaut <code>1</code> si on est sur le zoom, <code>0</code> sinon.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">shp_commune_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-2" title="2"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">==</span><span class="st"> &quot;11&quot;</span>)</a>
-<a class="sourceLine" id="cb60-3" title="3"></a>
-<a class="sourceLine" id="cb60-4" title="4">shp_commune_idf0 &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-5" title="5"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">==</span><span class="st"> &quot;11&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">zoom_idf =</span> <span class="st">&quot;1&quot;</span>) </a>
-<a class="sourceLine" id="cb60-7" title="7"></a>
-<a class="sourceLine" id="cb60-8" title="8"><span class="co"># paramètres</span></a>
-<a class="sourceLine" id="cb60-9" title="9">deplace  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">200000</span>, <span class="dv">870000</span>)</a>
-<a class="sourceLine" id="cb60-10" title="10">zoom &lt;-<span class="st"> </span><span class="fl">2.2</span></a>
-<a class="sourceLine" id="cb60-11" title="11"></a>
-<a class="sourceLine" id="cb60-12" title="12">centroid_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-13" title="13"><span class="st">  </span><span class="kw">filter</span>(INSEE_DEP <span class="op">==</span><span class="st"> &quot;75&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-14" title="14"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-15" title="15"><span class="st">  </span><span class="kw">st_coordinates</span>()</a></code></pre></div>
-<pre><code>## Warning in st_centroid.sf(.): st_centroid assumes attributes are constant over geometries of x</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># déplacement</span></a>
-<a class="sourceLine" id="cb62-2" title="2">shp_commune_idf &lt;-</a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="st">  </span><span class="kw">st_sf</span>(</a>
-<a class="sourceLine" id="cb62-4" title="4">    shp_commune_idf0 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_drop_geometry</span>(),</a>
-<a class="sourceLine" id="cb62-5" title="5">    <span class="dt">geometry =</span> ((<span class="kw">st_geometry</span>(shp_commune_idf0) <span class="op">-</span><span class="st"> </span>deplace) <span class="op">*</span><span class="st"> </span>zoom <span class="op">+</span><span class="st"> </span>deplace <span class="op">-</span><span class="st"> </span>centroid_idf) ,</a>
-<a class="sourceLine" id="cb62-6" title="6">    <span class="dt">crs =</span> <span class="kw">st_crs</span>(shp_commune_idf0)</a>
-<a class="sourceLine" id="cb62-7" title="7">  )</a>
-<a class="sourceLine" id="cb62-8" title="8"></a>
-<a class="sourceLine" id="cb62-9" title="9"><span class="co"># jointure</span></a>
-<a class="sourceLine" id="cb62-10" title="10">shp_commune_zoom_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-11" title="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">zoom_idf =</span> <span class="st">&quot;0&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-12" title="12"><span class="st">  </span><span class="kw">rbind</span>(shp_commune_idf)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">shp_commune_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">==</span><span class="st"> &quot;11&quot;</span>)</a>
+<a class="sourceLine" id="cb55-3" title="3"></a>
+<a class="sourceLine" id="cb55-4" title="4">shp_commune_idf0 &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-5" title="5"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">==</span><span class="st"> &quot;11&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">zoom_idf =</span> <span class="st">&quot;1&quot;</span>) </a>
+<a class="sourceLine" id="cb55-7" title="7"></a>
+<a class="sourceLine" id="cb55-8" title="8"><span class="co"># paramètres</span></a>
+<a class="sourceLine" id="cb55-9" title="9">deplace  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">200000</span>, <span class="dv">870000</span>)</a>
+<a class="sourceLine" id="cb55-10" title="10">zoom &lt;-<span class="st"> </span><span class="fl">2.2</span></a>
+<a class="sourceLine" id="cb55-11" title="11"></a>
+<a class="sourceLine" id="cb55-12" title="12">centroid_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-13" title="13"><span class="st">  </span><span class="kw">filter</span>(INSEE_DEP <span class="op">==</span><span class="st"> &quot;75&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-14" title="14"><span class="st">  </span><span class="kw">st_centroid</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-15" title="15"><span class="st">  </span><span class="kw">st_coordinates</span>()</a>
+<a class="sourceLine" id="cb55-16" title="16"></a>
+<a class="sourceLine" id="cb55-17" title="17"><span class="co"># déplacement</span></a>
+<a class="sourceLine" id="cb55-18" title="18">shp_commune_idf &lt;-</a>
+<a class="sourceLine" id="cb55-19" title="19"><span class="st">  </span><span class="kw">st_sf</span>(</a>
+<a class="sourceLine" id="cb55-20" title="20">    shp_commune_idf0 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_drop_geometry</span>(),</a>
+<a class="sourceLine" id="cb55-21" title="21">    <span class="dt">geometry =</span> ((<span class="kw">st_geometry</span>(shp_commune_idf0) <span class="op">-</span><span class="st"> </span>deplace) <span class="op">*</span><span class="st"> </span>zoom <span class="op">+</span><span class="st"> </span>deplace <span class="op">-</span><span class="st"> </span>centroid_idf) ,</a>
+<a class="sourceLine" id="cb55-22" title="22">    <span class="dt">crs =</span> <span class="kw">st_crs</span>(shp_commune_idf0)</a>
+<a class="sourceLine" id="cb55-23" title="23">  )</a>
+<a class="sourceLine" id="cb55-24" title="24"></a>
+<a class="sourceLine" id="cb55-25" title="25"><span class="co"># jointure</span></a>
+<a class="sourceLine" id="cb55-26" title="26">shp_commune_zoom_idf &lt;-<span class="st"> </span>shp_commune <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-27" title="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">zoom_idf =</span> <span class="st">&quot;0&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-28" title="28"><span class="st">  </span><span class="kw">rbind</span>(shp_commune_idf)</a></code></pre></div>
 <p><img src="support_files/figure-html/com_idf_map-1.png" width="672" /></p>
 </div>
 </div>
@@ -313,138 +314,137 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>A partir de fond de carte communal et des tables de passage vers les différents niveaux, de la bonne année, on reconstruit les différents fonds de carte.</p>
 <p>Pour une partie des niveaux (département et région), ils sont déjà dans la table communale.</p>
 <p>Pour les bassins, on a davantage de communes dans la table de passage, pour gérer d’éventuels problèmes d’historiques. Cela n’impacte pas le recodage puisqu’on n’a pas de tous.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">passage_commune_bassin &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_commune_bassin_bmo.xlsx&quot;</span>)</a>
-<a class="sourceLine" id="cb63-2" title="2"></a>
-<a class="sourceLine" id="cb63-3" title="3">passage_commune_ze &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_commune_ze.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">passage_commune_bassin &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_commune_bassin_bmo.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb56-2" title="2"></a>
+<a class="sourceLine" id="cb56-3" title="3">passage_commune_ze &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_commune_ze.xlsx&quot;</span>)</a></code></pre></div>
 <p>Le code département se calcule simplement à partir des 2 premiers chiffres du code commune (3 pour les DOMs). Exemple :</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">shp_commune <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="st">  </span><span class="kw">st_drop_geometry</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">code_dep =</span> <span class="kw">if_else</span>(</a>
-<a class="sourceLine" id="cb64-4" title="4">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">2</span>) <span class="op">==</span><span class="st"> &quot;97&quot;</span>,</a>
-<a class="sourceLine" id="cb64-5" title="5">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb64-6" title="6">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb64-7" title="7">  )) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb64-8" title="8"><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">shp_commune <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="st">  </span><span class="kw">st_drop_geometry</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">code_dep =</span> <span class="kw">if_else</span>(</a>
+<a class="sourceLine" id="cb57-4" title="4">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">2</span>) <span class="op">==</span><span class="st"> &quot;97&quot;</span>,</a>
+<a class="sourceLine" id="cb57-5" title="5">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb57-6" title="6">    <span class="kw">str_sub</span>(INSEE_COM, <span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb57-7" title="7">  )) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb57-8" title="8"><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 12
-##   ID     STATUT  INSEE_COM INSEE_ARR INSEE_DEP INSEE_REG CODE_EPCI NOM_COM_M  POPULATION TYPE  NOM_COM code_dep
-##   &lt;fct&gt;  &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;   &lt;chr&gt;   
-## 1 COMMU~ Commun~ 32216     3         32        76        200072320 LOURTIES ~        152 COM   Lourti~ 32      
-## 2 COMMU~ Commun~ 47033     3         47        75        200036523 BOUDY DE ~        412 COM   Boudy-~ 47      
-## 3 COMMU~ Commun~ 32009     3         32        76        243200425 ARMOUS ET~         86 COM   Armous~ 32      
-## 4 COMMU~ Commun~ 38225     1         38        84        243801024 AUTRANS M~       2969 COM   Autran~ 38      
-## 5 COMMU~ Commun~ 62890     4         62        32        200044030 WILLEMAN          182 COM   Willem~ 62</code></pre>
+##   ID    STATUT INSEE_COM INSEE_ARR INSEE_DEP INSEE_REG CODE_EPCI NOM_COM_M POPULATION TYPE  NOM_COM code_dep
+##   &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;          &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;   &lt;chr&gt;   
+## 1 COMM~ Commu~ 32216     3         32        76        200072320 LOURTIES~        152 COM   Lourti~ 32      
+## 2 COMM~ Commu~ 47033     3         47        75        200036523 BOUDY DE~        412 COM   Boudy-~ 47      
+## 3 COMM~ Commu~ 32009     3         32        76        243200425 ARMOUS E~         86 COM   Armous~ 32      
+## 4 COMM~ Commu~ 38225     1         38        84        243801024 AUTRANS ~       2969 COM   Autran~ 38      
+## 5 COMM~ Commu~ 62890     4         62        32        200044030 WILLEMAN         182 COM   Willem~ 62</code></pre>
 <p>Le passage de la région peut se faire à partir du code département.
 Une table de passage est inclus.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">passage_dep_reg &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_dep_reg.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">passage_dep_reg &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/passage/passage_dep_reg.xlsx&quot;</span>)</a></code></pre></div>
 </div>
 <div id="agrégation-des-niveaux" class="section level2">
 <h2><span class="header-section-number">A.3</span> Agrégation des niveaux</h2>
 <p>Il reste à les agréger.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="co"># bassin BMO</span></a>
-<a class="sourceLine" id="cb67-2" title="2">shp_bassin_bmo &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb67-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(passage_commune_bassin, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;INSEE_COM&quot;</span> =<span class="st"> &quot;code_commune&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb67-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(code_bassin_bmo, lib_bassin_bmo, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb67-5" title="5"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb67-6" title="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## Warning: Column `INSEE_COM`/`code_commune` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="co"># ze</span></a>
-<a class="sourceLine" id="cb69-2" title="2">shp_ze &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb69-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(passage_commune_ze, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;INSEE_COM&quot;</span> =<span class="st"> &quot;code_commune&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(code_ze, lib_ze, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb69-5" title="5"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb69-6" title="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## Warning: Column `INSEE_COM`/`code_commune` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="co"># dep</span></a>
-<a class="sourceLine" id="cb71-2" title="2">shp_dep &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(INSEE_REG, INSEE_DEP, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-4" title="4"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-5" title="5"><span class="st">  </span><span class="kw">ungroup</span>()</a>
-<a class="sourceLine" id="cb71-6" title="6"></a>
-<a class="sourceLine" id="cb71-7" title="7"><span class="co"># reg - sans le zoom</span></a>
-<a class="sourceLine" id="cb71-8" title="8">shp_reg &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-9" title="9"><span class="st">  </span><span class="kw">filter</span>(zoom_idf <span class="op">==</span><span class="st"> &quot;0&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-10" title="10"><span class="st">  </span><span class="kw">group_by</span>(INSEE_REG) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-11" title="11"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-12" title="12"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_bassin_bmo))</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="co"># bassin BMO</span></a>
+<a class="sourceLine" id="cb60-2" title="2">shp_bassin_bmo &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(passage_commune_bassin, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;INSEE_COM&quot;</span> =<span class="st"> &quot;code_commune&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(code_bassin_bmo, lib_bassin_bmo, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-5" title="5"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb60-7" title="7"></a>
+<a class="sourceLine" id="cb60-8" title="8"><span class="co"># ze</span></a>
+<a class="sourceLine" id="cb60-9" title="9">shp_ze &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-10" title="10"><span class="st">  </span><span class="kw">left_join</span>(passage_commune_ze, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;INSEE_COM&quot;</span> =<span class="st"> &quot;code_commune&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-11" title="11"><span class="st">  </span><span class="kw">group_by</span>(code_ze, lib_ze, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-12" title="12"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-13" title="13"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb60-14" title="14"></a>
+<a class="sourceLine" id="cb60-15" title="15"><span class="co"># dep</span></a>
+<a class="sourceLine" id="cb60-16" title="16">shp_dep &lt;-<span class="st"> </span>shp_commune_zoom_idf <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-17" title="17"><span class="st">  </span><span class="kw">group_by</span>(INSEE_REG, INSEE_DEP, zoom_idf) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-18" title="18"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-19" title="19"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb60-20" title="20"></a>
+<a class="sourceLine" id="cb60-21" title="21"><span class="co"># reg - sans le zoom</span></a>
+<a class="sourceLine" id="cb60-22" title="22">shp_reg &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-23" title="23"><span class="st">  </span><span class="kw">filter</span>(zoom_idf <span class="op">==</span><span class="st"> &quot;0&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-24" title="24"><span class="st">  </span><span class="kw">group_by</span>(INSEE_REG) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-25" title="25"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-26" title="26"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_bassin_bmo))</a></code></pre></div>
 <p><img src="support_files/figure-html/agregat_map_plot-1.png" width="672" /></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_ze))</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_ze))</a></code></pre></div>
 <p><img src="support_files/figure-html/agregat_map_plot-2.png" width="672" /></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_dep))</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_dep))</a></code></pre></div>
 <p><img src="support_files/figure-html/agregat_map_plot-3.png" width="672" /></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_reg))</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_reg))</a></code></pre></div>
 <p><img src="support_files/figure-html/agregat_map_plot-4.png" width="672" /></p>
 </div>
 <div id="simplification-des-contours" class="section level2">
 <h2><span class="header-section-number">A.4</span> Simplification des contours</h2>
 <p>Ces fonds de cartes ont un niveau de détail très important sur les contours. En contrepartie, ils sont plus lourds et ce détail joue parfois contre l’information qu’on veut représenter.</p>
 <p>On va donc chercher à les simplifier davantage à l’aide du package <code>smoothr</code> et d’un lissage en kernel. On fait une étape de simplification avec <code>st_simplify()</code> avant le lissage.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">library</span>(smoothr)</a>
-<a class="sourceLine" id="cb76-2" title="2"></a>
-<a class="sourceLine" id="cb76-3" title="3">smooth_fr &lt;-<span class="st"> </span><span class="cf">function</span>(data, <span class="dt">tol =</span> <span class="dv">1800</span>, <span class="dt">sm =</span> <span class="fl">0.8</span>){</a>
-<a class="sourceLine" id="cb76-4" title="4">  data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb76-5" title="5"><span class="st">  </span><span class="kw">st_simplify</span>(<span class="dt">dTolerance =</span> tol, <span class="dt">preserveTopology =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb76-6" title="6"><span class="st">  </span><span class="kw">smooth</span>(<span class="dt">method =</span> <span class="st">&quot;ksmooth&quot;</span>, <span class="dt">smoothness =</span> sm)</a>
-<a class="sourceLine" id="cb76-7" title="7">}</a>
-<a class="sourceLine" id="cb76-8" title="8"></a>
-<a class="sourceLine" id="cb76-9" title="9">shp_bassin_bmo_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_bassin_bmo)</a>
-<a class="sourceLine" id="cb76-10" title="10"></a>
-<a class="sourceLine" id="cb76-11" title="11">shp_ze_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_ze)</a>
-<a class="sourceLine" id="cb76-12" title="12"></a>
-<a class="sourceLine" id="cb76-13" title="13">shp_dep_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_dep)</a>
-<a class="sourceLine" id="cb76-14" title="14"></a>
-<a class="sourceLine" id="cb76-15" title="15">shp_reg_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_reg)</a></code></pre></div>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_bassin_bmo_simpl))</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">library</span>(smoothr)</a>
+<a class="sourceLine" id="cb65-2" title="2"></a>
+<a class="sourceLine" id="cb65-3" title="3">smooth_fr &lt;-<span class="st"> </span><span class="cf">function</span>(data, <span class="dt">tol =</span> <span class="dv">1800</span>, <span class="dt">sm =</span> <span class="fl">0.8</span>){</a>
+<a class="sourceLine" id="cb65-4" title="4">  data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-5" title="5"><span class="st">  </span><span class="kw">st_simplify</span>(<span class="dt">dTolerance =</span> tol, <span class="dt">preserveTopology =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-6" title="6"><span class="st">  </span><span class="kw">smooth</span>(<span class="dt">method =</span> <span class="st">&quot;ksmooth&quot;</span>, <span class="dt">smoothness =</span> sm)</a>
+<a class="sourceLine" id="cb65-7" title="7">}</a>
+<a class="sourceLine" id="cb65-8" title="8"></a>
+<a class="sourceLine" id="cb65-9" title="9">shp_bassin_bmo_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_bassin_bmo)</a>
+<a class="sourceLine" id="cb65-10" title="10"></a>
+<a class="sourceLine" id="cb65-11" title="11">shp_ze_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_ze)</a>
+<a class="sourceLine" id="cb65-12" title="12"></a>
+<a class="sourceLine" id="cb65-13" title="13">shp_dep_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_dep)</a>
+<a class="sourceLine" id="cb65-14" title="14"></a>
+<a class="sourceLine" id="cb65-15" title="15">shp_reg_simpl &lt;-<span class="st"> </span><span class="kw">smooth_fr</span>(shp_reg)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_bassin_bmo_simpl))</a></code></pre></div>
 <p><img src="support_files/figure-html/smooth_map_plot-1.png" width="672" /></p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_ze_simpl))</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_ze_simpl))</a></code></pre></div>
 <p><img src="support_files/figure-html/smooth_map_plot-2.png" width="672" /></p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_dep_simpl))</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_dep_simpl))</a></code></pre></div>
 <p><img src="support_files/figure-html/smooth_map_plot-3.png" width="672" /></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_reg_simpl))</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shp_reg_simpl))</a></code></pre></div>
 <p><img src="support_files/figure-html/smooth_map_plot-4.png" width="672" /></p>
 </div>
 <div id="export-des-fonds-de-carte" class="section level2">
 <h2><span class="header-section-number">A.5</span> Export des fonds de carte</h2>
 <p>Puis à les sauvegarder. On en profite pour uniformiser les noms des variables.</p>
 <p>On a des warnings car parfois, la spécification des shapefiles coupe les noms de variables. Il faudra donc faire attention.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># commune</span></a>
-<a class="sourceLine" id="cb81-2" title="2">shp_commune_zoom_idf <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb81-3" title="3"><span class="st">  </span><span class="kw">rename</span>(</a>
-<a class="sourceLine" id="cb81-4" title="4">    <span class="dt">code_com =</span> INSEE_COM,</a>
-<a class="sourceLine" id="cb81-5" title="5">    <span class="dt">lib_com =</span> NOM_COM,</a>
-<a class="sourceLine" id="cb81-6" title="6">    <span class="dt">code_dep =</span> INSEE_DEP,</a>
-<a class="sourceLine" id="cb81-7" title="7">    <span class="dt">code_reg =</span> INSEE_REG</a>
-<a class="sourceLine" id="cb81-8" title="8">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb81-9" title="9"><span class="st">  </span><span class="kw">select</span>(code_com, lib_com, code_dep, code_reg, zoom_idf, geometry) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb81-10" title="10"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_COMMUNE_DOM_IDF_2019.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># commune</span></a>
+<a class="sourceLine" id="cb70-2" title="2">shp_commune_zoom_idf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">rename</span>(</a>
+<a class="sourceLine" id="cb70-4" title="4">    <span class="dt">code_com =</span> INSEE_COM,</a>
+<a class="sourceLine" id="cb70-5" title="5">    <span class="dt">lib_com =</span> NOM_COM,</a>
+<a class="sourceLine" id="cb70-6" title="6">    <span class="dt">code_dep =</span> INSEE_DEP,</a>
+<a class="sourceLine" id="cb70-7" title="7">    <span class="dt">code_reg =</span> INSEE_REG</a>
+<a class="sourceLine" id="cb70-8" title="8">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-9" title="9"><span class="st">  </span><span class="kw">select</span>(code_com, lib_com, code_dep, code_reg, zoom_idf, geometry) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb70-10" title="10"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_COMMUNE_DOM_IDF_2019.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting source `data/shp/FR_COMMUNE_DOM_IDF_2019.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing layer `FR_COMMUNE_DOM_IDF_2019&#39; to data source `data/shp/FR_COMMUNE_DOM_IDF_2019.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing 36238 features with 5 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="co"># bassin_bmo</span></a>
-<a class="sourceLine" id="cb83-2" title="2">shp_bassin_bmo_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb83-3" title="3"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_BASSIN_BMO_DOM_IDF_2019.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## Warning in abbreviate_shapefile_names(obj): Field names abbreviated for ESRI Shapefile driver</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># bassin_bmo</span></a>
+<a class="sourceLine" id="cb72-2" title="2">shp_bassin_bmo_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_BASSIN_BMO_DOM_IDF_2019.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting source `data/shp/FR_BASSIN_BMO_DOM_IDF_2019.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing layer `FR_BASSIN_BMO_DOM_IDF_2019&#39; to data source `data/shp/FR_BASSIN_BMO_DOM_IDF_2019.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing 430 features with 3 fields and geometry type Unknown (any).</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co"># ze</span></a>
-<a class="sourceLine" id="cb86-2" title="2">shp_ze_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_ZE_DOM_IDF.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co"># ze</span></a>
+<a class="sourceLine" id="cb74-2" title="2">shp_ze_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_ZE_DOM_IDF.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting source `data/shp/FR_ZE_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing layer `FR_ZE_DOM_IDF&#39; to data source `data/shp/FR_ZE_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing 342 features with 3 fields and geometry type Unknown (any).</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co"># dep</span></a>
-<a class="sourceLine" id="cb88-2" title="2">shp_dep_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">code_dep =</span> INSEE_DEP,</a>
-<a class="sourceLine" id="cb88-4" title="4">         <span class="dt">code_reg =</span> INSEE_REG) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-5" title="5"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="co"># dep</span></a>
+<a class="sourceLine" id="cb76-2" title="2">shp_dep_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">code_dep =</span> INSEE_DEP,</a>
+<a class="sourceLine" id="cb76-4" title="4">         <span class="dt">code_reg =</span> INSEE_REG) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-5" title="5"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting source `data/shp/FR_DEP_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing layer `FR_DEP_DOM_IDF&#39; to data source `data/shp/FR_DEP_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing 109 features with 3 fields and geometry type Unknown (any).</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># reg</span></a>
-<a class="sourceLine" id="cb90-2" title="2">shp_reg_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">code_reg =</span> INSEE_REG) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-4" title="4"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_REG_DOM.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># reg</span></a>
+<a class="sourceLine" id="cb78-2" title="2">shp_reg_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">code_reg =</span> INSEE_REG) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-4" title="4"><span class="st">  </span><span class="kw">st_write</span>(<span class="st">&quot;data/shp/FR_REG_DOM.shp&quot;</span>, <span class="dt">delete_dsn =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting source `data/shp/FR_REG_DOM.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing layer `FR_REG_DOM&#39; to data source `data/shp/FR_REG_DOM.shp&#39; using driver `ESRI Shapefile&#39;
 ## Writing 18 features with 1 fields and geometry type Unknown (any).</code></pre>
@@ -454,60 +454,60 @@ Une table de passage est inclus.</p>
 <p>Pour pouvoir afficher un carré autour de zones particulières, par exemples les zoomes, il faut ajouter une couche dans le rendu <code>ggplot</code>, avec des coordonnées précises.</p>
 <p>On calcule cette couche avec <code>st_bbox()</code> qui permet de créer un polygone entourant une zone.</p>
 <p>La fonction suivante permet d’agrandir la boîte.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">scale_bbox &lt;-<span class="st"> </span><span class="cf">function</span>(bbox, scale){</a>
-<a class="sourceLine" id="cb92-2" title="2">  xrange &lt;-<span class="st"> </span>bbox<span class="op">$</span>xmax <span class="op">-</span><span class="st"> </span>bbox<span class="op">$</span>xmin</a>
-<a class="sourceLine" id="cb92-3" title="3">  yrange &lt;-<span class="st"> </span>bbox<span class="op">$</span>ymax <span class="op">-</span><span class="st"> </span>bbox<span class="op">$</span>ymin</a>
-<a class="sourceLine" id="cb92-4" title="4">  bbox[<span class="dv">1</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>xrange)</a>
-<a class="sourceLine" id="cb92-5" title="5">  bbox[<span class="dv">3</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>xrange)</a>
-<a class="sourceLine" id="cb92-6" title="6">  bbox[<span class="dv">2</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>yrange)</a>
-<a class="sourceLine" id="cb92-7" title="7">  bbox[<span class="dv">4</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>yrange)</a>
-<a class="sourceLine" id="cb92-8" title="8">  </a>
-<a class="sourceLine" id="cb92-9" title="9">  bbox</a>
-<a class="sourceLine" id="cb92-10" title="10">}</a></code></pre></div>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="co"># idf</span></a>
-<a class="sourceLine" id="cb93-2" title="2">polygone_idf &lt;-<span class="st"> </span>shp_dep_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-3" title="3"><span class="st">  </span><span class="kw">filter</span>(zoom_idf <span class="op">==</span><span class="st"> &quot;1&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-4" title="4"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-5" title="5"><span class="st">  </span><span class="kw">scale_bbox</span>(<span class="dt">scale =</span> <span class="fl">0.05</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-6" title="6"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a>
-<a class="sourceLine" id="cb93-7" title="7"></a>
-<a class="sourceLine" id="cb93-8" title="8"><span class="co"># dom</span></a>
-<a class="sourceLine" id="cb93-9" title="9">polygone_dom &lt;-<span class="st"> </span>shp_dep_simpl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-10" title="10"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;03&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;06&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-11" title="11"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-12" title="12"><span class="st">  </span><span class="kw">scale_bbox</span>(<span class="dt">scale =</span> <span class="fl">0.1</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-13" title="13"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">scale_bbox &lt;-<span class="st"> </span><span class="cf">function</span>(bbox, scale){</a>
+<a class="sourceLine" id="cb80-2" title="2">  xrange &lt;-<span class="st"> </span>bbox<span class="op">$</span>xmax <span class="op">-</span><span class="st"> </span>bbox<span class="op">$</span>xmin</a>
+<a class="sourceLine" id="cb80-3" title="3">  yrange &lt;-<span class="st"> </span>bbox<span class="op">$</span>ymax <span class="op">-</span><span class="st"> </span>bbox<span class="op">$</span>ymin</a>
+<a class="sourceLine" id="cb80-4" title="4">  bbox[<span class="dv">1</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>xrange)</a>
+<a class="sourceLine" id="cb80-5" title="5">  bbox[<span class="dv">3</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>xrange)</a>
+<a class="sourceLine" id="cb80-6" title="6">  bbox[<span class="dv">2</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>yrange)</a>
+<a class="sourceLine" id="cb80-7" title="7">  bbox[<span class="dv">4</span>] &lt;-<span class="st"> </span>bbox[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(scale <span class="op">*</span><span class="st"> </span>yrange)</a>
+<a class="sourceLine" id="cb80-8" title="8">  </a>
+<a class="sourceLine" id="cb80-9" title="9">  bbox</a>
+<a class="sourceLine" id="cb80-10" title="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># idf</span></a>
+<a class="sourceLine" id="cb81-2" title="2">polygone_idf &lt;-<span class="st"> </span>shp_dep_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-3" title="3"><span class="st">  </span><span class="kw">filter</span>(zoom_idf <span class="op">==</span><span class="st"> &quot;1&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-4" title="4"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-5" title="5"><span class="st">  </span><span class="kw">scale_bbox</span>(<span class="dt">scale =</span> <span class="fl">0.05</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-6" title="6"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a>
+<a class="sourceLine" id="cb81-7" title="7"></a>
+<a class="sourceLine" id="cb81-8" title="8"><span class="co"># dom</span></a>
+<a class="sourceLine" id="cb81-9" title="9">polygone_dom &lt;-<span class="st"> </span>shp_dep_simpl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-10" title="10"><span class="st">  </span><span class="kw">filter</span>(INSEE_REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;03&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;06&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-11" title="11"><span class="st">  </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-12" title="12"><span class="st">  </span><span class="kw">scale_bbox</span>(<span class="dt">scale =</span> <span class="fl">0.1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb81-13" title="13"><span class="st">  </span><span class="kw">st_as_sfc</span>()</a></code></pre></div>
 <p>On matérialise ici des polygones en les colorant.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> shp_dep_simpl,</a>
-<a class="sourceLine" id="cb94-3" title="3">          <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
-<a class="sourceLine" id="cb94-4" title="4">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
-<a class="sourceLine" id="cb94-6" title="6">    <span class="dt">data =</span> polygone_idf,</a>
-<a class="sourceLine" id="cb94-7" title="7">    <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>,</a>
-<a class="sourceLine" id="cb94-8" title="8">    <span class="dt">alpha =</span> <span class="fl">0.5</span>,</a>
-<a class="sourceLine" id="cb94-9" title="9">    <span class="dt">size =</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb94-10" title="10">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-11" title="11"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
-<a class="sourceLine" id="cb94-12" title="12">    <span class="dt">data =</span> polygone_dom,</a>
-<a class="sourceLine" id="cb94-13" title="13">    <span class="dt">fill =</span> <span class="st">&quot;green&quot;</span>,</a>
-<a class="sourceLine" id="cb94-14" title="14">    <span class="dt">alpha =</span> <span class="fl">0.5</span>,</a>
-<a class="sourceLine" id="cb94-15" title="15">    <span class="dt">size =</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb94-16" title="16">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-17" title="17"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> shp_dep_simpl,</a>
+<a class="sourceLine" id="cb82-3" title="3">          <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb82-4" title="4">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb82-6" title="6">    <span class="dt">data =</span> polygone_idf,</a>
+<a class="sourceLine" id="cb82-7" title="7">    <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>,</a>
+<a class="sourceLine" id="cb82-8" title="8">    <span class="dt">alpha =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb82-9" title="9">    <span class="dt">size =</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb82-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-11" title="11"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb82-12" title="12">    <span class="dt">data =</span> polygone_dom,</a>
+<a class="sourceLine" id="cb82-13" title="13">    <span class="dt">fill =</span> <span class="st">&quot;green&quot;</span>,</a>
+<a class="sourceLine" id="cb82-14" title="14">    <span class="dt">alpha =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb82-15" title="15">    <span class="dt">size =</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb82-16" title="16">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb82-17" title="17"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
 <p><img src="support_files/figure-html/polygone_map-1.png" width="672" /></p>
 <p>En réalité, pour n’avoir que le contour, il faut configurer <code>alpha = 0</code>.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> shp_dep_simpl,</a>
-<a class="sourceLine" id="cb95-3" title="3">          <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
-<a class="sourceLine" id="cb95-4" title="4">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> polygone_idf,</a>
-<a class="sourceLine" id="cb95-6" title="6">          <span class="dt">alpha =</span> <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb95-7" title="7">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-8" title="8"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> polygone_dom,</a>
-<a class="sourceLine" id="cb95-9" title="9">          <span class="dt">alpha =</span> <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb95-10" title="10">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb95-11" title="11"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> shp_dep_simpl,</a>
+<a class="sourceLine" id="cb83-3" title="3">          <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>,</a>
+<a class="sourceLine" id="cb83-4" title="4">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> polygone_idf,</a>
+<a class="sourceLine" id="cb83-6" title="6">          <span class="dt">alpha =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb83-7" title="7">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-8" title="8"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> polygone_dom,</a>
+<a class="sourceLine" id="cb83-9" title="9">          <span class="dt">alpha =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb83-10" title="10">          <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-11" title="11"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
 <p><img src="support_files/figure-html/polygone_map_alpha-1.png" width="672" /></p>
 
 </div>

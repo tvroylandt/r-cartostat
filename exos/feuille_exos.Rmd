@@ -23,6 +23,8 @@ Les objectifs vont être d'importer ses données, de les jointer avec des donné
 
 On représentera ensuite ces indicateurs sur une ou plusieurs cartes qui seront exportées.
 
+Pour cela, il faut télécharger le dossier https://github.com/tvroylandt/r-cartostat qui contient aussi les slides du cours.
+
 # Packages
 
 + On charge les packages qui vont nous être utiles.
@@ -82,17 +84,464 @@ df_accidents18
 
 ## Données population
 
-# Recodage
++ Importer les données départementales de population dans un objet `df_pop_dep17`.
++ Idem pour les communales dans `df_pop_com17`.
 
-# Regroupement en bassins d'emploi
+```{r import_pop, include=params$correction}
+# départements
+df_pop_dep17 <- read_csv2(here("data/dataset/exo/pop_dep17.csv"))
 
-# Calcul des indicateurs territoriaux
+df_pop_dep17
+
+# communes
+df_pop_com17 <- read_xlsx(here("data/dataset/exo/pop_com17.xlsx"))
+
+df_pop_com17
+```
+
+## Bonus - offres
+
+On a construit un jeu de données sur les offres par département : `offres_stmt19.sas7bdat`.
+
++ Importer ce jeu de données.
+
+```{r import_offres, include=params$correction}
+library(haven)
+
+df_off_dep19 <-
+  read_sas(here("data/dataset/exo/offres_stmt19.sas7bdat"))
+
+df_off_dep19 
+```
+
+# Calculs départementaux
+
+On va regarder ce que ça donne au niveau des départements.
+
+## Regroupement
+
++ Regrouper les données par département.
++ Pour cela on somme les indicateurs.
++ Calculer aussi un nombre d'accidents.
+
+```{r group_dep, include=params$correction}
+df_accidents_dep18 <- df_accidents18 %>% 
+  group_by(code_dep) %>% 
+  summarise(nb_accidents = n(),
+            nb_indemnes = sum(nb_indemnes),
+            nb_blesses_legers = sum(nb_blesses_legers),
+            nb_blesses_hospi = sum(nb_blesses_hospi),
+            nb_tues = sum(nb_tues),
+            nb_impliques = sum(nb_impliques)) %>% 
+  ungroup()
+
+df_accidents_dep18
+```
+
+## Jointure
+
++ Jointer sur les données de population.
+
+```{r join_pop_dep, include=params$correction}
+df_accidents_dep_pop <- df_accidents_dep18 %>% 
+  left_join(df_pop_dep17, by = "code_dep")
+
+df_accidents_dep_pop
+```
+
+## Calculer des indicateurs
+
++ Calculer le nombre d'accidents pour 10 000 habitants pour chaque département.
++ Calculer le nombre de tués pour 10 000 habitants pour chaque département.
++ Découper ces deux parts en classes (à choisir manuellement).
++ Ne conserver que les variables d'intérêt.
++ Enlever les départements à blanc (20 et 976).
+
+```{r, include=params$correction}
+df_accidents_dep_pop_r <- df_accidents_dep_pop %>%
+  mutate(
+    accidents_pop = nb_accidents / pop_tot * 10000,
+    tues_pop = nb_tues / pop_tot * 10000,
+    accidents_pop_cut = cut(
+      accidents_pop,
+      include.lowest = TRUE,
+      breaks = c(0, 5, 10, 15, 10000)
+    ),
+    tues_pop_cut = cut(
+      tues_pop,
+      include.lowest = TRUE,
+      breaks = c(0, 0.3, 0.6, 1, 10000),
+      labels = c("0,3 et moins", "De 0,3 à 0,6", "De 0,6 à 1", "Plus de 1")
+    )
+  ) %>%
+  select(code_dep,
+         nb_accidents,
+         accidents_pop,
+         accidents_pop_cut,
+         tues_pop,
+         tues_pop_cut) %>%
+  filter(!is.na(tues_pop))
+
+df_accidents_dep_pop_r
+
+# pour choisir les classes
+ggplot(df_accidents_dep_pop_r,
+       aes(x = accidents_pop)) +
+  geom_histogram()
+
+ggplot(df_accidents_dep_pop_r,
+       aes(x = tues_pop)) +
+  geom_histogram()
+```
+
++ Refaire les opérations en conservant la variable `mois`.
+
+```{r ind_mois_dep, include=params$correction}
+df_accidents_dep_pop_mois_r <- df_accidents18 %>%
+  group_by(code_dep, mois) %>%
+  summarise(
+    nb_accidents = n(),
+    nb_indemnes = sum(nb_indemnes),
+    nb_blesses_legers = sum(nb_blesses_legers),
+    nb_blesses_hospi = sum(nb_blesses_hospi),
+    nb_tues = sum(nb_tues),
+    nb_impliques = sum(nb_impliques)
+  ) %>%
+  ungroup() %>%
+  left_join(df_pop_dep17, by = "code_dep") %>%
+  mutate(
+    accidents_pop = nb_accidents / pop_tot * 10000,
+    tues_pop = nb_tues / pop_tot * 10000,
+    accidents_pop_cut = cut(
+      accidents_pop,
+      include.lowest = TRUE,
+      breaks = c(0, 5, 10, 15, 10000)
+    ),
+    tues_pop_cut = cut(
+      tues_pop,
+      include.lowest = TRUE,
+      breaks = c(0, 0.3, 0.6, 1, 10000),
+      labels = c("0,3 et moins", "De 0,3 à 0,6", "De 0,6 à 1", "Plus de 1")
+    )
+  ) %>%
+  select(code_dep,
+         mois,
+         nb_accidents,
+         accidents_pop,
+         accidents_pop_cut,
+         tues_pop,
+         tues_pop_cut) %>%
+  filter(!is.na(tues_pop))
+
+df_accidents_dep_pop_mois_r
+```
+
+## Luminosité
+
++ Calculer une part d'accident qui ont lieu le jour, par département.
++ Découper cette part en classes selon les quantiles.
++ Découper cette part en classes définies manuellement.
++ Garder `code_dep` et les variables de pourcentages.
+
+```{r luminosite_dep, include=params$correction}
+df_accidents_dep_jour18 <- df_accidents18 %>%
+  group_by(luminosite, code_dep) %>%
+  count() %>%
+  group_by(code_dep) %>%
+  mutate(perc_jour = n / sum(n) * 100,
+         perc_jour = round(perc_jour, 1)) %>%
+  filter(luminosite == "Jour") %>%
+  ungroup() %>%
+  mutate(
+    perc_jour_quantile = cut(
+      perc_jour,
+      breaks = quantile(.$perc_jour),
+      include.lowest = TRUE
+    ),
+    perc_jour_cut = cut(
+      perc_jour,
+      include.lowest = TRUE,
+      breaks = c(0, 70, 75, 80, 100)
+    )
+  ) %>% 
+  select(code_dep, starts_with("perc_jour"))
+
+df_accidents_dep_jour18
+```
+
+## Bonus - Agglomération
+
++ Construire un score de gravité pour chaque accident :
+
+  + Indemne = 0.1 ;
+  + Blessés légers = 1 ;
+  + Blessés hospitalisés = 2 ;
+  + Tués = 5.
+  
++ Calculer le score moyen dans et hors agglomération, par département.
+
+```{r score_agglo_dep, include=params$correction}
+df_accidents_score <- df_accidents18 %>% 
+  mutate(score_acc = 0.1 * nb_indemnes + 1 * nb_blesses_legers + 2 * nb_blesses_hospi + 5 * nb_tues) %>% 
+  group_by(agglo, code_dep) %>% 
+  summarise(score_acc_mean = mean(score_acc)) %>% 
+  ungroup() 
+
+df_accidents_score
+
+```
+
++ Calculer la différence de score entre dans et hors agglomération, par département (utiliser `pivot_wider` puis `pivot_longer`).
+
+```{r score_agglo_dep_diff, include=params$correction}
+df_accidents_score_diff <- df_accidents_score %>% 
+  pivot_wider(names_from = agglo,
+              values_from = score_acc_mean) %>% 
+  mutate(diff_score = `Hors agglomération` - `En agglomération`)
+
+df_accidents_score_diff
+```
 
 # Recoupement avec les données spatiales
 
+## Chargement
+
++ Charger le fond de carte départemental qui se trouve dans `data/shp`.
+
+```{r st_read_dep, include=params$correction}
+shp_dep <- st_read(here("data/shp/FR_DEP_DOM_IDF.shp"), quiet = TRUE)
+```
+
+## Jointure
+
++ On jointe les différentes données avec les fichiers spatiaux :
+
+  + par département ;
+  + par département/mois ;
+  + pour les accidents de jour ;
+  + pour le score agglomération/hors agglomération.
+
+```{r join_spatial_dep, include=params$correction}
+df_accidents_dep_shp <- shp_dep %>% 
+  inner_join(df_accidents_dep_pop_r, by = "code_dep")
+
+df_accidents_dep_mois_shp <- shp_dep %>% 
+  inner_join(df_accidents_dep_pop_mois_r, by = "code_dep")
+
+df_accidents_dep_jour_shp <- shp_dep %>% 
+  inner_join(df_accidents_dep_jour18, by = "code_dep")
+
+df_accidents_dep_agglo_score_shp <- shp_dep %>% 
+  inner_join(df_accidents_score, by = "code_dep")
+```
+
 # Représentation cartographique
 
-# Effet de la saisonnalité
+## Aplats de couleur
+
++ Représenter la part des accidents qui arrivent le jour en continu.
++ Mettre un thème blanc et changer la légende.
+
+```{r map_color_continu, include=params$correction}
+ggplot(data = df_accidents_dep_jour_shp) +
+  geom_sf(aes(fill = perc_jour)) +
+  scale_fill_viridis_c(name = "Part d'accidents de jour", 
+                       direction = -1) +
+  theme_void()
+```
+
++ Faire de même en zoomant sur les Hauts-de-France
++ Qu'observe-t-on sur la légende ?
+
+```{r map_color_continu_hdf, include=params$correction}
+ggplot(data = df_accidents_dep_jour_shp %>%  filter(code_reg == "32")) +
+  geom_sf(aes(fill = perc_jour)) +
+  scale_fill_viridis_c(name = "Part d'accidents de jour",
+                       direction = -1) +
+  theme_void()
+```
+
++ Faire de même avec la variable découpée en quantile.
+
+```{r map_color_discret, include=params$correction}
+ggplot(data = df_accidents_dep_jour_shp) +
+  geom_sf(aes(fill = perc_jour_quantile)) +
+  scale_fill_viridis_d(name = "Part d'accidents de jour", 
+                       direction = -1) +
+  theme_void()
+```
+
+## Ajouter le texte
+
++ Ajouter la valeur, arrondie à l'unité, sur les départements.
++ Si possibles, pour l'Île-de-France, ne le faire que sur le zoom.
+
+```{r map_color_discret_text, include=params$correction}
+ggplot() +
+  geom_sf(data = df_accidents_dep_jour_shp, aes(fill = perc_jour_quantile)) +
+  geom_sf_text(
+    data = df_accidents_dep_jour_shp %>% filter(zoom_idf == "1" |
+                                                  code_reg != "11"),
+    aes(label = round(perc_jour, 0)),
+    fontface = "bold",
+    color = "black"
+  ) +
+  scale_fill_viridis_d(name = "Part d'accidents de jour",
+                       direction = -1) +
+  theme_void()
+```
+
+## Région
+
++ Charger le fond de carte régions.
++ Faire apparaître en plus gros les contours des régions.
+
+```{r map_color_discret_reg, include=params$correction}
+shp_reg <- st_read(here("data/shp/FR_REG_DOM.shp"))
+
+ggplot(data = df_accidents_dep_jour_shp) +
+  geom_sf(aes(fill = perc_jour_quantile)) +
+  geom_sf(
+    data = shp_reg,
+    alpha = 0,
+    color = "black",
+    size = 1.2
+  ) +
+  scale_fill_viridis_d(name = "Part d'accidents de jour",
+                       direction = -1) +
+  theme_void()
+```
+
+## Cercle proportionnels
+
++ Représenter le nombre d'accidents par des cercles proportionnels.
++ En colorer l'intérieur par la part d'accidents par habitant, en continu.
+
+```{r circle_map_acc, include=params$correction}
+ggplot(df_accidents_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_accidents, fill = accidents_pop), shape = 21) +
+  scale_fill_viridis_c(name = "Ratio d'accidents \npar habitant", direction = -1) +
+  scale_size_continuous(name = "Nombre d'accidents", range = c(1, 10)) +
+  theme_void()
+```
+
++ En colorer l'intérieur par la part de tués par habitant, en classes.
+
+```{r circle_map_tues, include=params$correction}
+ggplot(df_accidents_dep_shp) +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_accidents, fill = tues_pop_cut), shape = 21) +
+  scale_fill_viridis_d(name = "Ratio de tués \npar habitant", guide = guide_legend(override.aes = list(size =
+                                                                                              5))) +
+  scale_size_continuous(name = "Nombre d'accidents", range = c(1, 10)) +
+  theme_void()
+```
+
+## Effet de la saisonnalité
+
++ Faire une carte du nombre d'accidents par habitatn par mois et département.
++ On peut facetter avec `facet_wrap` ou `facet_grid`.
+
+```{r facet_mois_nb_acc, include=params$correction}
+df_accidents_dep_mois_shp %>%
+  filter(!is.na(mois)) %>%
+  mutate(mois = fct_relevel(mois,
+                            "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")) %>% 
+  ggplot() +
+  geom_sf(aes(fill = accidents_pop)) +
+  scale_fill_viridis_c(name = "Nombre d'accidents \npour 10 000 habitants",
+                       direction = -1) +
+  facet_wrap(vars(mois)) +
+  theme_void()
+```
+
+## Bonus - Agglomération
+
++ Réprésenter le score moyen en et hors agglomération, avec une facette.
+
+```{r score_map_agglo_facet, include=params$correction}
+ggplot(df_accidents_dep_agglo_score_shp) +
+  geom_sf(aes(fill = score_acc_mean)) +
+  scale_fill_viridis_c(direction = -1) +
+  facet_wrap(vars(agglo)) +
+  theme_void()
+```
+
+# Niveau bassin d'emploi
+
+On se penche maintenant sur le niveau bassin d'emploi.
+
+## Regroupement en bassins d'emploi
+
++ Importer la table de passage commune -> bassin d'emploi.
+
+```{r import_bassin, include=params$correction}
+passage_com_bassin <- read_xlsx(here("data/passage/passage_commune_bassin_bmo.xlsx"))
+```
+
++ Jointer sur les accidents pour construire le niveau bassin.
++ Construire le nombre d'accidents par bassin.
+
+```{r join_bassin, include=params$correction}
+df_accidents_bassin <- df_accidents18 %>% 
+  inner_join(passage_com_bassin, by = c("code_com" = "code_commune")) %>% 
+  group_by(code_bassin_bmo) %>% 
+  count(name = "nb_accidents")
+```
+
++ A-t-on des trous ?
++ Sur quelles communes ? Regarder d'où ça vient sur le site de l'Insee.
+
+```{r trous_bassin, include=params$correction}
+trous_bassin <- df_accidents18 %>% 
+  anti_join(passage_com_bassin, by = c("code_com" = "code_commune"))
+
+trous_bassin %>% 
+  group_by(code_com) %>% 
+  count()
+```
+
++ Importer le fond de carte au niveau bassin d'emploi.
+
+```{r import_bassin_shp, include=params$correction}
+shp_bassin <- st_read(here("data/shp/FR_BASSIN_BMO_DOM_IDF_2019.shp"), quiet = TRUE)
+```
+
+## Cartes
+
++ Jointer sur le fond de carte.
++ Réaliser une carte du nombre d'accidents par bassin d'emploi, en cercles proportionnels.
++ Avec en surimpression les régions.
+
+```{r carte_bassin, include=params$correction}
+shp_bassin %>%
+  inner_join(df_accidents_bassin, by = c("cd_bss_" = "code_bassin_bmo")) %>%
+  ggplot() +
+  geom_sf() +
+  stat_sf_coordinates(aes(size = nb_accidents, fill = nb_accidents), shape = 21) +
+  geom_sf(
+    data = shp_reg,
+    alpha = 0,
+    color = "black",
+    size = 1.1
+  ) +
+  scale_fill_viridis_c(name = "Nombre d'accidents",
+                       direction = -1) +
+  scale_size_continuous(name = "", range = c(1, 10)) +
+  theme_void()
+```
 
 # Export
+
++ Exporter la dernière carte.
+
+```{r export, include=params$correction, eval = FALSE}
+ggsave(
+  "accidents_bassin.png",
+  width = 10,
+  height = 8,
+  units = "cm"
+)
+```
 

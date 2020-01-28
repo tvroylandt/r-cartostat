@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -260,12 +261,12 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="echelles-de-couleur-continues" class="section level3">
 <h3><span class="header-section-number">8.1.1</span> Echelles de couleur continues</h3>
 <p>Pour les variables continues, on privilégiera <code>scale_xxx_gradient()</code>, qui affiche un gradient de couleur où on lui donne la couleur basse et haute.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
-<a class="sourceLine" id="cb49-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
-<a class="sourceLine" id="cb49-5" title="5">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>,</a>
-<a class="sourceLine" id="cb49-6" title="6">                      <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
+<a class="sourceLine" id="cb44-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
+<a class="sourceLine" id="cb44-5" title="5">                      <span class="dt">low =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb44-6" title="6">                      <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_gradient-1.png" width="672" /></p>
 <p>Dans le cas où on a deux gammes de valeurs, par exemple négatives et positives, on peut utiliser <code>scale_xxx_gradient2()</code> qui comprend un paramètre <code>mid</code>, pour la valeur du milieu.</p>
 </div>
@@ -274,19 +275,19 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Pour les échelles discrètes, il peut être intéressant de préciser manuellement les couleurs que l’on souhaite voir apparaître, soit avec leur nom, soit avec leur code (<a href="https://www.colorhexa.com/" class="uri">https://www.colorhexa.com/</a>).</p>
 <p>On utilise alors <code>scale_xxx_manual()</code>.</p>
 <p>Par exemple ici sur le remplissage des zones :</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
-<a class="sourceLine" id="cb50-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
-<a class="sourceLine" id="cb50-5" title="5">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
+<a class="sourceLine" id="cb45-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-4" title="4"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
+<a class="sourceLine" id="cb45-5" title="5">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_manual-1.png" width="672" /></p>
 <p>Ou pour la couleur de points :</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
-<a class="sourceLine" id="cb51-4" title="4">                          <span class="dt">color =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
-<a class="sourceLine" id="cb51-6" title="6">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#db4545&quot;</span>, <span class="st">&quot;#c72626&quot;</span>, <span class="st">&quot;#9d1e1e&quot;</span>, <span class="st">&quot;#721616&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
+<a class="sourceLine" id="cb46-4" title="4">                          <span class="dt">color =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-5" title="5"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">name =</span> <span class="st">&quot;Difficulté de recrutement&quot;</span>,</a>
+<a class="sourceLine" id="cb46-6" title="6">                    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#db4545&quot;</span>, <span class="st">&quot;#c72626&quot;</span>, <span class="st">&quot;#9d1e1e&quot;</span>, <span class="st">&quot;#721616&quot;</span>))</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_color-1.png" width="672" /></p>
 </div>
 <div id="echelles-de-couleur-existantes" class="section level3">
@@ -295,28 +296,28 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>On peut particulièrement recommander les palettes issues de <code>viridis</code>, qui sont spécialement pensées pour être adaptées aux personnes souffrant de déficience visuelle. Elles peuvent avoir des difficultées à distinguer certaines couleurs ou différences de couleurs. Plus d’informations : <a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="uri">https://ggplot2.tidyverse.org/reference/scale_viridis.html</a></p>
 <p>On s’y réfère par <code>scale_xxx_viridis_d()</code> pour les palettes discrètes et <code>scale_xxx_viridis_c()</code> pour les palettes continues.</p>
 <p>On peut aussi régler le sens de la palette avec <code>direction</code>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
-<a class="sourceLine" id="cb52-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb52-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">direction =</span> <span class="dv">-1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp, </a>
+<a class="sourceLine" id="cb47-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">direction =</span> <span class="dv">-1</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_fill_viridis-1.png" width="672" /></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
-<a class="sourceLine" id="cb53-4" title="4">                          <span class="dt">color =</span> part_diff)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-5" title="5"><span class="st">  </span><span class="kw">scale_color_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
+<a class="sourceLine" id="cb48-4" title="4">                          <span class="dt">color =</span> part_diff)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-5" title="5"><span class="st">  </span><span class="kw">scale_color_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_color_viridis-1.png" width="672" /></p>
 </div>
 <div id="autres-échelles" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> Autres échelles</h3>
 <p>On utilisera aussi <code>scale</code> pour régler les autres paramètres, par exemple la taille des points, ici en précisant une rangée de valeurs (<code>range =</code>), ce qui augmente l’écart entre la taille des points.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot), </a>
-<a class="sourceLine" id="cb54-4" title="4">                      <span class="dt">shape =</span> <span class="dv">22</span>, </a>
-<a class="sourceLine" id="cb54-5" title="5">                      <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-6" title="6"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Nombre de projets&quot;</span>,</a>
-<a class="sourceLine" id="cb54-7" title="7">                        <span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot), </a>
+<a class="sourceLine" id="cb49-4" title="4">                      <span class="dt">shape =</span> <span class="dv">22</span>, </a>
+<a class="sourceLine" id="cb49-5" title="5">                      <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-6" title="6"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Nombre de projets&quot;</span>,</a>
+<a class="sourceLine" id="cb49-7" title="7">                        <span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>))</a></code></pre></div>
 <p><img src="support_files/figure-html/scale_size-1.png" width="672" /></p>
 <p>Le même principe peut s’appliquer aux autres paramètres passés dans <code>aes()</code>.</p>
 </div>
@@ -324,29 +325,29 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="titre-et-légende" class="section level2">
 <h2><span class="header-section-number">8.2</span> Titre et légende</h2>
 <p>La fonction <code>labs()</code> permet d’ajouter un titre et une légende.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb55-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb55-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
-<a class="sourceLine" id="cb55-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
-<a class="sourceLine" id="cb55-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb50-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb50-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
+<a class="sourceLine" id="cb50-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
+<a class="sourceLine" id="cb50-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/labs-1.png" width="672" /></p>
 </div>
 <div id="le-thème" class="section level2">
 <h2><span class="header-section-number">8.3</span> Le thème</h2>
 <p>La thème (<code>theme()</code>) contient tous les éléments de personnalisation de votre graphique. Il y en a beaucoup et vous pouvez pousser très loin : <a href="https://ggplot2.tidyverse.org/reference/theme.html" class="uri">https://ggplot2.tidyverse.org/reference/theme.html</a>.</p>
 <p>On se contentera ici d’appliquer un thème prédéfini : <code>theme_void()</code>, qui retire le fond gris et les axes.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb56-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb56-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb56-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
-<a class="sourceLine" id="cb56-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb56-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
-<a class="sourceLine" id="cb56-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb56-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb51-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb51-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
+<a class="sourceLine" id="cb51-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
+<a class="sourceLine" id="cb51-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
 <p><img src="support_files/figure-html/theme-1.png" width="672" /></p>
 <p>Notre carte a maintenant son aspect définitif.</p>
 

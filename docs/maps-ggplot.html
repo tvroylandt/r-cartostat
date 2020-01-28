@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -261,9 +262,9 @@ Celui-ci nécessite un certain nombre d’éléments :</p>
 </ul>
 <p><code>ggplot2</code> a un fonctionnement par <strong>couches</strong>, c’est-à-dire qu’on additionne les éléments au fur et à mesure.</p>
 <p>On lui déclare qu’on veut utiliser le package par l’instruction <code>ggplot()</code> et on ajoute ensuite les couches les unes après les autres avec le <code>+</code>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-2" title="2"><span class="st">  </span><span class="er">&lt;</span>FORME<span class="op">&gt;</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>, <span class="kw">aes</span>(<span class="op">&lt;</span>VARIABLES<span class="op">&gt;</span>), <span class="dt">...=</span> <span class="op">&lt;</span>PARAMS<span class="op">&gt;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="er">&lt;</span>FONCTION1<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="st">  </span><span class="er">&lt;</span>FORME<span class="op">&gt;</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>, <span class="kw">aes</span>(<span class="op">&lt;</span>VARIABLES<span class="op">&gt;</span>), <span class="dt">...=</span> <span class="op">&lt;</span>PARAMS<span class="op">&gt;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="st">  </span><span class="er">&lt;</span>FONCTION1<span class="op">&gt;</span></a></code></pre></div>
 <p>La donnée peut se spécifier au niveau du <code>ggplot(data = &lt;DATA&gt;)</code>, elle s’appliquera alors à l’ensemble des formes et fonctions, ou au niveau de chaque forme, où elle s’appliquera uniquement à la forme.</p>
 </div>
 <div id="pour-la-cartographie-1" class="section level2">
@@ -272,28 +273,28 @@ Celui-ci nécessite un certain nombre d’éléments :</p>
 <div id="spécifier-la-table-de-données" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Spécifier la table de données</h3>
 <p>Dans un premier temps, on va lui spécifier quelles sont les données à utiliser, cela nous affiche la carte vide, avec les limites pour chaque unité.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp)</a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_sf-1.png" width="672" /></p>
 <p>On peut jouer sur les paramètres pour élargir ou changer la couleur des frontières.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb41-3" title="3">          <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
-<a class="sourceLine" id="cb41-4" title="4">          <span class="dt">size =</span> <span class="fl">1.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb36-3" title="3">          <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
+<a class="sourceLine" id="cb36-4" title="4">          <span class="dt">size =</span> <span class="fl">1.1</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_sf_fill-1.png" width="672" /></p>
 </div>
 <div id="afficher-plusieurs-couches-de-données" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Afficher plusieurs couches de données</h3>
 <p>On peut vouloir afficher plusieurs couches de données, par exemple quand on affiche les départements et qu’on veut représenter les limites régionales.</p>
 <p>On ajoute alors la couche régionale au dessus de la couche départementale. Les limites des régions vont alors se superposer aux limites des départements. On utilise le paramètre <code>alpha = 0</code> pour lui préciser qu’on souhaite que l’intérieur des zones soit transparente.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb42-3" title="3">          <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
-<a class="sourceLine" id="cb42-4" title="4">          <span class="dt">size =</span> <span class="fl">0.9</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> reg_shp,</a>
-<a class="sourceLine" id="cb42-6" title="6">          <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>,</a>
-<a class="sourceLine" id="cb42-7" title="7">          <span class="dt">size =</span> <span class="fl">1.1</span>,</a>
-<a class="sourceLine" id="cb42-8" title="8">          <span class="dt">alpha =</span> <span class="dv">0</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb37-3" title="3">          <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</a>
+<a class="sourceLine" id="cb37-4" title="4">          <span class="dt">size =</span> <span class="fl">0.9</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb37-5" title="5"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> reg_shp,</a>
+<a class="sourceLine" id="cb37-6" title="6">          <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>,</a>
+<a class="sourceLine" id="cb37-7" title="7">          <span class="dt">size =</span> <span class="fl">1.1</span>,</a>
+<a class="sourceLine" id="cb37-8" title="8">          <span class="dt">alpha =</span> <span class="dv">0</span>) </a></code></pre></div>
 <p><img src="support_files/figure-html/ggplot_multicouche-1.png" width="672" /></p>
 
 </div>

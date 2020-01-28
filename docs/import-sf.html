@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -284,29 +285,29 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>La fonction <code>st_read()</code>, du package <code>sf</code>, va nous permettre de lire ces fichiers.
 Il faut lui spécifier le chemin vers le fichier .shp.</p>
 <p>Exemple ici avec l’import des départements.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>))</a></code></pre></div>
 <pre><code>## Reading layer `FR_DEP_DOM_IDF&#39; from data source `D:\r-cartostat\data\shp\FR_DEP_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 109 features and 3 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
-## bbox:           xmin: 101171.8 ymin: 5991180 xmax: 1242086 ymax: 7283392
+## bbox:           xmin: 99787.91 ymin: 5990209 xmax: 1242106 ymax: 7283675
 ## epsg (SRID):    NA
 ## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs</code></pre>
 <p>On peut en visualiser le contenu. On observe qu’on a un fichier avec une colonne <code>DEP</code>, qui contient le code du département, ainsi qu’une colonne <code>geometry</code> qui contient les spécifications spatiales.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">shp_dep</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">shp_dep</a></code></pre></div>
 <pre><code>## # A tibble: 109 x 4
-##    code_reg code_dep zoom_idf                                                                          geometry
-##    &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                                   &lt;MULTIPOLYGON [m]&gt;
-##  1 01       971      0        (((359926.3 6062079, 359394.4 6061722, 358910.3 6061434, 358481.5 6061211, 35811~
-##  2 02       972      0        (((518712.6 6008907, 518514.6 6008430, 518289.9 6007830, 518041.7 6007087, 51777~
-##  3 03       973      0        (((675660.3 6033423, 675054 6032020, 674433.4 6030537, 673804.1 6028989, 673177.~
-##  4 04       974      0        (((835255.3 5992635, 833869 5993057, 832318.9 5993538, 830628.8 5994069, 828855.~
-##  5 06       976      0        (((1012993 6063103, 1013066 6062251, 1013082 6061367, 1013047 6060461, 1012968 6~
-##  6 11       75       0        (((645954.9 6860778, 645557.8 6861074, 645271.2 6861383, 645081.6 6861705, 64498~
-##  7 11       75       1        (((1008050 7186125, 1007383 7186590, 1006738 7187093, 1006113 7187641, 1005523 7~
-##  8 11       77       0        (((689514.7 6783195, 688908.1 6782948, 688323.5 6782740, 687759.3 6782598, 68721~
-##  9 11       77       1        (((1106529 7018070, 1105773 7017682, 1105044 7017248, 1104328 7016771, 1103609 7~
-## 10 11       78       0        (((615951.3 6817188, 615344.4 6817347, 614746.5 6817560, 614173.1 6817825, 61363~
+##    code_reg code_dep zoom_idf                                                                       geometry
+##    &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                                &lt;MULTIPOLYGON [m]&gt;
+##  1 01       971      0        (((297258.6 6002422, 297216.7 6002231, 297141.1 6002048, 297036.6 6001871, 29~
+##  2 02       972      0        (((518815.8 6008072, 518844.2 6007695, 518900.9 6007324, 518965.8 6006944, 51~
+##  3 03       973      0        (((677679.3 6060770, 677688 6060670, 677695.9 6060560, 677702.4 6060443, 6777~
+##  4 04       974      0        (((835236.5 5992620, 833865.5 5993048, 832327.3 5993532, 830654.1 5994059, 82~
+##  5 06       976      0        (((980635.2 5995114, 980625.1 5995048, 980614.3 5994980, 980602.9 5994913, 98~
+##  6 11       75       0        (((646062 6860110, 645662.4 6860488, 645327.5 6860872, 645051.2 6861254, 6448~
+##  7 11       75       1        (((1008114 7186024, 1007458 7186473, 1006815 7186963, 1006171 7187507, 100554~
+##  8 11       77       0        (((690163.1 6783563, 689622.1 6783296, 689110 6783012, 688623.1 6782731, 6881~
+##  9 11       77       1        (((1106500 7018251, 1105884 7017931, 1105299 7017572, 1104735 7017177, 110418~
+## 10 11       78       0        (((615945.4 6817082, 615325.3 6817245, 614715.2 6817459, 614134.3 6817715, 61~
 ## # ... with 99 more rows</code></pre>
 </div>
 <div id="opérations-sur-données-spatiales" class="section level2">
@@ -316,55 +317,55 @@ Il faut lui spécifier le chemin vers le fichier .shp.</p>
 <h3><span class="header-section-number">4.3.1</span> Filtre</h3>
 <p>On peut filtrer sur une zone en utilisant <code>filter()</code>.
 Par exemple si je ne souhaite que l’Oise.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="st">  </span><span class="kw">filter</span>(code_dep <span class="op">==</span><span class="st"> &quot;60&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">shp_dep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw">filter</span>(code_dep <span class="op">==</span><span class="st"> &quot;60&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
-##   code_reg code_dep zoom_idf                                                                           geometry
-##   &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                                    &lt;MULTIPOLYGON [m]&gt;
-## 1 32       60       0        (((702185.7 6904719, 702056.5 6904229, 701890.5 6903802, 701677.5 6903440, 701404~</code></pre>
+##   code_reg code_dep zoom_idf                                                                        geometry
+##   &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                                 &lt;MULTIPOLYGON [m]&gt;
+## 1 32       60       0        (((703447.6 6903189, 703461.8 6903174, 703473.4 6903160, 703482.4 6903146, 703~</code></pre>
 </div>
 <div id="modification-de-colonnes" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Modification de colonnes</h3>
 <p>Je peux créer des colonnes, par exemple en regroupant les départements en régions.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">shp_dep_recode &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">REG =</span> <span class="kw">fct_collapse</span>(</a>
-<a class="sourceLine" id="cb27-3" title="3">    code_dep,</a>
-<a class="sourceLine" id="cb27-4" title="4">    <span class="st">&quot;Hauts-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;62&quot;</span>, <span class="st">&quot;80&quot;</span>),</a>
-<a class="sourceLine" id="cb27-5" title="5">    <span class="st">&quot;Ile-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>)</a>
-<a class="sourceLine" id="cb27-6" title="6">  )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-7" title="7"><span class="st">  </span><span class="kw">filter</span>(REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hauts-de-France&quot;</span>, <span class="st">&quot;Ile-de-France&quot;</span>) <span class="op">&amp;</span><span class="st"> </span>zoom_idf <span class="op">==</span><span class="st"> &quot;0&quot;</span>)</a>
-<a class="sourceLine" id="cb27-8" title="8"></a>
-<a class="sourceLine" id="cb27-9" title="9">shp_dep_recode</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">shp_dep_recode &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">REG =</span> <span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb26-3" title="3">    code_dep,</a>
+<a class="sourceLine" id="cb26-4" title="4">    <span class="st">&quot;Hauts-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;62&quot;</span>, <span class="st">&quot;80&quot;</span>),</a>
+<a class="sourceLine" id="cb26-5" title="5">    <span class="st">&quot;Ile-de-France&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>)</a>
+<a class="sourceLine" id="cb26-6" title="6">  )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="st">  </span><span class="kw">filter</span>(REG <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hauts-de-France&quot;</span>, <span class="st">&quot;Ile-de-France&quot;</span>) <span class="op">&amp;</span><span class="st"> </span>zoom_idf <span class="op">==</span><span class="st"> &quot;0&quot;</span>)</a>
+<a class="sourceLine" id="cb26-8" title="8"></a>
+<a class="sourceLine" id="cb26-9" title="9">shp_dep_recode</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 5
-##    code_reg code_dep zoom_idf                                                              geometry REG        
-##    &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                       &lt;MULTIPOLYGON [m]&gt; &lt;fct&gt;      
-##  1 11       75       0        (((645954.9 6860778, 645557.8 6861074, 645271.2 6861383, 645081.6 68~ Ile-de-Fra~
-##  2 11       77       0        (((689514.7 6783195, 688908.1 6782948, 688323.5 6782740, 687759.3 67~ Ile-de-Fra~
-##  3 11       78       0        (((615951.3 6817188, 615344.4 6817347, 614746.5 6817560, 614173.1 68~ Ile-de-Fra~
-##  4 11       91       0        (((629356.9 6799504, 628610.1 6799526, 627898.9 6799572, 627224 6799~ Ile-de-Fra~
-##  5 11       92       0        (((650014.2 6852247, 649886.1 6851558, 649741.5 6850899, 649577.9 68~ Ile-de-Fra~
-##  6 11       93       0        (((661168 6861732, 660507.1 6861841, 659895.6 6861922, 659320.2 6862~ Ile-de-Fra~
-##  7 11       94       0        (((659019.6 6847815, 658282.6 6847870, 657486.1 6847977, 656638.9 68~ Ile-de-Fra~
-##  8 11       95       0        (((611585.6 6885483, 610823.2 6885356, 610065.5 6885180, 609317 6884~ Ile-de-Fra~
-##  9 32       02       0        (((749009.6 6913220, 748583.3 6912897, 748221.7 6912540, 747909.7 69~ Hauts-de-F~
-## 10 32       59       0        (((717452.5 6991864, 716827.6 6991734, 716221.5 6991597, 715614.3 69~ Hauts-de-F~
-## 11 32       60       0        (((702185.7 6904719, 702056.5 6904229, 701890.5 6903802, 701677.5 69~ Hauts-de-F~
-## 12 32       62       0        (((641967.1 7013097, 641207.3 7012989, 640481.3 7012884, 639760.2 70~ Hauts-de-F~
-## 13 32       80       0        (((639052.2 6955744, 638234.4 6955792, 637355.8 6955837, 636425.4 69~ Hauts-de-F~</code></pre>
+##    code_reg code_dep zoom_idf                                                           geometry REG        
+##    &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;                                                    &lt;MULTIPOLYGON [m]&gt; &lt;fct&gt;      
+##  1 11       75       0        (((646062 6860110, 645662.4 6860488, 645327.5 6860872, 645051.2 6~ Ile-de-Fra~
+##  2 11       77       0        (((690163.1 6783563, 689622.1 6783296, 689110 6783012, 688623.1 6~ Ile-de-Fra~
+##  3 11       78       0        (((615945.4 6817082, 615325.3 6817245, 614715.2 6817459, 614134.3~ Ile-de-Fra~
+##  4 11       91       0        (((629406.7 6799447, 628757.5 6799463, 628128.9 6799495, 627514.9~ Ile-de-Fra~
+##  5 11       92       0        (((650037 6852301, 649917.5 6851597, 649782.8 6850912, 649624.7 6~ Ile-de-Fra~
+##  6 11       93       0        (((661319.8 6861886, 660737.6 6861930, 660189.4 6861924, 659659.8~ Ile-de-Fra~
+##  7 11       94       0        (((658327.2 6847362, 657743 6847279, 657158.7 6847213, 656574 684~ Ile-de-Fra~
+##  8 11       95       0        (((611596.3 6885701, 610907.2 6885541, 610210.4 6885323, 609513.7~ Ile-de-Fra~
+##  9 32       02       0        (((749674.8 6913924, 749180.5 6913589, 748749.5 6913260, 748369.8~ Hauts-de-F~
+## 10 32       59       0        (((701841.3 7006121, 702092.8 7006483, 702381 7006810, 702703.5 7~ Hauts-de-F~
+## 11 32       60       0        (((703447.6 6903189, 703461.8 6903174, 703473.4 6903160, 703482.4~ Hauts-de-F~
+## 12 32       62       0        (((642473.1 7012641, 641921.7 7012426, 641410.3 7012190, 640911.5~ Hauts-de-F~
+## 13 32       80       0        (((637389.7 6955501, 636820.5 6955414, 636259.4 6955312, 635691.4~ Hauts-de-F~</code></pre>
 </div>
 <div id="regroupement" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> Regroupement</h3>
 <p>Je peux regrouper des données pour donner des ensembles plus grands.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">shp_reg_hdf_idf &lt;-<span class="st"> </span>shp_dep_recode <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(REG) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">summarise</span>()</a>
-<a class="sourceLine" id="cb29-4" title="4"></a>
-<a class="sourceLine" id="cb29-5" title="5">shp_reg_hdf_idf</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">shp_reg_hdf_idf &lt;-<span class="st"> </span>shp_dep_recode <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(REG) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="st">  </span><span class="kw">summarise</span>()</a>
+<a class="sourceLine" id="cb28-4" title="4"></a>
+<a class="sourceLine" id="cb28-5" title="5">shp_reg_hdf_idf</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
-##   REG                                                                                                  geometry
-##   &lt;fct&gt;                                                                                          &lt;GEOMETRY [m]&gt;
-## 1 Hauts-de-France POLYGON ((707415.3 6890986, 707025.7 6890453, 706564.4 6889858, 706081.1 6889279, 705577.8 6~
-## 2 Ile-de-France   MULTIPOLYGON (((629356.9 6799504, 628610.1 6799526, 627898.9 6799572, 627224 6799645, 626587~</code></pre>
+##   REG                                                                                               geometry
+##   &lt;fct&gt;                                                                                        &lt;POLYGON [m]&gt;
+## 1 Hauts-de-France ((709388.5 6895230, 709262.8 6895052, 708981.5 6894779, 708655.3 6894520, 708305.9 689425~
+## 2 Ile-de-France   ((629406.7 6799447, 628757.5 6799463, 628128.9 6799495, 627514.9 6799543, 626911.8 679960~</code></pre>
 <p>De fait, avec un fichier communal et des tables de passages, on peut recréer l’ensemble des niveaux. C’est d’ailleurs ainsi que l’on a procédé pour créer les fonds de carte. –&gt; LIEN VERS LE CODE</p>
 </div>
 <div id="enlever-la-colonne-geometry" class="section level3">
@@ -379,38 +380,38 @@ Par exemple si je ne souhaite que l’Oise.</p>
 <p><strong>On part toujours du fond de carte pour la jointure.</strong></p>
 </blockquote>
 <p>On s’aperçoit alors qu’on a, pour chaque zone géographique, la difficulté de recrutement, en %.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning: Column `code_dep`/`dep` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">bmo_dep_shp </a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a>
+<a class="sourceLine" id="cb30-3" title="3"></a>
+<a class="sourceLine" id="cb30-4" title="4">bmo_dep_shp </a></code></pre></div>
 <pre><code>## # A tibble: 109 x 8
-##    code_reg code_dep zoom_idf nb_proj_tot nb_proj_diff part_diff part_diff_classes                     geometry
-##    &lt;fct&gt;    &lt;chr&gt;    &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;                       &lt;MULTIPOLYGON [m]&gt;
-##  1 01       971      0             12938.        5249.      40.6 40-50 %           (((359926.3 6062079, 359394~
-##  2 02       972      0             11407.        5307.      46.5 40-50 %           (((518712.6 6008907, 518514~
-##  3 03       973      0              6677.        3296.      49.4 40-50 %           (((675660.3 6033423, 675054~
-##  4 04       974      0             31667.       10310.      32.6 Moins de 40 %     (((835255.3 5992635, 833869~
-##  5 06       976      0              5309.        2259.      42.6 40-50 %           (((1012993 6063103, 1013066~
-##  6 11       75       0            173662.       75181.      43.3 40-50 %           (((645954.9 6860778, 645557~
-##  7 11       75       1            173662.       75181.      43.3 40-50 %           (((1008050 7186125, 1007383~
-##  8 11       77       0             34753.       17111.      49.2 40-50 %           (((689514.7 6783195, 688908~
-##  9 11       77       1             34753.       17111.      49.2 40-50 %           (((1106529 7018070, 1105773~
-## 10 11       78       0             47079.       25389.      53.9 50-60 %           (((615951.3 6817188, 615344~
+##    code_reg code_dep zoom_idf nb_proj_tot nb_proj_diff part_diff part_diff_classes                  geometry
+##    &lt;fct&gt;    &lt;chr&gt;    &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;                    &lt;MULTIPOLYGON [m]&gt;
+##  1 01       971      0             12938.        5249.      40.6 40-50 %           (((297258.6 6002422, 297~
+##  2 02       972      0             11407.        5307.      46.5 40-50 %           (((518815.8 6008072, 518~
+##  3 03       973      0              6677.        3296.      49.4 40-50 %           (((677679.3 6060770, 677~
+##  4 04       974      0             31667.       10310.      32.6 Moins de 40 %     (((835236.5 5992620, 833~
+##  5 06       976      0              5309.        2259.      42.6 40-50 %           (((980635.2 5995114, 980~
+##  6 11       75       0            173662.       75181.      43.3 40-50 %           (((646062 6860110, 64566~
+##  7 11       75       1            173662.       75181.      43.3 40-50 %           (((1008114 7186024, 1007~
+##  8 11       77       0             34753.       17111.      49.2 40-50 %           (((690163.1 6783563, 689~
+##  9 11       77       1             34753.       17111.      49.2 40-50 %           (((1106500 7018251, 1105~
+## 10 11       78       0             47079.       25389.      53.9 50-60 %           (((615945.4 6817082, 615~
 ## # ... with 99 more rows</code></pre>
 <p>Pour n’avoir qu’une région, il suffit de filtrer en amont sur le fond de carte, exemple avec les Hauts-de-France.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">bmo_dep_shp_hdf &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">filter</span>(code_dep <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;60&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;62&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb35-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning: Column `code_dep`/`dep` joining factor and character vector, coercing into character vector</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">bmo_dep_shp_hdf</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">bmo_dep_shp_hdf &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">filter</span>(code_dep <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;60&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;59&quot;</span>, <span class="st">&quot;62&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a>
+<a class="sourceLine" id="cb32-4" title="4"></a>
+<a class="sourceLine" id="cb32-5" title="5">bmo_dep_shp_hdf</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
-##   code_reg code_dep zoom_idf nb_proj_tot nb_proj_diff part_diff part_diff_classes                      geometry
-##   &lt;fct&gt;    &lt;chr&gt;    &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;                        &lt;MULTIPOLYGON [m]&gt;
-## 1 32       02       0             18418.        9851.      53.5 50-60 %           (((749009.6 6913220, 748583.~
-## 2 32       59       0             95022.       45883.      48.3 40-50 %           (((717452.5 6991864, 716827.~
-## 3 32       60       0             25263.       12977.      51.4 50-60 %           (((702185.7 6904719, 702056.~
-## 4 32       62       0             45805.       22472.      49.1 40-50 %           (((641967.1 7013097, 641207.~
-## 5 32       80       0             19338.        8677.      44.9 40-50 %           (((639052.2 6955744, 638234.~</code></pre>
+##   code_reg code_dep zoom_idf nb_proj_tot nb_proj_diff part_diff part_diff_classes                   geometry
+##   &lt;fct&gt;    &lt;chr&gt;    &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;                     &lt;MULTIPOLYGON [m]&gt;
+## 1 32       02       0             18418.        9851.      53.5 50-60 %           (((749674.8 6913924, 7491~
+## 2 32       59       0             95022.       45883.      48.3 40-50 %           (((701841.3 7006121, 7020~
+## 3 32       60       0             25263.       12977.      51.4 50-60 %           (((703447.6 6903189, 7034~
+## 4 32       62       0             45805.       22472.      49.1 40-50 %           (((642473.1 7012641, 6419~
+## 5 32       80       0             19338.        8677.      44.9 40-50 %           (((637389.7 6955501, 6368~</code></pre>
 
 </div>
 </div>

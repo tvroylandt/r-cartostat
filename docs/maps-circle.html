@@ -133,6 +133,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#ressources"><i class="fa fa-check"></i>Ressources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercices"><i class="fa fa-check"></i>Exercices</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tldr.html"><a href="tldr.html"><i class="fa fa-check"></i>TL;DR</a></li>
@@ -259,10 +260,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li>on lui spécifie les valeurs à afficher, ici sur le nombre de projets : <code>nb_proj_tot</code> ;</li>
 <li>on personnalise ensuite les paramètres des points à afficher, par exemple en ajoutant une couleur, la part de projets difficiles, en classes.</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
-<a class="sourceLine" id="cb46-4" title="4">                          <span class="dt">color =</span> part_diff_classes))</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
+<a class="sourceLine" id="cb41-4" title="4">                          <span class="dt">color =</span> part_diff_classes))</a></code></pre></div>
 <p><img src="support_files/figure-html/circle_coord-1.png" width="672" /></p>
 </div>
 <div id="personnalisation" class="section level2">
@@ -271,22 +272,22 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Cela peut supposer de modifier la façon de passer les variables (avec <code>fill</code> plutôt que <code>color</code> par exemple).</p>
 <div id="des-triangles" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Des triangles</h3>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
-<a class="sourceLine" id="cb47-4" title="4">                          <span class="dt">fill =</span> part_diff_classes),</a>
-<a class="sourceLine" id="cb47-5" title="5">                      <span class="dt">shape =</span> <span class="dv">24</span>,</a>
-<a class="sourceLine" id="cb47-6" title="6">                      <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
+<a class="sourceLine" id="cb42-4" title="4">                          <span class="dt">fill =</span> part_diff_classes),</a>
+<a class="sourceLine" id="cb42-5" title="5">                      <span class="dt">shape =</span> <span class="dv">24</span>,</a>
+<a class="sourceLine" id="cb42-6" title="6">                      <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/circle_triangle-1.png" width="672" /></p>
 </div>
 <div id="des-carrés" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Des carrés</h3>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
-<a class="sourceLine" id="cb48-4" title="4">                          <span class="dt">fill =</span> part_diff_classes),</a>
-<a class="sourceLine" id="cb48-5" title="5">                      <span class="dt">shape =</span> <span class="dv">22</span>,</a>
-<a class="sourceLine" id="cb48-6" title="6">                      <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot, </a>
+<a class="sourceLine" id="cb43-4" title="4">                          <span class="dt">fill =</span> part_diff_classes),</a>
+<a class="sourceLine" id="cb43-5" title="5">                      <span class="dt">shape =</span> <span class="dv">22</span>,</a>
+<a class="sourceLine" id="cb43-6" title="6">                      <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
 <p><img src="support_files/figure-html/circle_square-1.png" width="672" /></p>
 
 </div>

@@ -24,8 +24,11 @@ carac18_r <- carac18 %>%
   select(Num_Acc, mois, dep, com, lum, agg) %>%
   rename(id_accident = Num_Acc) %>%
   mutate(
+    dep = fct_recode(dep, 
+                     "2A0" = "201",
+                     "2B0" = "202"),
     code_com = paste0(str_sub(dep, 1, 2), com),
-    code_dep = if_else(str_sub(dep, 1, 2) != "97", str_sub(dep, 1, 2), dep),
+    code_dep = if_else(str_sub(dep, 1, 2) != "97", str_sub(dep, 1, 2), as.character(dep)),
     luminosite = fct_collapse(
       as.character(lum),
       "Jour" = "1",
