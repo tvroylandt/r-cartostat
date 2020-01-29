@@ -160,7 +160,23 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="import-data.html"><a href="import-data.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a></li>
+<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="prep-data.html"><a href="prep-data.html#le-pipe"><i class="fa fa-check"></i><b>3.1</b> Le <em>pipe</em></a></li>
+<li class="chapter" data-level="3.2" data-path="prep-data.html"><a href="prep-data.html#données"><i class="fa fa-check"></i><b>3.2</b> Données</a></li>
+<li class="chapter" data-level="3.3" data-path="prep-data.html"><a href="prep-data.html#modifier-des-colonnes-mutate"><i class="fa fa-check"></i><b>3.3</b> Modifier des colonnes : <code>mutate</code></a></li>
+<li class="chapter" data-level="3.4" data-path="prep-data.html"><a href="prep-data.html#filtrer-des-valeurs-filter"><i class="fa fa-check"></i><b>3.4</b> Filtrer des valeurs : <code>filter</code></a></li>
+<li class="chapter" data-level="3.5" data-path="prep-data.html"><a href="prep-data.html#sélectionner-des-colonnes-select"><i class="fa fa-check"></i><b>3.5</b> Sélectionner des colonnes : <code>select</code></a></li>
+<li class="chapter" data-level="3.6" data-path="prep-data.html"><a href="prep-data.html#trier-arrange"><i class="fa fa-check"></i><b>3.6</b> Trier : <code>arrange</code></a></li>
+<li class="chapter" data-level="3.7" data-path="prep-data.html"><a href="prep-data.html#top-top_n"><i class="fa fa-check"></i><b>3.7</b> Top : <code>top_n</code></a></li>
+<li class="chapter" data-level="3.8" data-path="prep-data.html"><a href="prep-data.html#renommer-rename"><i class="fa fa-check"></i><b>3.8</b> Renommer : <code>rename</code></a></li>
+<li class="chapter" data-level="3.9" data-path="prep-data.html"><a href="prep-data.html#regrouper-des-valeurs-group_by-et-summarise"><i class="fa fa-check"></i><b>3.9</b> Regrouper des valeurs : <code>group_by</code> et <code>summarise</code></a></li>
+<li class="chapter" data-level="3.10" data-path="prep-data.html"><a href="prep-data.html#joindre-des-tables-_join"><i class="fa fa-check"></i><b>3.10</b> Joindre des tables : <code>*_join</code></a></li>
+<li class="chapter" data-level="3.11" data-path="prep-data.html"><a href="prep-data.html#transposer-pivot_"><i class="fa fa-check"></i><b>3.11</b> Transposer : <code>pivot_*</code></a></li>
+<li class="chapter" data-level="3.12" data-path="prep-data.html"><a href="prep-data.html#en-dehors-de-dplyr"><i class="fa fa-check"></i><b>3.12</b> En dehors de <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.12.1" data-path="prep-data.html"><a href="prep-data.html#discrétiser-cut"><i class="fa fa-check"></i><b>3.12.1</b> Discrétiser : <code>cut</code></a></li>
+<li class="chapter" data-level="3.12.2" data-path="prep-data.html"><a href="prep-data.html#recoder-des-facteurs-fct_-de-forcats"><i class="fa fa-check"></i><b>3.12.2</b> Recoder des facteurs : <code>fct_*</code> de <code>forcats</code></a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="import-sf.html"><a href="import-sf.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
 <li class="chapter" data-level="4.1" data-path="import-sf.html"><a href="import-sf.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="import-sf.html"><a href="import-sf.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
@@ -267,7 +283,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="exemples" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Exemples</h3>
 <p>Le package <code>readxl</code> nous permet d’importer des fichiers Excel. Par exemple ici pour le fichier <code>bmo_2019_idf.xlsx</code> qui se situe dans le dossier <code>data</code> :</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">bmo_secteur &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/dataset/bmo_2019_secteur.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">bmo_secteur &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/dataset/bmo_2019_secteur.xlsx&quot;</span>)</a></code></pre></div>
 <p>Si le fichier avait été :</p>
 <ul>
 <li>en .xls, l’instruction aurait été <code>read_xls</code> ;</li>
@@ -282,7 +298,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <ul>
 <li>La première consiste à l’afficher dans la console en exécutant le nom de la table. Cela affiche des informations sur le type des colonnes et le nombre de lignes et de colonnes.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">bmo_secteur</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">bmo_secteur</a></code></pre></div>
 <pre><code>## # A tibble: 4,572 x 8
 ##    gd_secteur_bmo reg   dep   bassin_bmo ze    nb_proj_tot nb_proj_diff nb_proj_sais
 ##    &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
@@ -313,21 +329,21 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Cette table directement importée sous ce format.</p>
 <p>Elle peut être aussi calculée avec R.</p>
 <p>Pour notre table, on somme par département puis on calcule la part de projets difficiles et on découpe en classes cette part.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">bmo_dep &lt;-<span class="st"> </span>bmo_secteur <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
-<a class="sourceLine" id="cb17-4" title="4">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb17-6" title="6">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb17-7" title="7">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
-<a class="sourceLine" id="cb17-8" title="8">      part_diff,</a>
-<a class="sourceLine" id="cb17-9" title="9">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb17-10" title="10">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb17-11" title="11">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>)</a>
-<a class="sourceLine" id="cb17-12" title="12">    )</a>
-<a class="sourceLine" id="cb17-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">bmo_dep &lt;-<span class="st"> </span>bmo_secteur <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
+<a class="sourceLine" id="cb21-4" title="4">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb21-6" title="6">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb21-7" title="7">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
+<a class="sourceLine" id="cb21-8" title="8">      part_diff,</a>
+<a class="sourceLine" id="cb21-9" title="9">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb21-10" title="10">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb21-11" title="11">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>)</a>
+<a class="sourceLine" id="cb21-12" title="12">    )</a>
+<a class="sourceLine" id="cb21-13" title="13">  )</a></code></pre></div>
 <p>La table aura alors la forme suivante :</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">bmo_dep</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">bmo_dep</a></code></pre></div>
 <pre><code>## # A tibble: 104 x 5
 ##    dep   nb_proj_tot nb_proj_diff part_diff part_diff_classes
 ##    &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;            

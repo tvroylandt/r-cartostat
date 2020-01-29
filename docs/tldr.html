@@ -160,7 +160,23 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="import-data.html"><a href="import-data.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a></li>
+<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="prep-data.html"><a href="prep-data.html#le-pipe"><i class="fa fa-check"></i><b>3.1</b> Le <em>pipe</em></a></li>
+<li class="chapter" data-level="3.2" data-path="prep-data.html"><a href="prep-data.html#données"><i class="fa fa-check"></i><b>3.2</b> Données</a></li>
+<li class="chapter" data-level="3.3" data-path="prep-data.html"><a href="prep-data.html#modifier-des-colonnes-mutate"><i class="fa fa-check"></i><b>3.3</b> Modifier des colonnes : <code>mutate</code></a></li>
+<li class="chapter" data-level="3.4" data-path="prep-data.html"><a href="prep-data.html#filtrer-des-valeurs-filter"><i class="fa fa-check"></i><b>3.4</b> Filtrer des valeurs : <code>filter</code></a></li>
+<li class="chapter" data-level="3.5" data-path="prep-data.html"><a href="prep-data.html#sélectionner-des-colonnes-select"><i class="fa fa-check"></i><b>3.5</b> Sélectionner des colonnes : <code>select</code></a></li>
+<li class="chapter" data-level="3.6" data-path="prep-data.html"><a href="prep-data.html#trier-arrange"><i class="fa fa-check"></i><b>3.6</b> Trier : <code>arrange</code></a></li>
+<li class="chapter" data-level="3.7" data-path="prep-data.html"><a href="prep-data.html#top-top_n"><i class="fa fa-check"></i><b>3.7</b> Top : <code>top_n</code></a></li>
+<li class="chapter" data-level="3.8" data-path="prep-data.html"><a href="prep-data.html#renommer-rename"><i class="fa fa-check"></i><b>3.8</b> Renommer : <code>rename</code></a></li>
+<li class="chapter" data-level="3.9" data-path="prep-data.html"><a href="prep-data.html#regrouper-des-valeurs-group_by-et-summarise"><i class="fa fa-check"></i><b>3.9</b> Regrouper des valeurs : <code>group_by</code> et <code>summarise</code></a></li>
+<li class="chapter" data-level="3.10" data-path="prep-data.html"><a href="prep-data.html#joindre-des-tables-_join"><i class="fa fa-check"></i><b>3.10</b> Joindre des tables : <code>*_join</code></a></li>
+<li class="chapter" data-level="3.11" data-path="prep-data.html"><a href="prep-data.html#transposer-pivot_"><i class="fa fa-check"></i><b>3.11</b> Transposer : <code>pivot_*</code></a></li>
+<li class="chapter" data-level="3.12" data-path="prep-data.html"><a href="prep-data.html#en-dehors-de-dplyr"><i class="fa fa-check"></i><b>3.12</b> En dehors de <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.12.1" data-path="prep-data.html"><a href="prep-data.html#discrétiser-cut"><i class="fa fa-check"></i><b>3.12.1</b> Discrétiser : <code>cut</code></a></li>
+<li class="chapter" data-level="3.12.2" data-path="prep-data.html"><a href="prep-data.html#recoder-des-facteurs-fct_-de-forcats"><i class="fa fa-check"></i><b>3.12.2</b> Recoder des facteurs : <code>fct_*</code> de <code>forcats</code></a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="import-sf.html"><a href="import-sf.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
 <li class="chapter" data-level="4.1" data-path="import-sf.html"><a href="import-sf.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="import-sf.html"><a href="import-sf.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
@@ -253,26 +269,28 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>On charge les packages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(here)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(sf)</a></code></pre></div>
+<pre><code>## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(here)</a></code></pre></div>
+<pre><code>## here() starts at D:/r-cartostat</code></pre>
 <p>On charge les données et on les recode si besoin.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">bmo_secteur &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/dataset/bmo_2019_secteur.xlsx&quot;</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">bmo_dep &lt;-<span class="st"> </span>bmo_secteur <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
-<a class="sourceLine" id="cb2-6" title="6">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb2-9" title="9">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
-<a class="sourceLine" id="cb2-10" title="10">      part_diff,</a>
-<a class="sourceLine" id="cb2-11" title="11">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb2-12" title="12">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb2-13" title="13">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>)</a>
-<a class="sourceLine" id="cb2-14" title="14">    )</a>
-<a class="sourceLine" id="cb2-15" title="15">  )</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">bmo_secteur &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/dataset/bmo_2019_secteur.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">bmo_dep &lt;-<span class="st"> </span>bmo_secteur <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(dep) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nb_proj_tot =</span> <span class="kw">sum</span>(nb_proj_tot),</a>
+<a class="sourceLine" id="cb5-6" title="6">            <span class="dt">nb_proj_diff =</span> <span class="kw">sum</span>(nb_proj_diff)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb5-8" title="8">    <span class="dt">part_diff =</span> nb_proj_diff <span class="op">/</span><span class="st"> </span>nb_proj_tot <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb5-9" title="9">    <span class="dt">part_diff_classes =</span> <span class="kw">cut</span>(</a>
+<a class="sourceLine" id="cb5-10" title="10">      part_diff,</a>
+<a class="sourceLine" id="cb5-11" title="11">      <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-12" title="12">      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb5-13" title="13">      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Moins de 40 %&quot;</span>, <span class="st">&quot;40-50 %&quot;</span>, <span class="st">&quot;50-60 %&quot;</span>, <span class="st">&quot;60% et plus&quot;</span>)</a>
+<a class="sourceLine" id="cb5-14" title="14">    )</a>
+<a class="sourceLine" id="cb5-15" title="15">  )</a></code></pre></div>
 <p>On importe le fond de carte.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">shp_dep &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="kw">here</span>(<span class="st">&quot;data/shp/FR_DEP_DOM_IDF.shp&quot;</span>))</a></code></pre></div>
 <pre><code>## Reading layer `FR_DEP_DOM_IDF&#39; from data source `D:\r-cartostat\data\shp\FR_DEP_DOM_IDF.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 109 features and 3 fields
 ## geometry type:  MULTIPOLYGON
@@ -281,39 +299,40 @@ code span.wa { color: #bf0303; } /* Warning */
 ## epsg (SRID):    NA
 ## proj4string:    +proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +units=m +no_defs</code></pre>
 <p>On les fusionne.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">bmo_dep_shp &lt;-<span class="st"> </span>shp_dep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(bmo_dep, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;code_dep&quot;</span> =<span class="st"> &quot;dep&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: Column `code_dep`/`dep` joining factor and character vector, coercing into character vector</code></pre>
 <p>On réalise la carte, par exemple par aplat de couleur. Avec les élements d’échelles et de thème.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
-<a class="sourceLine" id="cb6-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb6-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
-<a class="sourceLine" id="cb6-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
-<a class="sourceLine" id="cb6-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> bmo_dep_shp,</a>
+<a class="sourceLine" id="cb10-3" title="3">          <span class="kw">aes</span>(<span class="dt">fill =</span> part_diff_classes)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb10-5" title="5">                       <span class="dt">option =</span> <span class="st">&quot;inferno&quot;</span>,</a>
+<a class="sourceLine" id="cb10-6" title="6">                       <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>,</a>
+<a class="sourceLine" id="cb10-8" title="8">       <span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
 <p><img src="support_files/figure-html/tldr_map_col-1.png" width="672" /></p>
 <p>Ou par cercles proportionnels.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
-<a class="sourceLine" id="cb7-4" title="4">                          <span class="dt">color =</span> part_diff)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">scale_color_viridis_c</span>(<span class="dt">name =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>, </a>
-<a class="sourceLine" id="cb7-6" title="6">                        <span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>,</a>
-<a class="sourceLine" id="cb7-7" title="7">                        <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="dt">name =</span> <span class="st">&quot;Nombre de projets&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> bmo_dep_shp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="st">  </span><span class="kw">stat_sf_coordinates</span>(<span class="kw">aes</span>(<span class="dt">size =</span> nb_proj_tot,</a>
+<a class="sourceLine" id="cb11-4" title="4">                          <span class="dt">color =</span> part_diff)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="st">  </span><span class="kw">scale_color_viridis_c</span>(<span class="dt">name =</span> <span class="st">&quot;Part des projets difficiles&quot;</span>, </a>
+<a class="sourceLine" id="cb11-6" title="6">                        <span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>,</a>
+<a class="sourceLine" id="cb11-7" title="7">                        <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="st">  </span><span class="kw">scale_size_continuous</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="dt">name =</span> <span class="st">&quot;Nombre de projets&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Source : BMO 2019&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="st">  </span><span class="kw">theme_void</span>()</a></code></pre></div>
 <p><img src="support_files/figure-html/tldr_map_circle-1.png" width="672" /></p>
 <p>On exporte.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">ggsave</span>(</a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
-<a class="sourceLine" id="cb8-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
-<a class="sourceLine" id="cb8-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
-<a class="sourceLine" id="cb8-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
-<a class="sourceLine" id="cb8-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
-<a class="sourceLine" id="cb8-7" title="7">)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">ggsave</span>(</a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
+<a class="sourceLine" id="cb12-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
+<a class="sourceLine" id="cb12-7" title="7">)</a></code></pre></div>
 
 </div>
             </section>

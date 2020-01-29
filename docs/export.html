@@ -160,7 +160,23 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="import-data.html"><a href="import-data.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a></li>
+<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="prep-data.html"><a href="prep-data.html#le-pipe"><i class="fa fa-check"></i><b>3.1</b> Le <em>pipe</em></a></li>
+<li class="chapter" data-level="3.2" data-path="prep-data.html"><a href="prep-data.html#données"><i class="fa fa-check"></i><b>3.2</b> Données</a></li>
+<li class="chapter" data-level="3.3" data-path="prep-data.html"><a href="prep-data.html#modifier-des-colonnes-mutate"><i class="fa fa-check"></i><b>3.3</b> Modifier des colonnes : <code>mutate</code></a></li>
+<li class="chapter" data-level="3.4" data-path="prep-data.html"><a href="prep-data.html#filtrer-des-valeurs-filter"><i class="fa fa-check"></i><b>3.4</b> Filtrer des valeurs : <code>filter</code></a></li>
+<li class="chapter" data-level="3.5" data-path="prep-data.html"><a href="prep-data.html#sélectionner-des-colonnes-select"><i class="fa fa-check"></i><b>3.5</b> Sélectionner des colonnes : <code>select</code></a></li>
+<li class="chapter" data-level="3.6" data-path="prep-data.html"><a href="prep-data.html#trier-arrange"><i class="fa fa-check"></i><b>3.6</b> Trier : <code>arrange</code></a></li>
+<li class="chapter" data-level="3.7" data-path="prep-data.html"><a href="prep-data.html#top-top_n"><i class="fa fa-check"></i><b>3.7</b> Top : <code>top_n</code></a></li>
+<li class="chapter" data-level="3.8" data-path="prep-data.html"><a href="prep-data.html#renommer-rename"><i class="fa fa-check"></i><b>3.8</b> Renommer : <code>rename</code></a></li>
+<li class="chapter" data-level="3.9" data-path="prep-data.html"><a href="prep-data.html#regrouper-des-valeurs-group_by-et-summarise"><i class="fa fa-check"></i><b>3.9</b> Regrouper des valeurs : <code>group_by</code> et <code>summarise</code></a></li>
+<li class="chapter" data-level="3.10" data-path="prep-data.html"><a href="prep-data.html#joindre-des-tables-_join"><i class="fa fa-check"></i><b>3.10</b> Joindre des tables : <code>*_join</code></a></li>
+<li class="chapter" data-level="3.11" data-path="prep-data.html"><a href="prep-data.html#transposer-pivot_"><i class="fa fa-check"></i><b>3.11</b> Transposer : <code>pivot_*</code></a></li>
+<li class="chapter" data-level="3.12" data-path="prep-data.html"><a href="prep-data.html#en-dehors-de-dplyr"><i class="fa fa-check"></i><b>3.12</b> En dehors de <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.12.1" data-path="prep-data.html"><a href="prep-data.html#discrétiser-cut"><i class="fa fa-check"></i><b>3.12.1</b> Discrétiser : <code>cut</code></a></li>
+<li class="chapter" data-level="3.12.2" data-path="prep-data.html"><a href="prep-data.html#recoder-des-facteurs-fct_-de-forcats"><i class="fa fa-check"></i><b>3.12.2</b> Recoder des facteurs : <code>fct_*</code> de <code>forcats</code></a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="import-sf.html"><a href="import-sf.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
 <li class="chapter" data-level="4.1" data-path="import-sf.html"><a href="import-sf.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="import-sf.html"><a href="import-sf.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
@@ -273,13 +289,13 @@ code span.wa { color: #bf0303; } /* Warning */
 <li><code>dpi</code> pour la résolution, par défaut 300.</li>
 </ul>
 <p>Par défaut, le graphique sauvegardé est le dernier réalisé.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">ggsave</span>(</a>
-<a class="sourceLine" id="cb52-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
-<a class="sourceLine" id="cb52-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
-<a class="sourceLine" id="cb52-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
-<a class="sourceLine" id="cb52-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
-<a class="sourceLine" id="cb52-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
-<a class="sourceLine" id="cb52-7" title="7">)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">ggsave</span>(</a>
+<a class="sourceLine" id="cb91-2" title="2">  <span class="dt">filename =</span> <span class="st">&quot;chemin/nom_du_fichier.png&quot;</span>,</a>
+<a class="sourceLine" id="cb91-3" title="3">  <span class="dt">width =</span> <span class="dv">297</span>,</a>
+<a class="sourceLine" id="cb91-4" title="4">  <span class="dt">height =</span> <span class="dv">210</span>,</a>
+<a class="sourceLine" id="cb91-5" title="5">  <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>,</a>
+<a class="sourceLine" id="cb91-6" title="6">  <span class="dt">dpi =</span> <span class="dv">400</span></a>
+<a class="sourceLine" id="cb91-7" title="7">)</a></code></pre></div>
 
 </div>
 </div>

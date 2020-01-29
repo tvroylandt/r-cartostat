@@ -160,7 +160,23 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="import-data.html"><a href="import-data.html#pour-la-cartographie"><i class="fa fa-check"></i><b>2.2</b> Pour la cartographie</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a></li>
+<li class="chapter" data-level="3" data-path="prep-data.html"><a href="prep-data.html"><i class="fa fa-check"></i><b>3</b> Recoder vos données</a><ul>
+<li class="chapter" data-level="3.1" data-path="prep-data.html"><a href="prep-data.html#le-pipe"><i class="fa fa-check"></i><b>3.1</b> Le <em>pipe</em></a></li>
+<li class="chapter" data-level="3.2" data-path="prep-data.html"><a href="prep-data.html#données"><i class="fa fa-check"></i><b>3.2</b> Données</a></li>
+<li class="chapter" data-level="3.3" data-path="prep-data.html"><a href="prep-data.html#modifier-des-colonnes-mutate"><i class="fa fa-check"></i><b>3.3</b> Modifier des colonnes : <code>mutate</code></a></li>
+<li class="chapter" data-level="3.4" data-path="prep-data.html"><a href="prep-data.html#filtrer-des-valeurs-filter"><i class="fa fa-check"></i><b>3.4</b> Filtrer des valeurs : <code>filter</code></a></li>
+<li class="chapter" data-level="3.5" data-path="prep-data.html"><a href="prep-data.html#sélectionner-des-colonnes-select"><i class="fa fa-check"></i><b>3.5</b> Sélectionner des colonnes : <code>select</code></a></li>
+<li class="chapter" data-level="3.6" data-path="prep-data.html"><a href="prep-data.html#trier-arrange"><i class="fa fa-check"></i><b>3.6</b> Trier : <code>arrange</code></a></li>
+<li class="chapter" data-level="3.7" data-path="prep-data.html"><a href="prep-data.html#top-top_n"><i class="fa fa-check"></i><b>3.7</b> Top : <code>top_n</code></a></li>
+<li class="chapter" data-level="3.8" data-path="prep-data.html"><a href="prep-data.html#renommer-rename"><i class="fa fa-check"></i><b>3.8</b> Renommer : <code>rename</code></a></li>
+<li class="chapter" data-level="3.9" data-path="prep-data.html"><a href="prep-data.html#regrouper-des-valeurs-group_by-et-summarise"><i class="fa fa-check"></i><b>3.9</b> Regrouper des valeurs : <code>group_by</code> et <code>summarise</code></a></li>
+<li class="chapter" data-level="3.10" data-path="prep-data.html"><a href="prep-data.html#joindre-des-tables-_join"><i class="fa fa-check"></i><b>3.10</b> Joindre des tables : <code>*_join</code></a></li>
+<li class="chapter" data-level="3.11" data-path="prep-data.html"><a href="prep-data.html#transposer-pivot_"><i class="fa fa-check"></i><b>3.11</b> Transposer : <code>pivot_*</code></a></li>
+<li class="chapter" data-level="3.12" data-path="prep-data.html"><a href="prep-data.html#en-dehors-de-dplyr"><i class="fa fa-check"></i><b>3.12</b> En dehors de <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.12.1" data-path="prep-data.html"><a href="prep-data.html#discrétiser-cut"><i class="fa fa-check"></i><b>3.12.1</b> Discrétiser : <code>cut</code></a></li>
+<li class="chapter" data-level="3.12.2" data-path="prep-data.html"><a href="prep-data.html#recoder-des-facteurs-fct_-de-forcats"><i class="fa fa-check"></i><b>3.12.2</b> Recoder des facteurs : <code>fct_*</code> de <code>forcats</code></a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="import-sf.html"><a href="import-sf.html"><i class="fa fa-check"></i><b>4</b> Données spatiales</a><ul>
 <li class="chapter" data-level="4.1" data-path="import-sf.html"><a href="import-sf.html#les-données-vectorielles"><i class="fa fa-check"></i><b>4.1</b> Les données vectorielles</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="import-sf.html"><a href="import-sf.html#quest-ce-quune-donnée-vectorielle"><i class="fa fa-check"></i><b>4.1.1</b> Qu’est-ce qu’une donnée vectorielle ?</a></li>
@@ -251,9 +267,324 @@ code span.wa { color: #bf0303; } /* Warning */
 <h1><span class="header-section-number">3</span> Recoder vos données</h1>
 <p>Vos tables de données ne seront pas forcément propres ou au bon format lorsque vous les importerez.
 Il importe donc de les recoder.</p>
-<p>Pour ces opérations, vous pouvez vous reporter au manuel de Julien Barnier, <em>Introduction à R et au tidyverse</em> qui offre de façon pédagogique et rapide un bon aperçu de ces méthodes de recodage : <a href="https://juba.github.io/tidyverse/" class="uri">https://juba.github.io/tidyverse/</a></p>
-<p>On pourra particulièrement se concentrer sur les chapitres 9 (Recoder des variables) et 10 (Manipuler des données avec <code>dplyr</code>), qui permettront de balayer la majeure partie des besoins pour la cartographie.</p>
+<p>Ce chapitre passe en revue rapidement les opérations qui vous permettront de recoder vos données. Cela n’étant pas l’objet de la formation, vous pouvez vous reporter aux ressources pour plus de détails.</p>
+<p><code>dplyr</code> fonctionne avec :</p>
+<ul>
+<li>des verbes qui représentent autant d’opérations ;</li>
+<li>un opérateur pour chaîner les fonctions, qu’on appelle le <em>pipe</em> et qui s’écrit <code>%&gt;%</code>.</li>
+</ul>
+<div id="le-pipe" class="section level2">
+<h2><span class="header-section-number">3.1</span> Le <em>pipe</em></h2>
+<p>Le <em>pipe</em> permet d’enchaîner les opérations.</p>
+<p>Exemple, vous vous préparez le matin. Vous enchaînez donc plusieurs opérations, qui peuvent nécessiter des étapes intermédiaires.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">moi_reveille &lt;-<span class="st"> </span><span class="kw">reveil</span>(moi)</a>
+<a class="sourceLine" id="cb24-2" title="2"></a>
+<a class="sourceLine" id="cb24-3" title="3">moi_douche &lt;-<span class="st"> </span><span class="kw">douche</span>(moi_reveille)</a>
+<a class="sourceLine" id="cb24-4" title="4"></a>
+<a class="sourceLine" id="cb24-5" title="5">moi_habille &lt;-<span class="st"> </span><span class="kw">habillage</span>(moi_douche)</a>
+<a class="sourceLine" id="cb24-6" title="6"></a>
+<a class="sourceLine" id="cb24-7" title="7">moi_dejeuner &lt;-<span class="st"> </span><span class="kw">petit_dej</span>(moi_habille)</a>
+<a class="sourceLine" id="cb24-8" title="8"></a>
+<a class="sourceLine" id="cb24-9" title="9">moi_travail &lt;-<span class="st"> </span><span class="kw">partir</span>(moi_dejeuner)</a></code></pre></div>
+<p>Vous pouvez aussi les effectuer d’un bloc, mais cela devient moins lisible :</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">moi_travail &lt;-<span class="st"> </span><span class="kw">partir</span>(<span class="kw">petit_dej</span>(<span class="kw">habillage</span>(<span class="kw">douche</span>(<span class="kw">reveil</span>(moi)))))</a></code></pre></div>
+<p>Ou alors vous pouvez utiliser le <em>pipe</em> pour enchaîner les opérations de façon plus claire. :</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">moi_travail &lt;-<span class="st"> </span>moi <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">reveil</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span><span class="kw">douche</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="st">  </span><span class="kw">habillage</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="st">  </span><span class="kw">petit_dej</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-6" title="6"><span class="st">  </span><span class="kw">partir</span>()</a></code></pre></div>
+<p>On procédera ainsi ici.</p>
+</div>
+<div id="données" class="section level2">
+<h2><span class="header-section-number">3.2</span> Données</h2>
+<p>Pour le reste de l’explication, on utilisera les données <code>iris</code>, présentes de base dans R.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">iris &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(iris)</a>
+<a class="sourceLine" id="cb27-2" title="2"></a>
+<a class="sourceLine" id="cb27-3" title="3">iris</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="modifier-des-colonnes-mutate" class="section level2">
+<h2><span class="header-section-number">3.3</span> Modifier des colonnes : <code>mutate</code></h2>
+<p>Il s’agit de modifier une colonne. On donne le nom de la nouvelle colonne puis l’opération de création à partir de l’ancienne, avec un <code>=</code> entre les deux. La nouvelle colonne peut avoir le même nom que l’ancienne et la remplace alors.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length_2 =</span> Sepal.Length <span class="op">*</span><span class="st"> </span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb29-3" title="3">         <span class="dt">Sepal.Length_4 =</span> Sepal.Length_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 7
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length_2 Sepal.Length_4
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt;          &lt;dbl&gt;
+##  1          5.1         3.5          1.4         0.2 setosa            10.2           20.4
+##  2          4.9         3            1.4         0.2 setosa             9.8           19.6
+##  3          4.7         3.2          1.3         0.2 setosa             9.4           18.8
+##  4          4.6         3.1          1.5         0.2 setosa             9.2           18.4
+##  5          5           3.6          1.4         0.2 setosa            10             20  
+##  6          5.4         3.9          1.7         0.4 setosa            10.8           21.6
+##  7          4.6         3.4          1.4         0.3 setosa             9.2           18.4
+##  8          5           3.4          1.5         0.2 setosa            10             20  
+##  9          4.4         2.9          1.4         0.2 setosa             8.8           17.6
+## 10          4.9         3.1          1.5         0.1 setosa             9.8           19.6
+## # ... with 140 more rows</code></pre>
+<p>On peut enchaîner plus opérations, en les séparant par une virgule, même sur des colonnes crées juste avant.</p>
+</div>
+<div id="filtrer-des-valeurs-filter" class="section level2">
+<h2><span class="header-section-number">3.4</span> Filtrer des valeurs : <code>filter</code></h2>
+<p>Cela permet de spécifier quelles valeurs on souhaite. On utilisera les opérateurs d’égalité <code>==</code>, de différence <code>!=</code> ou d’inclusion <code>%in%</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 50 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 40 more rows</code></pre>
+<p>On peut spécifier plusieurs conditions avec <code>&amp;</code> (et) ou <code>|</code> (ou) et les parenthèses.</p>
+</div>
+<div id="sélectionner-des-colonnes-select" class="section level2">
+<h2><span class="header-section-number">3.5</span> Sélectionner des colonnes : <code>select</code></h2>
+<p>Si l’on ne veut conserver que certaines colonnes, on peut les indiquer grâce à ce verbe.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="st">  </span><span class="kw">select</span>(Species, Sepal.Length)</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 2
+##    Species Sepal.Length
+##    &lt;fct&gt;          &lt;dbl&gt;
+##  1 setosa           5.1
+##  2 setosa           4.9
+##  3 setosa           4.7
+##  4 setosa           4.6
+##  5 setosa           5  
+##  6 setosa           5.4
+##  7 setosa           4.6
+##  8 setosa           5  
+##  9 setosa           4.4
+## 10 setosa           4.9
+## # ... with 140 more rows</code></pre>
+<p>Il fonctionne aussi en négative avec un <code>-</code> devant le nom de la colonne.</p>
+<p>L’utilisation de certaines fonctions type <code>starts_with()</code> permet de gagner en efficacité.</p>
+</div>
+<div id="trier-arrange" class="section level2">
+<h2><span class="header-section-number">3.6</span> Trier : <code>arrange</code></h2>
+<p>On trie. Pour faire dans le sens inverse, il faut utiliser <code>arrange(desc(x))</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">arrange</span>(Petal.Width)</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          4.9         3.1          1.5         0.1 setosa 
+##  2          4.8         3            1.4         0.1 setosa 
+##  3          4.3         3            1.1         0.1 setosa 
+##  4          5.2         4.1          1.5         0.1 setosa 
+##  5          4.9         3.6          1.4         0.1 setosa 
+##  6          5.1         3.5          1.4         0.2 setosa 
+##  7          4.9         3            1.4         0.2 setosa 
+##  8          4.7         3.2          1.3         0.2 setosa 
+##  9          4.6         3.1          1.5         0.2 setosa 
+## 10          5           3.6          1.4         0.2 setosa 
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="top-top_n" class="section level2">
+<h2><span class="header-section-number">3.7</span> Top : <code>top_n</code></h2>
+<p>Pour faire un top, on lui précise le nombre et la variable qui sert à trier. Par exemple si je veux le top 5 par longueur des pétales.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">5</span>, <span class="dt">wt =</span> Petal.Length)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;    
+## 1          7.6         3            6.6         2.1 virginica
+## 2          7.7         3.8          6.7         2.2 virginica
+## 3          7.7         2.6          6.9         2.3 virginica
+## 4          7.7         2.8          6.7         2   virginica
+## 5          7.9         3.8          6.4         2   virginica</code></pre>
+</div>
+<div id="renommer-rename" class="section level2">
+<h2><span class="header-section-number">3.8</span> Renommer : <code>rename</code></h2>
+<p>Cela sert à renommer des colonnes.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">a =</span> Species)</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width a     
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt; 
+##  1          5.1         3.5          1.4         0.2 setosa
+##  2          4.9         3            1.4         0.2 setosa
+##  3          4.7         3.2          1.3         0.2 setosa
+##  4          4.6         3.1          1.5         0.2 setosa
+##  5          5           3.6          1.4         0.2 setosa
+##  6          5.4         3.9          1.7         0.4 setosa
+##  7          4.6         3.4          1.4         0.3 setosa
+##  8          5           3.4          1.5         0.2 setosa
+##  9          4.4         2.9          1.4         0.2 setosa
+## 10          4.9         3.1          1.5         0.1 setosa
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="regrouper-des-valeurs-group_by-et-summarise" class="section level2">
+<h2><span class="header-section-number">3.9</span> Regrouper des valeurs : <code>group_by</code> et <code>summarise</code></h2>
+<p>Pour travailler par groupe, on peut utiliser <code>group_by</code>. Par exemple si je veux la plus grande valeur de la longueur des sépales par espèce.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">1</span>, <span class="dt">wt =</span> Sepal.Length) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
+## 1          5.8         4            1.2         0.2 setosa    
+## 2          7           3.2          4.7         1.4 versicolor
+## 3          7.9         3.8          6.4         2   virginica</code></pre>
+<p>Tant qu’on est dans un groupe, les opérations s’y référeront. Il faut donc penser à en sortir avec un <code>ungroup</code>.</p>
+<p>Cela nous permet aussi de sommer des valeurs, ou de faire des moyennes.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">moyenne_sepale =</span> <span class="kw">mean</span>(Sepal.Length),</a>
+<a class="sourceLine" id="cb43-4" title="4">            <span class="dt">somme_petale =</span> <span class="kw">sum</span>(Petal.Width),</a>
+<a class="sourceLine" id="cb43-5" title="5">            <span class="dt">nombre =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   Species    moyenne_sepale somme_petale nombre
+##   &lt;fct&gt;               &lt;dbl&gt;        &lt;dbl&gt;  &lt;int&gt;
+## 1 setosa               5.01         12.3     50
+## 2 versicolor           5.94         66.3     50
+## 3 virginica            6.59        101.      50</code></pre>
+<p>Le <code>count</code> est un raccourci pour <code>summarise(n = n())</code>.</p>
+</div>
+<div id="joindre-des-tables-_join" class="section level2">
+<h2><span class="header-section-number">3.10</span> Joindre des tables : <code>*_join</code></h2>
+<p>On peut joindre des tables ayant un identifiant commune avec <code>inner_join</code>, <code>left_join</code>, <code>right_join</code> ou <code>full_join</code> qui fonctionnent comme en SAS.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">iris2 &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length_2 =</span> Petal.Length <span class="op">*</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="kw">select</span>(Species, Petal.Length_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb45-4" title="4"></a>
+<a class="sourceLine" id="cb45-5" title="5">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-6" title="6"><span class="st">  </span><span class="kw">left_join</span>(iris2, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 7,500 x 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Petal.Length_2
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt;
+##  1          5.1         3.5          1.4         0.2 setosa             2.8
+##  2          5.1         3.5          1.4         0.2 setosa             2.8
+##  3          5.1         3.5          1.4         0.2 setosa             2.6
+##  4          5.1         3.5          1.4         0.2 setosa             3  
+##  5          5.1         3.5          1.4         0.2 setosa             2.8
+##  6          5.1         3.5          1.4         0.2 setosa             3.4
+##  7          5.1         3.5          1.4         0.2 setosa             2.8
+##  8          5.1         3.5          1.4         0.2 setosa             3  
+##  9          5.1         3.5          1.4         0.2 setosa             2.8
+## 10          5.1         3.5          1.4         0.2 setosa             3  
+## # ... with 7,490 more rows</code></pre>
+<p>On a aussi <code>anti_join</code> qui nous donnent les valeurs qui ne sont pas dans la deuxième table.</p>
+</div>
+<div id="transposer-pivot_" class="section level2">
+<h2><span class="header-section-number">3.11</span> Transposer : <code>pivot_*</code></h2>
+<p>Ces fonctions servent à transposer en largeur <code>pivot_wider</code> et en longueur <code>pivot_longer</code>. Elles viennent du package <code>tidyr</code>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">iris_large &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">rowid_to_column</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="kw">select</span>(rowid, Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> rowid, <span class="dt">values_from =</span> Species)</a>
+<a class="sourceLine" id="cb47-5" title="5"></a>
+<a class="sourceLine" id="cb47-6" title="6">iris_large</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 150
+##   `1`    `2`    `3`    `4`    `5`   `6`   `7`   `8`   `9`   `10`  `11`  `12`  `13`  `14`  `15`  `16`  `17` 
+##   &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
+## 1 setosa setosa setosa setosa seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~ seto~
+## # ... with 133 more variables: `18` &lt;fct&gt;, `19` &lt;fct&gt;, `20` &lt;fct&gt;, `21` &lt;fct&gt;, `22` &lt;fct&gt;, `23` &lt;fct&gt;,
+## #   `24` &lt;fct&gt;, `25` &lt;fct&gt;, `26` &lt;fct&gt;, `27` &lt;fct&gt;, `28` &lt;fct&gt;, `29` &lt;fct&gt;, `30` &lt;fct&gt;, `31` &lt;fct&gt;,
+## #   `32` &lt;fct&gt;, `33` &lt;fct&gt;, `34` &lt;fct&gt;, `35` &lt;fct&gt;, `36` &lt;fct&gt;, `37` &lt;fct&gt;, `38` &lt;fct&gt;, `39` &lt;fct&gt;,
+## #   `40` &lt;fct&gt;, `41` &lt;fct&gt;, `42` &lt;fct&gt;, `43` &lt;fct&gt;, `44` &lt;fct&gt;, `45` &lt;fct&gt;, `46` &lt;fct&gt;, `47` &lt;fct&gt;,
+## #   `48` &lt;fct&gt;, `49` &lt;fct&gt;, `50` &lt;fct&gt;, `51` &lt;fct&gt;, `52` &lt;fct&gt;, `53` &lt;fct&gt;, `54` &lt;fct&gt;, `55` &lt;fct&gt;,
+## #   `56` &lt;fct&gt;, `57` &lt;fct&gt;, `58` &lt;fct&gt;, `59` &lt;fct&gt;, `60` &lt;fct&gt;, `61` &lt;fct&gt;, `62` &lt;fct&gt;, `63` &lt;fct&gt;,
+## #   `64` &lt;fct&gt;, `65` &lt;fct&gt;, `66` &lt;fct&gt;, `67` &lt;fct&gt;, `68` &lt;fct&gt;, `69` &lt;fct&gt;, `70` &lt;fct&gt;, `71` &lt;fct&gt;,
+## #   `72` &lt;fct&gt;, `73` &lt;fct&gt;, `74` &lt;fct&gt;, `75` &lt;fct&gt;, `76` &lt;fct&gt;, `77` &lt;fct&gt;, `78` &lt;fct&gt;, `79` &lt;fct&gt;,
+## #   `80` &lt;fct&gt;, `81` &lt;fct&gt;, `82` &lt;fct&gt;, `83` &lt;fct&gt;, `84` &lt;fct&gt;, `85` &lt;fct&gt;, `86` &lt;fct&gt;, `87` &lt;fct&gt;,
+## #   `88` &lt;fct&gt;, `89` &lt;fct&gt;, `90` &lt;fct&gt;, `91` &lt;fct&gt;, `92` &lt;fct&gt;, `93` &lt;fct&gt;, `94` &lt;fct&gt;, `95` &lt;fct&gt;,
+## #   `96` &lt;fct&gt;, `97` &lt;fct&gt;, `98` &lt;fct&gt;, `99` &lt;fct&gt;, `100` &lt;fct&gt;, `101` &lt;fct&gt;, `102` &lt;fct&gt;, `103` &lt;fct&gt;,
+## #   `104` &lt;fct&gt;, `105` &lt;fct&gt;, `106` &lt;fct&gt;, `107` &lt;fct&gt;, `108` &lt;fct&gt;, `109` &lt;fct&gt;, `110` &lt;fct&gt;,
+## #   `111` &lt;fct&gt;, `112` &lt;fct&gt;, `113` &lt;fct&gt;, `114` &lt;fct&gt;, `115` &lt;fct&gt;, `116` &lt;fct&gt;, `117` &lt;fct&gt;, ...</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">iris_large <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">everything</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 2
+##    name  value 
+##    &lt;chr&gt; &lt;fct&gt; 
+##  1 1     setosa
+##  2 2     setosa
+##  3 3     setosa
+##  4 4     setosa
+##  5 5     setosa
+##  6 6     setosa
+##  7 7     setosa
+##  8 8     setosa
+##  9 9     setosa
+## 10 10    setosa
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="en-dehors-de-dplyr" class="section level2">
+<h2><span class="header-section-number">3.12</span> En dehors de <code>dplyr</code></h2>
+<div id="discrétiser-cut" class="section level3">
+<h3><span class="header-section-number">3.12.1</span> Discrétiser : <code>cut</code></h3>
+<p>Cette fonction permet de découper une valeur numérique en classes. On peut l’utiliser dans un <code>mutate</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length_cut =</span> <span class="kw">cut</span>(Sepal.Length, </a>
+<a class="sourceLine" id="cb51-3" title="3">                                <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb51-4" title="4">                                <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length_cut
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;           
+##  1          5.1         3.5          1.4         0.2 setosa  (5,8]           
+##  2          4.9         3            1.4         0.2 setosa  (2,5]           
+##  3          4.7         3.2          1.3         0.2 setosa  (2,5]           
+##  4          4.6         3.1          1.5         0.2 setosa  (2,5]           
+##  5          5           3.6          1.4         0.2 setosa  (2,5]           
+##  6          5.4         3.9          1.7         0.4 setosa  (5,8]           
+##  7          4.6         3.4          1.4         0.3 setosa  (2,5]           
+##  8          5           3.4          1.5         0.2 setosa  (2,5]           
+##  9          4.4         2.9          1.4         0.2 setosa  (2,5]           
+## 10          4.9         3.1          1.5         0.1 setosa  (2,5]           
+## # ... with 140 more rows</code></pre>
+<p>On lui précise les découpages avec : <code>breaks =</code>, les noms avec <code>labels =</code>. Ces fonctions prennent un vecteur . On conserve la borne inférieure avec <code>include.lowest = TRUE</code>.</p>
+</div>
+<div id="recoder-des-facteurs-fct_-de-forcats" class="section level3">
+<h3><span class="header-section-number">3.12.2</span> Recoder des facteurs : <code>fct_*</code> de <code>forcats</code></h3>
+<p>Pour recoder un facteur on utilise <code>fct_collapse</code> si on veut réduire le nombre de niveaux.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">iris <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species_regroup =</span> <span class="kw">fct_collapse</span>(</a>
+<a class="sourceLine" id="cb53-3" title="3">    Species,</a>
+<a class="sourceLine" id="cb53-4" title="4">    <span class="st">&quot;virginica&quot;</span> =<span class="st"> &quot;virginica&quot;</span>,</a>
+<a class="sourceLine" id="cb53-5" title="5">    <span class="st">&quot;Autres&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>)</a>
+<a class="sourceLine" id="cb53-6" title="6">  ))</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_regroup
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;          
+##  1          5.1         3.5          1.4         0.2 setosa  Autres         
+##  2          4.9         3            1.4         0.2 setosa  Autres         
+##  3          4.7         3.2          1.3         0.2 setosa  Autres         
+##  4          4.6         3.1          1.5         0.2 setosa  Autres         
+##  5          5           3.6          1.4         0.2 setosa  Autres         
+##  6          5.4         3.9          1.7         0.4 setosa  Autres         
+##  7          4.6         3.4          1.4         0.3 setosa  Autres         
+##  8          5           3.4          1.5         0.2 setosa  Autres         
+##  9          4.4         2.9          1.4         0.2 setosa  Autres         
+## 10          4.9         3.1          1.5         0.1 setosa  Autres         
+## # ... with 140 more rows</code></pre>
+<p><code>fct_recode</code> est identique mais sans réduction du nombre de niveaux. <code>fct_relevel</code> sert à réordonner les niveaux.</p>
 
+</div>
+</div>
 </div>
             </section>
 

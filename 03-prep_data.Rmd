@@ -4,6 +4,209 @@
 Vos tables de données ne seront pas forcément propres ou au bon format lorsque vous les importerez.
 Il importe donc de les recoder.
 
-Pour ces opérations, vous pouvez vous reporter au manuel de Julien Barnier, *Introduction à R et au tidyverse* qui offre de façon pédagogique et rapide un bon aperçu de ces méthodes de recodage : https://juba.github.io/tidyverse/
+Ce chapitre passe en revue rapidement les opérations qui vous permettront de recoder vos données. Cela n'étant pas l'objet de la formation, vous pouvez vous reporter aux ressources pour plus de détails.
 
-On pourra particulièrement se concentrer sur les chapitres 9 (Recoder des variables) et 10 (Manipuler des données avec `dplyr`), qui permettront de balayer la majeure partie des besoins pour la cartographie.
+`dplyr` fonctionne avec :
+
++ des verbes qui représentent autant d'opérations ;
++ un opérateur pour chaîner les fonctions, qu'on appelle le *pipe* et qui s'écrit `%>%`.
+
+## Le *pipe*
+
+Le *pipe* permet d'enchaîner les opérations.
+
+Exemple, vous vous préparez le matin. Vous enchaînez donc plusieurs opérations, qui peuvent nécessiter des étapes intermédiaires.
+
+```{r pipe1, eval = FALSE}
+moi_reveille <- reveil(moi)
+
+moi_douche <- douche(moi_reveille)
+
+moi_habille <- habillage(moi_douche)
+
+moi_dejeuner <- petit_dej(moi_habille)
+
+moi_travail <- partir(moi_dejeuner)
+```
+
+Vous pouvez aussi les effectuer d'un bloc, mais cela devient moins lisible :
+
+```{r pipe2, eval = FALSE}
+moi_travail <- partir(petit_dej(habillage(douche(reveil(moi)))))
+```
+
+Ou alors vous pouvez utiliser le *pipe* pour enchaîner les opérations de façon plus claire. :
+
+```{r pipe3, eval = FALSE}
+moi_travail <- moi %>% 
+  reveil() %>% 
+  douche() %>% 
+  habillage() %>% 
+  petit_dej() %>% 
+  partir()
+```
+
+On procédera ainsi ici.
+
+## Données
+
+Pour le reste de l'explication, on utilisera les données `iris`, présentes de base dans R.
+
+```{r iris}
+iris <- as_tibble(iris)
+
+iris
+```
+
+## Modifier des colonnes : `mutate`
+
+Il s'agit de modifier une colonne. On donne le nom de la nouvelle colonne puis l'opération de création à partir de l'ancienne, avec un `=` entre les deux. La nouvelle colonne peut avoir le même nom que l'ancienne et la remplace alors.
+
+```{r mutate}
+iris %>% 
+  mutate(Sepal.Length_2 = Sepal.Length * 2,
+         Sepal.Length_4 = Sepal.Length_2 * 2)
+```
+
+On peut enchaîner plus opérations, en les séparant par une virgule, même sur des colonnes crées juste avant.
+
+## Filtrer des valeurs : `filter`
+
+Cela permet de spécifier quelles valeurs on souhaite. On utilisera les opérateurs d'égalité `==`, de différence `!=` ou d'inclusion `%in%`.
+
+```{r filter}
+iris %>% 
+  filter(Species == "setosa")
+```
+
+On peut spécifier plusieurs conditions avec `&` (et) ou `|` (ou) et les parenthèses.
+
+## Sélectionner des colonnes : `select`
+
+Si l'on ne veut conserver que certaines colonnes, on peut les indiquer grâce à ce verbe.
+
+```{r select}
+iris %>% 
+  select(Species, Sepal.Length)
+```
+
+
+Il fonctionne aussi en négative avec un `-` devant le nom de la colonne.
+
+L'utilisation de certaines fonctions type `starts_with()` permet de gagner en efficacité.
+
+## Trier : `arrange`
+
+On trie. Pour faire dans le sens inverse, il faut utiliser `arrange(desc(x))`.
+
+```{r arrange}
+iris %>% 
+  arrange(Petal.Width)
+```
+
+## Top : `top_n`
+
+Pour faire un top, on lui précise le nombre et la variable qui sert à trier. Par exemple si je veux le top 5 par longueur des pétales.
+
+```{r top_n}
+iris %>% 
+  top_n(5, wt = Petal.Length)
+```
+
+## Renommer : `rename`
+
+Cela sert à renommer des colonnes.
+
+```{r rename}
+iris %>% 
+  rename(a = Species)
+```
+
+
+## Regrouper des valeurs : `group_by` et `summarise`
+
+Pour travailler par groupe, on peut utiliser `group_by`. Par exemple si je veux la plus grande valeur de la longueur des sépales par espèce.
+
+```{r group_top}
+iris %>% 
+  group_by(Species) %>% 
+  top_n(1, wt = Sepal.Length) %>% 
+  ungroup()
+```
+
+Tant qu'on est dans un groupe, les opérations s'y référeront. Il faut donc penser à en sortir avec un `ungroup`.
+
+Cela nous permet aussi de sommer des valeurs, ou de faire des moyennes.
+
+```{r group_summarise}
+iris %>% 
+  group_by(Species) %>% 
+  summarise(moyenne_sepale = mean(Sepal.Length),
+            somme_petale = sum(Petal.Width),
+            nombre = n())
+```
+
+Le `count` est un raccourci pour `summarise(n = n())`.
+
+## Joindre des tables : `*_join`
+
+On peut joindre des tables ayant un identifiant commune avec `inner_join`, `left_join`, `right_join` ou `full_join` qui fonctionnent comme en SAS.
+
+```{r join}
+iris2 <- iris %>% 
+  mutate(Petal.Length_2 = Petal.Length * 2) %>% 
+  select(Species, Petal.Length_2)
+
+iris %>% 
+  left_join(iris2, by = c("Species"))
+```
+
+On a aussi `anti_join` qui nous donnent les valeurs qui ne sont pas dans la deuxième table.
+
+## Transposer : `pivot_*`
+
+Ces fonctions servent à transposer en largeur `pivot_wider` et en longueur `pivot_longer`. Elles viennent du package `tidyr`.
+
+```{r pivot}
+iris_large <- iris %>% 
+  rowid_to_column() %>% 
+  select(rowid, Species) %>% 
+  pivot_wider(names_from = rowid, values_from = Species)
+
+iris_large
+
+iris_large %>% 
+  pivot_longer(cols = everything())
+```
+
+
+## En dehors de `dplyr`
+
+### Discrétiser : `cut`
+
+Cette fonction permet de découper une valeur numérique en classes. On peut l'utiliser dans un `mutate`.
+
+```{r cut}
+iris %>% 
+  mutate(Sepal.Length_cut = cut(Sepal.Length, 
+                                breaks = c(0, 1, 2, 5, 8, 10),
+                                include.lowest = TRUE))
+```
+
+On lui précise les découpages avec : `breaks =`, les noms avec `labels = `. Ces fonctions prennent un vecteur . On conserve la borne inférieure avec `include.lowest = TRUE`.
+
+### Recoder des facteurs : `fct_*` de `forcats`
+
+Pour recoder un facteur on utilise `fct_collapse` si on veut réduire le nombre de niveaux.
+
+```{r fct_collapse}
+iris %>%
+  mutate(Species_regroup = fct_collapse(
+    Species,
+    "virginica" = "virginica",
+    "Autres" = c("setosa", "versicolor")
+  ))
+```
+
+
+`fct_recode` est identique mais sans réduction du nombre de niveaux. `fct_relevel` sert à réordonner les niveaux.
