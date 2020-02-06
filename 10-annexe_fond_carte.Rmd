@@ -177,7 +177,7 @@ shp_ze_simpl <- smooth_fr(shp_ze)
 
 shp_dep_simpl <- smooth_fr(shp_dep)
 
-shp_reg_simpl <- smooth_fr(shp_reg)
+shp_reg_simpl <- smooth_fr(shp_reg, tol = 1100)
 ```
 
 
